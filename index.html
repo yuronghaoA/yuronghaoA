@@ -482,6 +482,63 @@ div.prism-show-language > div.prism-show-language-label {
 }
 </style>
 
+	<style>
+/* ---- paper cards ---- */
+.papers { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+
+.paper-card{
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
+  align-items: flex-start;
+}
+
+.paper-thumb{
+  width: 220px;
+  min-width: 220px;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #f6f6f6;
+}
+
+.paper-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.paper-meta{ flex: 1; min-width: 0; }
+.paper-title{
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+.paper-title a{ text-decoration: none; }
+.paper-authors{ margin: 0 0 6px 0; }
+.paper-venue{ margin: 0 0 10px 0; color: rgba(0,0,0,.75); }
+
+.paper-links{ display: flex; flex-wrap: wrap; gap: 8px; }
+.paper-links a{
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid rgba(0,0,0,.18);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95em;
+}
+
+@media (max-width: 720px){
+  .paper-card{ flex-direction: column; }
+  .paper-thumb{ width: 100%; min-width: 0; }
+}
+</style>
+
 
 </head>
 
@@ -513,6 +570,35 @@ div.prism-show-language > div.prism-show-language-label {
 <h2 id="toc_3">Selected Publications [<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ&gmla=AKKJWFdO6kaQ_xpR2oGgYaNcObt-X2bU3c6jzqjYS0-P5WmKFsEeubKeBcQPQoViI0UzgmFrkNUNoEOlTxULJcRHQ9Eatrj2dajjsHh0OXvKJkArKg">google scholar</a>] 
 	[<a href="https://dblp.org/pid/260/9439.html">dblp</a>]</h2>
 
+<div class="papers">
+
+  <!-- Paper 1 -->
+  <div class="paper-card">
+    <div class="paper-thumb">
+      <img src="assets/papers/spattack.png" alt="Spattack thumbnail" loading="lazy">
+    </div>
+    <div class="paper-meta">
+      <p class="paper-title">
+        <a href="https://arxiv.org/pdf/2507.06258">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a>
+      </p>
+      <p class="paper-authors">
+        Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
+      </p>
+      <p class="paper-venue">ACM WEB Conference, 2026. <span style="font-weight:600;">(Oral)</span></p>
+      <div class="paper-links">
+        <!-- <a href="project链接">Project page</a> -->
+        <a href="https://arxiv.org/pdf/2507.06258">Paper</a>
+        <!-- <a href="code链接">Code</a> -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+	
 <ol>
 <li><p><strong><a href="https://arxiv.org/pdf/2507.06258">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems.</a></strong></p> 
 <p>Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.</p>
