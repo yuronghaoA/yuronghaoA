@@ -6,18 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Yurong Hao</title>
 
-<!-- 引入现代化无衬线字体与图标库 -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style type="text/css">
 :root {
-  --primary-color: #0f172a; /* 国际学术界偏爱的深邃蓝黑 */
-  --accent-color: #2563eb;  /* 科技前沿蓝 */
-  --text-main: #334155;     /* 主文本阅读色 */
-  --text-dark: #1e293b;     /* 标题与强调色 */
-  --bg-light: #f8fafc;      /* 浅灰色区块背景 */
-  --border-color: #e2e8f0;  /* 优雅的细分割线颜色 */
+  --primary-color: #0f172a; 
+  --accent-color: #2563eb;  /* 完美同步图1中高亮蓝 */
+  --tag-bg: #eff6ff;        /* 标签浅蓝背景 */
+  --text-main: #334155;     /* 图2同款深灰阅读色，比纯黑更具高级感 */
+  --text-dark: #1e293b;     
+  --bg-light: #f8fafc;      
+  --border-color: #e2e8f0;  /* 极细浅灰边框 */
 }
 
 * {
@@ -27,14 +27,15 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* 严格使用图2学术风核心字体族 */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-main);
   line-height: 1.5;
+  letter-spacing: -0.01em; /* 优化字间距，复刻图2的紧凑质感 */
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
-/* 现代双栏网格布局 */
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -61,12 +62,8 @@ body {
   height: 190px;
   border-radius: 50%;
   object-fit: cover;
+  /* 移除了周围的白边 border，保持极简 */
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.02);
 }
 
 .name {
@@ -78,7 +75,6 @@ body {
   text-align: center;
 }
 
-/* 社交媒体学术图标整合 */
 .social-links {
   display: flex;
   justify-content: center;
@@ -90,7 +86,7 @@ body {
 .social-links a {
   display: inline-flex;
   align-items: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .social-links a:hover {
@@ -102,7 +98,6 @@ body {
   width: auto;
 }
 
-/* 左侧底层联系方式区 */
 .contact-card {
   background-color: var(--bg-light);
   border-radius: 12px;
@@ -153,7 +148,7 @@ body {
 .main-content {
   display: flex;
   flex-direction: column;
-  gap: 32px; /* 紧凑的内容模块间距 */
+  gap: 32px; /* 整体紧凑紧凑布局 */
 }
 
 section {
@@ -164,7 +159,7 @@ h2 {
   font-size: 21px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 14px; /* 减少标题下方的留白 */
+  margin-bottom: 14px;
   padding-bottom: 4px;
   border-bottom: 2px solid var(--primary-color);
   display: inline-block;
@@ -183,7 +178,7 @@ h2 a:hover {
 }
 
 p {
-  font-size: 15px;
+  font-size: 14.5px; /* 完美契合图2简介字体大小 */
   color: var(--text-main);
   text-align: justify;
 }
@@ -198,7 +193,7 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* News 模块设计 */
+/* News 模块 */
 .news-list {
   list-style: none;
 }
@@ -207,12 +202,12 @@ p a:hover {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 8px; /* 紧凑列表间距 */
+  margin-bottom: 8px;
   font-size: 14.5px;
 }
 
 .news-badge {
-  background-color: #eff6ff;
+  background-color: var(--tag-bg);
   color: var(--accent-color);
   font-size: 11.5px;
   font-weight: 600;
@@ -223,63 +218,61 @@ p a:hover {
   flex-shrink: 0;
 }
 
-/* ================= Publications 核心改造 ================= */
+/* ================= 复刻图1：Selected Publications 风格 ================= */
 .papers {
   display: flex;
   flex-direction: column;
-  gap: 14px; /* 论文卡片间距稍微收紧 */
+  gap: 16px; 
 }
 
 .paper-card {
   display: grid;
-  grid-template-columns: 240px 1fr; /* 拓宽图片列，给图片更大的展示空间 */
-  gap: 20px;
-  padding: 14px;
+  grid-template-columns: 240px 1fr; /* 拓宽并放大左侧图片区域 */
+  gap: 24px;
+  padding: 16px;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  background: #fff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px; /* 图1圆角风格 */
+  background: #ffffff;
+  transition: all 0.2s ease-in-out;
 }
 
 .paper-card:hover {
-  border-color: transparent;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-  background-color: var(--bg-light);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* 极轻阴影 */
 }
 
 .paper-thumb {
   width: 100%;
-  aspect-ratio: 16 / 9; /* 更扁平的黄金比例，减少上下无效留白 */
-  border-radius: 6px;
+  aspect-ratio: 16 / 10; /* 适配大图表结构图的最佳比例 */
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: #ffffff; /* 纯白背景与结构图更好地融为一体 */
+  background: #ffffff;
 }
 
 .paper-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* 保证论文结构图比例完美不被裁剪 */
+  object-fit: contain; /* 保证结构图完整无缺失 */
 }
 
 .paper-meta {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .paper-title {
   font-size: 16px;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 4px;
-  line-height: 1.3;
+  margin-bottom: 6px;
+  line-height: 1.35;
 }
 
 .paper-title a {
   color: var(--text-dark);
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
 .paper-title a:hover {
@@ -289,49 +282,79 @@ p a:hover {
 .paper-authors {
   font-size: 14px;
   color: #475569;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
+/* 复刻图1：作者下划线高亮 */
 .paper-authors strong {
-  color: var(--primary-color);
+  color: var(--text-dark);
   font-weight: 600;
   text-decoration: underline;
 }
 
 .paper-venue {
-  font-size: 14px;
+  font-size: 13.5px;
   color: #64748b;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* 复刻图1：顶尖会议高亮标签 */
+.venue-badge {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* 复刻图1：研究方向蓝色浅色药丸 Tags */
+.paper-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.research-tag {
+  background-color: var(--tag-bg);
+  color: var(--accent-color);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 复刻图1：清爽型右侧操作链接 */
 .paper-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
+  margin-top: auto; /* 推至卡片底部对齐 */
 }
 
 .paper-links a {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+  gap: 4px;
   text-decoration: none;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 500;
-  color: #475569;
-  background-color: #ffffff;
-  transition: all 0.2s ease;
+  color: var(--accent-color);
+  transition: opacity 0.2s ease;
 }
 
 .paper-links a:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  background-color: #eff6ff;
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
-/* ================= 通用列表高级微章设置 ================= */
+/* ================= 其他通用列表 ================= */
 .custom-list {
   list-style: none;
 }
@@ -339,7 +362,7 @@ p a:hover {
 .custom-list li {
   position: relative;
   padding-left: 18px;
-  margin-bottom: 8px; /* 列表项间距收紧 */
+  margin-bottom: 8px;
   font-size: 14.5px;
   text-align: justify;
 }
@@ -354,7 +377,6 @@ p a:hover {
   top: -2px;
 }
 
-/* 高级学术标签样式 */
 .badge {
   display: inline-block;
   padding: 1px 6px;
@@ -365,11 +387,11 @@ p a:hover {
   vertical-align: middle;
 }
 
-.badge-orange { background-color: #ffedd5; color: #ea580c; }  /* Oral / PI */
-.badge-green  { background-color: #d1fae5; color: #059669; }  /* Patent */
-.badge-blue   { background-color: #e0f2fe; color: #0284c7; }  /* Info / Contributions */
+.badge-orange { background-color: #ffedd5; color: #ea580c; }  
+.badge-green  { background-color: #d1fae5; color: #059669; }  
+.badge-blue   { background-color: #e0f2fe; color: #0284c7; }  
 
-/* ================= 移动端流式布局适配 ================= */
+/* 移动端响应式适配 */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
@@ -383,9 +405,7 @@ p a:hover {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 25px;
   }
-  .social-links { justify-content: center; }
-  .contact-card { text-align: left; }
-  .paper-card { grid-template-columns: 1fr; gap: 12px; }
+  .paper-card { grid-template-columns: 1fr; gap: 14px; }
 }
 </style>
 
@@ -395,14 +415,12 @@ p a:hover {
 
   <div class="container">
     
-    <!-- 左侧固定个人栏 -->
     <aside class="sidebar">
       <div class="profile-img-container">
         <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
       </div>
       <h1 class="name">Yurong Hao</h1>
       
-      <!-- 固定的社交媒体入口 -->
       <div class="social-links">
         <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" target="_blank" title="Google Scholar">
           <img src="./files/scholar_logo.png" alt="Google Scholar">
@@ -415,7 +433,6 @@ p a:hover {
         </a>
       </div>
 
-      <!-- 整合的联系方式卡片 -->
       <div class="contact-card">
         <h3>Contact</h3>
         <div class="contact-item">
@@ -427,7 +444,6 @@ p a:hover {
           <span>yurong.hao@ntu.edu.sg</span>
         </div>
         
-        <!-- 原始访客地图组件完整整合 -->
         <div class="visitor-map">
           <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
             <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
@@ -436,10 +452,8 @@ p a:hover {
       </div>
     </aside>
 
-    <!-- 右侧主内容区 -->
     <main class="main-content">
       
-      <!-- Biography 区块 -->
       <section id="biography">
         <h2>Biography</h2>
         <p>I am currently a Research Fellow at Nanyang Technological University (NTU), working with Prof. <a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan" target="_blank">Wei Yang Bryan Lim</a> and Prof. <a href="https://ece.ubc.ca/cyril-leung/" target="_blank">Cyril Leung</a> in <a href="https://sites.google.com/view/wyb/home" target="_blank">Midori Lab</a>. Before this, I received my Ph.D. degree in 2025 from <a href="https://cst.bjtu.edu.cn/" target="_blank">the School of Cyberspace Science and Technology</a> at <a href="https://en.bjtu.edu.cn/" target="_blank">Beijing Jiaotong University</a>, supervised by Prof. <a href="https://faculty.bjtu.edu.cn/6279/" target="_blank">Jiqiang Liu</a> and Prof. <a href="https://weiwangup.github.io/" target="_blank">Wei Wang</a>. From 2024 to 2025, I was a visiting student at Nanyang Technological University.</p>
@@ -447,7 +461,6 @@ p a:hover {
         <p>My research mainly focuses on Trustworthy AI, with a particular focus on poisoning attacks and defence mechanisms in distributed deep learning systems. Recently, my research has shifted toward trustworthiness in multimodal LLM and agent, where I explore potential vulnerabilities and develop robust defence mechanisms to enhance their integrity and user trust.</p>
       </section>
 
-      <!-- News 区块 -->
       <section id="news">
         <h2>News</h2>
         <ul class="news-list">
@@ -459,7 +472,6 @@ p a:hover {
         </ul>
       </section>
 
-      <!-- Selected Publications 区块 -->
       <section id="publications">
         <h2>Selected Publications 
           <a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ" target="_blank">[Google Scholar]</a> 
@@ -468,7 +480,6 @@ p a:hover {
 
         <div class="papers">
           
-          <!-- Paper VenomRec -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
@@ -480,14 +491,19 @@ p a:hover {
               <p class="paper-authors">
                 Guowei Guan, <strong>Yurong Hao</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.
               </p>
-              <p class="paper-venue">International Conference on Machine Learning (ICML), 2026.</p>
+              <p class="paper-venue"><span class="venue-badge">ICML 2026</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Trustworthy AI</span>
+                <span class="research-tag"># Multimodal LLM</span>
+                <span class="research-tag"># Recommender Systems</span>
+              </div>
               <div class="paper-links">
-                <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">Paper</a>
+                <a href="#" target="_blank">Code</a>
               </div>
             </div>
           </div>
 
-          <!-- Paper ModelPirate -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
@@ -499,14 +515,17 @@ p a:hover {
               <p class="paper-authors">
                 Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.
               </p>
-              <p class="paper-venue">International Conference on Machine Learning (ICML), 2026.</p>
+              <p class="paper-venue"><span class="venue-badge">ICML 2026</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Model Merging</span>
+                <span class="research-tag"># Model Security</span>
+              </div>
               <div class="paper-links">
-                <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">Paper</a>
               </div>
             </div>
           </div>
             
-          <!-- Paper SubspacePath -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
@@ -518,14 +537,18 @@ p a:hover {
               <p class="paper-authors">
                 Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
               </p>
-              <p class="paper-venue">International Conference on Machine Learning (ICML), 2026.</p>
+              <p class="paper-venue"><span class="venue-badge">ICML 2026</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Model Efficiency</span>
+                <span class="research-tag"># Inference-Time Pruning</span>
+                <span class="research-tag"># Routing</span>
+              </div>
               <div class="paper-links">
-                <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
               </div>
             </div>
           </div>
             
-          <!-- Paper XDomainBench -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
@@ -537,14 +560,17 @@ p a:hover {
               <p class="paper-authors">
                 Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
               </p>
-              <p class="paper-venue">International Conference on Machine Learning (ICML), 2026.</p>
+              <p class="paper-venue"><span class="venue-badge">ICML 2026</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># LLM Evaluation</span>
+                <span class="research-tag"># Scientific Reasoning</span>
+              </div>
               <div class="paper-links">
-                <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
               </div>
             </div>
           </div>
 
-          <!-- Paper Spattack -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
@@ -556,14 +582,17 @@ p a:hover {
               <p class="paper-authors">
                 Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
               </p>
-              <p class="paper-venue">ACM WEB Conference (WWW), 2026. <span class="badge badge-orange">Oral</span></p>
+              <p class="paper-venue"><span class="venue-badge">WWW 2026</span> <span class="badge badge-orange">Oral</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Federated Learning</span>
+                <span class="research-tag"># Poisoning Attacks</span>
+              </div>
               <div class="paper-links">
-                <a href="https://arxiv.org/pdf/2507.06258" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Paper</a>
               </div>
             </div>
           </div>
 
-          <!-- Paper AegisGuard -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
@@ -575,14 +604,18 @@ p a:hover {
               <p class="paper-authors">
                 Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.
               </p>
-              <p class="paper-venue">Neural Information Processing Systems (NeurIPS), 2025. <span class="badge badge-blue">Poster</span></p>
+              <p class="paper-venue"><span class="venue-badge">NeurIPS 2025</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># On-Device Inference</span>
+                <span class="research-tag"># TEE Security</span>
+                <span class="research-tag"># Reinforcement Learning</span>
+              </div>
               <div class="paper-links">
-                <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">Paper</a>
               </div>
             </div>
           </div>
 
-          <!-- Paper StairClimbing -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/StairClimbing.png" alt="StairClimbing thumbnail" loading="lazy">
@@ -594,14 +627,17 @@ p a:hover {
               <p class="paper-authors">
                 <strong>Yurong Hao</strong>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.
               </p>
-              <p class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS).</p>
+              <p class="paper-venue"><span class="venue-badge">IEEE TIFS</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Federated Recommendation</span>
+                <span class="research-tag"># Targeted Poisoning</span>
+              </div>
               <div class="paper-links">
-                <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Paper</a>
               </div>
             </div>
           </div>
 
-          <!-- Paper FRecAttack2 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/FRecAttack2.png" alt="FRecAttack2 thumbnail" loading="lazy">
@@ -613,47 +649,13 @@ p a:hover {
               <p class="paper-authors">
                 <strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.
               </p>
-              <p class="paper-venue">ACM Conference on Computer and Communications Security (CCS), 2024. <span class="badge badge-orange">Oral</span></p>
-              <div class="paper-links">
-                <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+              <p class="paper-venue"><span class="venue-badge">ACM CCS 2024</span> <span class="badge badge-orange">Oral</span></p>
+              <div class="paper-tags">
+                <span class="research-tag"># Untargeted Attacks</span>
+                <span class="research-tag"># User Profiles</span>
               </div>
-            </div>
-          </div>
-
-          <!-- Paper SOC -->
-          <div class="paper-card">
-            <div class="paper-thumb">
-              <img src="assets/papers/SOC.png" alt="SOC thumbnail" loading="lazy">
-            </div>
-            <div class="paper-meta">
-              <p class="paper-title">
-                <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" target="_blank">Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach</a>
-              </p>
-              <p class="paper-authors">
-                Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-              </p>
-              <p class="paper-venue">Information Processing & Management. (IP&M).</p>
               <div class="paper-links">
-                <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Paper LDP -->
-          <div class="paper-card">
-            <div class="paper-thumb">
-              <img src="assets/papers/LDP.png" alt="LDP thumbnail" loading="lazy">
-            </div>
-            <div class="paper-meta">
-              <p class="paper-title">
-                <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" target="_blank">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a>
-              </p>
-              <p class="paper-authors">
-                Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-              </p>
-              <p class="paper-venue">Service Oriented Computing and Applications (SOCA).</p>
-              <div class="paper-links">
-                <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" target="_blank"><i class="fa-solid fa-file-pdf"></i> Paper</a>
+                <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Paper</a>
               </div>
             </div>
           </div>
@@ -661,7 +663,6 @@ p a:hover {
         </div>
       </section>
 
-      <!-- Patents 区块 -->
       <section id="patents">
         <h2>Patents</h2>
         <ul class="custom-list">
@@ -672,7 +673,6 @@ p a:hover {
         </ul>
       </section>
 
-      <!-- Monographs 区块 -->
       <section id="monographs">
         <h2>Monographs</h2>
         <ul class="custom-list">
@@ -681,7 +681,6 @@ p a:hover {
         </ul>
       </section>
 
-      <!-- Research Projects 区块 -->
       <section id="projects">
         <h2>Research Projects</h2>
         <ul class="custom-list">
@@ -694,7 +693,6 @@ p a:hover {
         </ul>
       </section>
 
-      <!-- Selected Awards 区块 -->
       <section id="awards">
         <h2>Selected Awards</h2>
         <ul class="custom-list">
@@ -709,7 +707,6 @@ p a:hover {
         </ul>
       </section>
 
-      <!-- Invited Talks 区块 -->
       <section id="talks">
         <h2>Invited Talks</h2>
         <ul class="news-list">
