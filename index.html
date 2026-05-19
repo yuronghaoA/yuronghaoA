@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yurong Hao | Academic Homepage</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg: #fafaf8;
   --surface: #ffffff;
   --surface-2: #f3f3f0;
   --surface-3: #eaeae6;
-  --border: rgba(0,0,0,0.07);
+  --border: rgba(0,0,0,0.10);
   --border-hover: rgba(22,101,52,0.22);
-  --text: #1a1a1a;
-  --text-mid: #4a4a4a;
-  --text-dim: #7a7a7a;
+  --text: #000000;
+  --text-mid: rgba(0,0,0,0.78);
+  --text-dim: #777777;
   --accent: #166534;
   --accent-light: #22c55e;
   --accent-bg: rgba(22,101,52,0.05);
@@ -25,335 +26,549 @@
   --blue: #1e40af;
   --blue-bg: rgba(30,64,175,0.05);
   --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'Outfit', sans-serif;
+  --sans-v2: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: 'JetBrains Mono', monospace;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
   --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
-  --base: https://yuronghaoa.github.io/yuronghaoA;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-  background:var(--bg); color:var(--text);
-  font-family:var(--sans); overflow-x:hidden; line-height:1.65;
+  font-family: var(--sans-v2);
+  font-size: 15px;
+  line-height: 1.4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--bg);
+  padding: 30px;
+  color: var(--text);
+  margin: 0;
 }
-a { color:var(--accent); text-decoration:none; transition:color 0.3s; }
-a:hover { color:var(--accent-light); }
 
-/* ─── NAV ─── */
-nav {
-  position:fixed; top:0; width:100%; z-index:100;
-  padding:1rem 3rem;
-  display:flex; justify-content:space-between; align-items:center;
-  backdrop-filter:blur(20px);
-  background:rgba(250,250,248,0.85);
-  border-bottom:1px solid var(--border);
-}
-.nav-name { font-family:var(--serif); font-size:1.3rem; font-weight:700; }
-.nav-name span { color:var(--accent); }
-.nav-links { display:flex; gap:2rem; list-style:none; }
-.nav-links a {
-  color:var(--text-dim); text-decoration:none;
-  font-size:0.8rem; font-weight:500;
-  letter-spacing:0.06em; text-transform:uppercase;
-  transition:color 0.3s; position:relative;
-}
-.nav-links a::after {
-  content:''; position:absolute; bottom:-3px; left:0;
-  width:0; height:1.5px; background:var(--accent); transition:width 0.3s;
-}
-.nav-links a:hover { color:var(--text); }
-.nav-links a:hover::after { width:100%; }
+body > *:first-child { margin-top: 0 !important; }
+body > *:last-child { margin-bottom: 0 !important; }
 
-/* ─── HERO ─── */
+a { color: #4183C4; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+
+h1 { font-size: 30px; color: black; }
+h2 {
+  font-size: 26px;
+  border-bottom: 1px solid #cccccc;
+  color: black;
+}
+h3 { font-size: 22px; }
+h4 { font-size: 18px; }
+h5 { font-size: 15px; }
+h6 { color: #777777; font-size: 15px; }
+
+p, blockquote, ul, ol, dl, li, table, pre { margin: 11px 0; }
+ul, ol { padding-left: 30px; }
+li { margin: 0; }
+img { max-width: 100%; }
+
+hr {
+  border: 0;
+  border-top: 1px solid #cccccc;
+  height: 1px;
+  margin: 22px 0;
+  background: transparent;
+}
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+@media screen and (min-width: 914px) {
+  body {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Version-1 layout retained; Version-2 typography scale retained
+   ───────────────────────────────────────────── */
+
+/* HERO */
 .hero {
-  display:grid;
-  grid-template-columns:300px 1fr; gap:3rem;
-  align-items:center; padding:7rem 3rem 3rem;
-  max-width:1400px; margin:0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.2rem 0 2.2rem;
 }
-.profile-card { opacity:0; animation:fadeUp 0.8s 0.3s forwards; }
+
+.profile-card {
+  text-align: center;
+}
+
 .avatar-wrap {
-  width:240px; height:300px;
-  border-radius:160px 160px 28px 28px;
-  overflow:hidden; border:3px solid var(--surface-3);
-  background:var(--surface-2); margin:0 auto 1.4rem;
-  box-shadow:var(--shadow-md);
+  width: 240px;
+  height: 300px;
+  border-radius: 160px 160px 28px 28px;
+  overflow: hidden;
+  border: 3px solid var(--surface-3);
+  background: var(--surface-2);
+  margin: 0 auto 1.4rem;
+  box-shadow: var(--shadow-md);
 }
-.avatar-wrap img { width:100%; height:100%; object-fit:cover; }
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .profile-name {
-  font-family:var(--serif); font-size:1.7rem; font-weight:700;
-  text-align:center; margin-bottom:0.3rem;
+  font-family: var(--sans-v2);
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.3rem;
 }
+
 .profile-title {
-  font-size:0.82rem; color:var(--text-dim);
-  text-align:center; line-height:1.55; margin-bottom:1.2rem;
+  font-size: 15px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
 }
+
 .profile-links {
-  display:flex; justify-content:center; gap:0.5rem;
-  margin-bottom:1.2rem; flex-wrap:wrap;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
 }
+
 .profile-link-btn {
-  display:inline-flex; align-items:center; gap:0.3rem;
-  padding:0.4rem 0.85rem; border-radius:20px;
-  font-size:0.72rem; font-weight:500;
-  border:1px solid var(--border); color:var(--text-dim);
-  text-decoration:none; transition:all 0.3s; font-family:var(--mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  border: 1px solid rgba(0,0,0,.18);
+  color: #4183C4;
+  background: #fff;
+  text-decoration: none;
+  transition: all 0.25s ease;
 }
+
 .profile-link-btn:hover {
-  border-color:var(--accent); color:var(--accent); background:var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
 }
-.tag-cloud { display:flex; flex-wrap:wrap; justify-content:center; gap:0.35rem; }
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
 .tag {
-  font-size:0.65rem; font-family:var(--mono);
-  padding:0.25rem 0.65rem; border-radius:12px;
-  background:var(--accent-bg); color:var(--accent);
-  border:1px solid rgba(22,101,52,0.1); white-space:nowrap;
+  font-size: 13px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid rgba(22,101,52,0.12);
+  white-space: nowrap;
 }
 
-.hero-content { opacity:0; animation:fadeUp 0.8s 0.5s forwards; }
 .hero-hello {
-  font-family:var(--mono); font-size:0.72rem; color:var(--accent);
-  letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.8rem;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
 }
+
 .hero-content h1 {
-  font-family:var(--serif);
-  font-size:clamp(2rem,4.2vw,3.2rem); font-weight:700;
-  line-height:1.12; letter-spacing:-0.02em; margin-bottom:1.2rem;
+  font-family: var(--sans-v2);
+  font-size: 30px;
+  line-height: 1.18;
+  color: black;
+  margin: 20px 0 10px;
 }
-.hero-content h1 em { font-style:italic; color:var(--accent); }
+
+.hero-content h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
 .hero-bio {
-  font-size:0.98rem; color:var(--text-mid);
-  max-width:680px; line-height:1.8; font-weight:300; margin-bottom:1.2rem;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+  max-width: 760px;
+  margin: 11px 0;
 }
-.hero-bio strong { font-weight:500; color:var(--text); }
+
+.hero-bio strong { color: black; font-weight: bold; }
+
 .research-focus {
-  padding:1rem 1.3rem; border-radius:12px;
-  background:var(--accent-bg); border:1px solid rgba(22,101,52,0.1);
-  font-size:0.88rem; color:var(--text-mid); line-height:1.7; font-weight:300;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  border: 1px solid rgba(22,101,52,0.12);
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.4;
+  margin-top: 14px;
 }
-.research-focus strong { color:var(--accent); font-weight:600; }
 
-/* ─── SECTIONS ─── */
-.section { padding:3rem 3rem; max-width:1400px; margin:0 auto; }
+.research-focus strong {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* SECTIONS */
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.3rem 0;
+}
+
 .section-header {
-  display:flex; align-items:baseline; gap:0.8rem;
-  margin-bottom:1.5rem; padding-bottom:0.6rem;
-  border-bottom:2px solid var(--surface-3);
-}
-.section-num { font-family:var(--mono); font-size:0.7rem; color:var(--accent); opacity:0.5; }
-.section-icon { font-size:1.3rem; }
-.section-title {
-  font-family:var(--serif); font-size:1.8rem; font-weight:700;
-  letter-spacing:-0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
 }
 
-/* ─── NEWS ─── */
-.news-list { display:flex; flex-direction:column; gap:0.4rem; }
+.section-header h2 {
+  flex: 1;
+  margin: 20px 0 10px;
+}
+
+.section-num {
+  font-size: 15px;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.section-icon { font-size: 20px; line-height: 1; }
+.section-title { font-size: 26px; }
+
+.section-links {
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* NEWS */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .news-item {
-  display:flex; align-items:flex-start; gap:1rem;
-  padding:0.9rem 1.1rem; border-radius:10px;
-  border:1px solid var(--border); background:var(--surface);
-  transition:all 0.3s; box-shadow:var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
 }
-.news-item:hover { border-color:var(--border-hover); transform:translateX(4px); box-shadow:var(--shadow-md); }
+
 .news-badge {
-  font-family:var(--mono); font-size:0.68rem;
-  padding:0.2rem 0.55rem; border-radius:8px;
-  background:var(--accent-bg2); color:var(--accent);
-  white-space:nowrap; font-weight:500; flex-shrink:0;
+  display: inline-block;
+  min-width: 82px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-bg2);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
 }
-.news-text { font-size:0.88rem; color:var(--text-mid); font-weight:300; line-height:1.55; }
-.news-text strong { color:var(--text); font-weight:600; }
 
-/* ─── PUBLICATIONS ─── */
-.pub-list { display:flex; flex-direction:column; gap:0.8rem; }
+.news-text {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+/* PUBLICATIONS */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
 .pub-card {
-  display:grid; grid-template-columns:200px 1fr; gap:1.3rem;
-  padding:1.3rem; border-radius:14px;
-  border:1px solid var(--border); background:var(--surface);
-  transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-  box-shadow:var(--shadow-sm);
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
 }
+
 .pub-card:hover {
-  border-color:var(--border-hover); transform:translateY(-2px); box-shadow:var(--shadow-lg);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
 }
+
 .pub-thumb {
-  width:200px; height:125px; border-radius:10px;
-  background:var(--surface-2); border:1px solid var(--border);
-  overflow:hidden;
+  width: 220px;
+  min-width: 220px;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #f6f6f6;
 }
-.pub-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-.pub-info { display:flex; flex-direction:column; justify-content:center; }
+
+.pub-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pub-info { flex: 1; min-width: 0; }
+
 .pub-venue {
-  display:inline-flex; align-items:center; gap:0.3rem;
-  font-family:var(--mono); font-size:0.68rem;
-  padding:0.2rem 0.55rem; border-radius:6px;
-  width:fit-content; margin-bottom:0.4rem; font-weight:500;
+  display: inline-block;
+  margin: 0 0 8px 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
 }
-.pub-venue.top { background:var(--accent-bg2); color:var(--accent); }
-.pub-venue.journal { background:var(--blue-bg); color:var(--blue); }
-.pub-venue.other { background:var(--warm-bg); color:var(--warm); }
+
+.pub-venue.top { background: var(--accent-bg2); color: var(--accent); }
+.pub-venue.journal { background: var(--blue-bg); color: var(--blue); }
+.pub-venue.other { background: var(--warm-bg); color: var(--warm); }
+
 .pub-title-text {
-  font-family:var(--serif); font-size:1.05rem; font-weight:600;
-  line-height:1.35; margin-bottom:0.3rem;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
 }
-.pub-title-text a { color:var(--text); text-decoration:none; transition:color 0.3s; }
-.pub-title-text a:hover { color:var(--accent); }
-.pub-authors { font-size:0.76rem; color:var(--text-dim); line-height:1.5; margin-bottom:0.5rem; }
-.pub-authors .me { color:var(--accent); font-weight:600; }
-.pub-links { display:flex; gap:0.35rem; flex-wrap:wrap; }
+
+.pub-authors {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.pub-authors .me {
+  color: black;
+  font-weight: bold;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .pub-link {
-  display:inline-flex; align-items:center; gap:0.25rem;
-  padding:0.25rem 0.65rem; border-radius:7px;
-  font-size:0.7rem; font-weight:500; font-family:var(--mono);
-  border:1px solid var(--border); color:var(--text-dim);
-  text-decoration:none; transition:all 0.3s;
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid rgba(0,0,0,.18);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
 }
-.pub-link:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-bg); }
 
-/* ─── INFO BLOCKS ─── */
-.info-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+/* INFO BLOCKS */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
 .info-block {
-  padding:1.4rem; border-radius:14px;
-  border:1px solid var(--border); background:var(--surface); box-shadow:var(--shadow-sm);
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
 }
+
 .info-block-title {
-  font-family:var(--mono); font-size:0.7rem; color:var(--accent);
-  letter-spacing:0.1em; text-transform:uppercase;
-  margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border);
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #cccccc;
 }
+
 .info-item {
-  font-size:0.85rem; color:var(--text-mid); line-height:1.6; font-weight:300;
-  padding:0.6rem 0; border-bottom:1px solid rgba(0,0,0,0.03);
-}
-.info-item:last-child { border-bottom:none; }
-.info-item strong { color:var(--text); font-weight:500; }
-.info-item .badge {
-  display:inline-block; font-family:var(--mono); font-size:0.65rem;
-  padding:0.15rem 0.5rem; border-radius:6px;
-  background:var(--accent-bg2); color:var(--accent); margin-left:0.3rem; font-weight:500;
-}
-.info-item .role-badge {
-  display:inline-block; font-family:var(--mono); font-size:0.65rem;
-  padding:0.15rem 0.5rem; border-radius:6px;
-  background:var(--warm-bg); color:var(--warm); font-weight:500;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
-/* ─── AWARDS ─── */
+.info-item:last-child { border-bottom: none; }
+.info-item strong { color: black; font-weight: bold; }
+
+.badge, .role-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  color: #FF1000;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+/* AWARDS */
 .awards-list {
-  display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 10px;
 }
+
 .award-item {
-  display:flex; align-items:center; gap:0.7rem;
-  padding:0.8rem 1rem; border-radius:10px;
-  border:1px solid var(--border); background:var(--surface);
-  transition:all 0.3s; box-shadow:var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
 }
-.award-item:hover { border-color:var(--border-hover); transform:translateX(3px); }
+
 .award-icon {
-  width:32px; height:32px; border-radius:8px;
-  background:var(--warm-bg); display:flex; align-items:center; justify-content:center;
-  font-size:0.9rem; flex-shrink:0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--warm-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
 }
-.award-text { font-size:0.84rem; color:var(--text-mid); font-weight:300; line-height:1.45; }
-.award-text strong { color:var(--text); font-weight:500; }
-.award-year { font-family:var(--mono); font-size:0.68rem; color:var(--accent); margin-top:0.1rem; }
 
-/* ─── TALKS ─── */
-.talks-list { display:flex; flex-direction:column; gap:0.4rem; }
+.award-text {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+.award-text strong { color: black; font-weight: bold; }
+.award-year { font-size: 14px; color: var(--text-dim); margin-top: 2px; }
+
+/* TALKS */
+.talks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .talk-item {
-  display:flex; align-items:flex-start; gap:1rem;
-  padding:0.9rem 1.1rem; border-radius:10px;
-  border:1px solid var(--border); background:var(--surface);
-  transition:all 0.3s; box-shadow:var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
 }
-.talk-item:hover { border-color:var(--border-hover); transform:translateX(3px); }
+
 .talk-date {
-  font-family:var(--mono); font-size:0.7rem; color:var(--accent);
-  white-space:nowrap; min-width:75px; padding-top:2px;
+  min-width: 82px;
+  color: #4183C4;
+  font-size: 15px;
+  white-space: nowrap;
 }
-.talk-content { font-size:0.86rem; color:var(--text-mid); font-weight:300; line-height:1.6; }
-.talk-content strong { color:var(--text); font-weight:500; }
-.talk-venue { font-size:0.78rem; color:var(--text-dim); margin-top:0.15rem; }
 
-/* ─── CONTACT ─── */
+.talk-content {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+.talk-content strong { color: black; }
+.talk-venue { font-size: 15px; color: var(--text-dim); margin-top: 3px; }
+
+/* CONTACT */
 .contact-section {
-  text-align:center; padding:3.5rem 3rem; max-width:1400px; margin:0 auto; position:relative;
-}
-.contact-section::before {
-  content:''; position:absolute; width:400px; height:400px; border-radius:50%;
-  background:radial-gradient(circle, rgba(22,101,52,0.04), transparent 70%);
-  top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;
-}
-.contact-heading {
-  font-family:var(--serif); font-size:clamp(1.8rem,3.5vw,2.8rem);
-  font-weight:700; margin-bottom:0.8rem; letter-spacing:-0.02em;
-}
-.contact-heading em { color:var(--accent); font-style:italic; }
-.contact-desc { font-size:0.95rem; color:var(--text-dim); font-weight:300; margin-bottom:1.2rem; }
-.contact-email { font-family:var(--mono); font-size:0.9rem; color:var(--accent); }
-.social-row { display:flex; justify-content:center; gap:0.6rem; margin-top:1.2rem; }
-.social-btn {
-  padding:0.5rem 1.1rem; border-radius:22px;
-  border:1px solid var(--border); color:var(--text-dim);
-  font-size:0.78rem; font-weight:500; text-decoration:none;
-  transition:all 0.3s; font-family:var(--mono);
-}
-.social-btn:hover {
-  border-color:var(--accent); color:var(--accent);
-  transform:translateY(-2px); box-shadow:0 4px 14px rgba(22,101,52,0.1);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.3rem 0 0;
 }
 
-footer {
-  padding:1.5rem 3rem; border-top:1px solid var(--border);
-  text-align:center; font-size:0.76rem; color:var(--text-dim);
+.contact-card {
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  background: #fff;
 }
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(24px); }
-  to { opacity:1; transform:translateY(0); }
-}
-.reveal {
-  opacity:0; transform:translateY(20px);
-  transition:all 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.reveal.visible { opacity:1; transform:translateY(0); }
+.contact-card p { margin: 11px 0; }
 
-@media(max-width:900px) {
-  nav { padding:0.8rem 1.2rem; }
-  .nav-links { display:none; }
-  .hero { grid-template-columns:1fr; padding:6.5rem 1.2rem 2.5rem; gap:2rem; }
-  .section { padding:2rem 1.2rem; }
-  .pub-card { grid-template-columns:1fr; }
-  .pub-thumb { width:100%; height:130px; }
-  .info-grid { grid-template-columns:1fr; }
-  .awards-list { grid-template-columns:1fr; }
-  .contact-section { padding:3rem 1.2rem; }
+@media (max-width: 900px) {
+  body { padding: 18px; }
+  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-content h1 { text-align: left; }
+  .info-grid, .project-grid { grid-template-columns: 1fr; }
+  .section-header { flex-wrap: wrap; }
+  .section-links { width: 100%; }
+}
+
+@media (max-width: 720px) {
+  .pub-card { flex-direction: column; }
+  .pub-thumb { width: 100%; min-width: 0; }
+  .news-item, .talk-item { flex-direction: column; gap: 6px; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- ═══ NAV ═══ -->
-<nav>
-  <div class="nav-name">Yurong<span>.</span>Hao</div>
-  <ul class="nav-links">
-    <li><a href="#news">News</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#patents">Patents & Projects</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#talks">Talks</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- ═══ HERO ═══ -->
+<!-- ═══ HERO: Version 1 layout + Version 2 text scale ═══ -->
 <section class="hero">
   <div class="profile-card">
     <div class="avatar-wrap">
-      <img src="https://yuronghaoa.github.io/yuronghaoA/files/yuronghaoa.jpg" alt="Yurong Hao">
+      <img src="./files/yuronghaoa.jpg" alt="Yurong Hao">
     </div>
     <div class="profile-name">Yurong Hao</div>
     <div class="profile-title">
@@ -394,281 +609,246 @@ footer {
   </div>
 </section>
 
+<hr>
+
 <!-- ═══ NEWS ═══ -->
 <section class="section" id="news">
-  <div class="section-header reveal">
+  <div class="section-header">
     <span class="section-num">01</span>
     <span class="section-icon">📢</span>
     <h2 class="section-title">News</h2>
   </div>
   <div class="news-list">
-    <div class="news-item reveal">
-      <span class="news-badge">🎉 ICML</span>
-      <span class="news-text">Four papers accepted by <strong>ICML 2026</strong>!</span>
-    </div>
-    <div class="news-item reveal">
-      <span class="news-badge">WWW</span>
-      <span class="news-text">Our work is accepted by <strong>WWW 2026</strong>!</span>
-    </div>
-    <div class="news-item reveal">
-      <span class="news-badge">NeurIPS</span>
-      <span class="news-text">Our work is accepted by <strong>NeurIPS 2025</strong>!</span>
-    </div>
-    <div class="news-item reveal">
-      <span class="news-badge">TIFS</span>
-      <span class="news-text">Our work is accepted by <strong>IEEE TIFS</strong>!</span>
-    </div>
-    <div class="news-item reveal">
-      <span class="news-badge">CCS</span>
-      <span class="news-text">Our work is accepted by <strong>ACM CCS 2024</strong>!</span>
-    </div>
+    <div class="news-item"><span class="news-badge">ICML</span><span class="news-text">Four papers are accepted by <a href="https://">ICML 2026!</a>.</span></div>
+    <div class="news-item"><span class="news-badge">WWW</span><span class="news-text">Our work is accepted by <a href="https://">WWW 2026!</a>.</span></div>
+    <div class="news-item"><span class="news-badge">NeurIPS</span><span class="news-text">Our work is accepted by <a href="https://">NeurIPS 2025!</a>.</span></div>
+    <div class="news-item"><span class="news-badge">TIFS</span><span class="news-text">Our work is accepted by <a href="https://">IEEE TIFS!</a>.</span></div>
+    <div class="news-item"><span class="news-badge">CCS</span><span class="news-text">Our work is accepted by <a href="https://">ACM CCS 2024!</a>.</span></div>
   </div>
 </section>
 
+<hr>
+
 <!-- ═══ PUBLICATIONS ═══ -->
 <section class="section" id="publications">
-  <div class="section-header reveal">
+  <div class="section-header">
     <span class="section-num">02</span>
     <span class="section-icon">📄</span>
     <h2 class="section-title">Selected Publications</h2>
-    <span style="margin-left:auto; font-size:0.82rem;">
+    <span class="section-links">
       [<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ&gmla=AKKJWFdO6kaQ_xpR2oGgYaNcObt-X2bU3c6jzqjYS0-P5WmKFsEeubKeBcQPQoViI0UzgmFrkNUNoEOlTxULJcRHQ9Eatrj2dajjsHh0OXvKJkArKg" target="_blank">google scholar</a>]
       [<a href="https://dblp.org/pid/260/9439.html" target="_blank">dblp</a>]
     </span>
   </div>
+
   <div class="pub-list">
-
-    <!-- VenomRec -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/VenomRec.png" alt="VenomRec"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">ICML 2026</div>
-        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a></div>
-        <div class="pub-authors">Guowei Guan, <span class="me">Yurong Hao</span>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.</div>
-        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/61520" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a></p>
+        <p class="pub-authors">Guowei Guan, <span class="me">Yurong Hao</span>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.</p>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/61520" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- ModelPirate -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/ModelPirate.png" alt="ModelPirate"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">ICML 2026</div>
-        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a></div>
-        <div class="pub-authors">Tiantong Wu, <span class="me">Yurong Hao</span>, Wei Yang Bryan Lim.</div>
-        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/65910" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a></p>
+        <p class="pub-authors">Tiantong Wu, <span class="me">Yurong Hao</span>, Wei Yang Bryan Lim.</p>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/65910" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- SubspacePath -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/SubspacePath.png" alt="SubspacePath Pruner"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/SubspacePath.png" alt="SubspacePath Pruner thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">ICML 2026</div>
-        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a></div>
-        <div class="pub-authors">Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <span class="me">Yurong Hao</span>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</div>
-        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/62512" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a></p>
+        <p class="pub-authors">Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <span class="me">Yurong Hao</span>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</p>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/62512" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- XDomainBench -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/XDomainBench.png" alt="XDomainBench"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">ICML 2026</div>
-        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a></div>
-        <div class="pub-authors">Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <span class="me">Yurong Hao</span>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</div>
-        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/63740" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a></p>
+        <p class="pub-authors">Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <span class="me">Yurong Hao</span>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</p>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/63740" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- Spattack -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/Spattack.png" alt="Spattack"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">WWW 2026 · Oral</div>
-        <div class="pub-title-text"><a href="https://arxiv.org/pdf/2507.06258" target="_blank">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a></div>
-        <div class="pub-authors">Bo Yan, <span class="me">Yurong Hao</span>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.</div>
-        <div class="pub-links"><a href="https://arxiv.org/pdf/2507.06258" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://arxiv.org/pdf/2507.06258" target="_blank">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a></p>
+        <p class="pub-authors">Bo Yan, <span class="me">Yurong Hao</span>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.</p>
+        <div class="pub-links"><a href="https://arxiv.org/pdf/2507.06258" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- AegisGuard -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/AegisGuard.png" alt="AegisGuard"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">NeurIPS 2025 · Poster</div>
-        <div class="pub-title-text"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a></div>
-        <div class="pub-authors">Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <span class="me">Yurong Hao</span>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.</div>
-        <div class="pub-links"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a></p>
+        <p class="pub-authors">Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <span class="me">Yurong Hao</span>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.</p>
+        <div class="pub-links"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- Eyes on Federated (TIFS) -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/StairClimbing.png" alt="TIFS"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/StairClimbing.png" alt="TIFS thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue journal">IEEE TIFS</div>
-        <div class="pub-title-text"><a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a></div>
-        <div class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.</div>
-        <div class="pub-links"><a href="https://ieeexplore.ieee.org/document/10739366" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a></p>
+        <p class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.</p>
+        <div class="pub-links"><a href="https://ieeexplore.ieee.org/document/10739366" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- Not One Less (CCS) -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/FRecAttack2.png" alt="CCS"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/FRecAttack2.png" alt="FRecAttack2 thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue top">ACM CCS 2024 · Oral</div>
-        <div class="pub-title-text"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a></div>
-        <div class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.</div>
-        <div class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a></p>
+        <p class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.</p>
+        <div class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- SOC (IP&M) -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/SOC.png" alt="SOC"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/SOC.png" alt="SOC thumbnail" loading="lazy"></div>
       <div class="pub-info">
-        <div class="pub-venue journal">IP&M</div>
-        <div class="pub-title-text"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" target="_blank">Privacy Preserving in Blockchain-based Government Data Sharing: A Service-On-Chain (SOC) Approach</a></div>
-        <div class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</div>
-        <div class="pub-links"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" class="pub-link" target="_blank">📄 Paper</a></div>
+        <div class="pub-venue journal">IP&amp;M</div>
+        <p class="pub-title-text"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" target="_blank">Privacy Preserving in Blockchain-based Government Data Sharing: A Service-On-Chain (SOC) Approach</a></p>
+        <p class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</p>
+        <div class="pub-links"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
 
-    <!-- LDP (SOCA) -->
-    <div class="pub-card reveal">
-      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/LDP.png" alt="LDP"></div>
+    <div class="pub-card">
+      <div class="pub-thumb"><img src="assets/papers/LDP.png" alt="LDP thumbnail" loading="lazy"></div>
       <div class="pub-info">
         <div class="pub-venue journal">SOCA</div>
-        <div class="pub-title-text"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" target="_blank">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a></div>
-        <div class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</div>
-        <div class="pub-links"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" class="pub-link" target="_blank">📄 Paper</a></div>
+        <p class="pub-title-text"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" target="_blank">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a></p>
+        <p class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</p>
+        <div class="pub-links"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" class="pub-link" target="_blank">Paper</a></div>
       </div>
     </div>
-
   </div>
 </section>
+
+<hr>
 
 <!-- ═══ PATENTS, MONOGRAPHS & PROJECTS ═══ -->
 <section class="section" id="patents">
-  <div class="section-header reveal">
+  <div class="section-header">
     <span class="section-num">03</span>
     <span class="section-icon">💡</span>
-    <h2 class="section-title">Patents, Monographs & Projects</h2>
+    <h2 class="section-title">Patents, Monographs &amp; Projects</h2>
   </div>
+
   <div class="info-grid">
-    <div class="info-block reveal">
+    <div class="info-block">
       <div class="info-block-title">Patents</div>
-      <div class="info-item">Method for Privacy Leak Detection for Vertical Federated Learning Based on Feature Embedding Analysis. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
-      <div class="info-item">Defence Method for Federated Learning Poisoning Attacks. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
-      <div class="info-item">Local Differential Privacy Method for Government Data Sharing. Chunhui Piao, Yurong Hao, et al. <span class="badge">Granted</span></div>
-      <div class="info-item">Privacy-Preserving Method for POI Recommendation. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
+      <div class="info-item">Method for Privacy Leak Detection for Vertical Federated Learning Based on Feature Embedding Analysis. Wei Wang, Yurong Hao, et al. <span class="badge">China Patent Granted</span></div>
+      <div class="info-item">Defence Method for Federated Learning Poisoning Attacks. Wei Wang, Yurong Hao, et al. <span class="badge">China Patent Granted</span></div>
+      <div class="info-item">Local Differential Privacy Method for Government Data Sharing. Chunhui Piao, Yurong Hao, et al. <span class="badge">China Patent Granted</span></div>
+      <div class="info-item">Privacy-Preserving Method for POI Recommendation. Wei Wang, Yurong Hao, et al. <span class="badge">China Patent Granted</span></div>
     </div>
-    <div class="info-block reveal">
+
+    <div class="info-block">
       <div class="info-block-title">Monographs</div>
-      <div class="info-item"><strong>Privacy Preserving Computation</strong>, People's Posts and Telecommunications Press, 2023.<br><em style="font-size:0.78rem; color:var(--accent);">Contributed Section 8 (Differential Privacy)</em></div>
-      <div class="info-item"><strong>Artificial Intelligence Security Assessment Technology</strong>, Hans Publishing House, 2023.<br><em style="font-size:0.78rem; color:var(--accent);">Editorial Board Member</em></div>
+      <div class="info-item"><strong>Privacy Preserving Computation</strong>, People's Posts and Telecommunications Press, 2023.<br><span class="badge">Contributed Section 8 (Differential Privacy)</span></div>
+      <div class="info-item"><strong>Artificial Intelligence Security Assessment Technology</strong>, Hans Publishing House, 2023.<br><span class="badge">Editorial Board Member</span></div>
     </div>
-    <div class="info-block reveal" style="grid-column:1/-1;">
+
+    <div class="info-block" style="grid-column:1/-1;">
       <div class="info-block-title">Research Projects</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1.5rem;">
-        <div class="info-item">Privacy Preserving Recommender System, Ant Group <span class="role-badge">PI</span></div>
-        <div class="info-item">Privacy Preserved Methods for Federated Recommendation, Central Universities Fund <span class="role-badge">PI</span></div>
-        <div class="info-item">Privacy Preserved Methods for Government Data Sharing, M.S. Innovation Project <span class="role-badge">PI</span></div>
-        <div class="info-item">AI System Security Testing and Robust Enhancement, National Major Project</div>
-        <div class="info-item">Security Detection and Protection of AI Applications, National Major Project</div>
-        <div class="info-item">Trustworthy Mechanism of Urban Intelligent Systems, National Key R&D Program</div>
+      <div class="project-grid">
+        <div class="info-item">Privacy Preserving Recommender System, Ant Group. <span class="role-badge">PI</span></div>
+        <div class="info-item">Privacy Preserved Methods for Federated Recommendation, Central Universities Basic Scientific Research Business Fund Project. <span class="role-badge">PI</span></div>
+        <div class="info-item">Privacy Preserved Methods for Government Data Sharing, innovation project for M.S. students. <span class="role-badge">PI</span></div>
+        <div class="info-item">Artificial Intelligence System Security Testing and Robust Enhancement Software and Hardware Integration, National Major Project.</div>
+        <div class="info-item">Research on key technologies for security detection and protection of artificial intelligence applications, National Major Project.</div>
+        <div class="info-item">Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&amp;D Program Project.</div>
       </div>
     </div>
   </div>
 </section>
 
+<hr>
+
 <!-- ═══ AWARDS ═══ -->
 <section class="section" id="awards">
-  <div class="section-header reveal">
+  <div class="section-header">
     <span class="section-num">04</span>
     <span class="section-icon">🏅</span>
     <h2 class="section-title">Selected Awards</h2>
   </div>
   <div class="awards-list">
-    <div class="award-item reveal"><div class="award-icon">🇨🇳</div><div><div class="award-text"><strong>National Scholarship</strong></div><div class="award-year">2016</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">📚</div><div><div class="award-text"><strong>National Encouragement Scholarship</strong> ×2</div><div class="award-year">2015 & 2017</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">🌟</div><div><div class="award-text"><strong>Outstanding Graduate & Merit Student of Hebei Province</strong></div><div class="award-year">2021</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">🌏</div><div><div class="award-text"><strong>CSC Scholarship</strong> (China Scholarship Council)</div><div class="award-year">2024 — 2025</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">🎓</div><div><div class="award-text"><strong>Academic Scholarship</strong> — PhD, 3 consecutive years</div><div class="award-year">2022 — 2025</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">🏆</div><div><div class="award-text"><strong>"Huawei Cup"</strong> 17th China Graduate Mathematical Modelling — 3rd Prize</div><div class="award-year">2020</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">🛡️</div><div><div class="award-text"><strong>Hebei Province Graduate Network & Info Security Competition</strong> — 3rd Prize</div><div class="award-year">2019</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">⭐</div><div><div class="award-text"><strong>Outstanding League Cadre</strong></div><div class="award-year">2016</div></div></div>
-    <div class="award-item reveal"><div class="award-icon">📖</div><div><div class="award-text"><strong>Academic Scholarship</strong> — Graduate, 2 consecutive years</div><div class="award-year">2020 & 2021</div></div></div>
+    <div class="award-item"><div class="award-icon">🇨🇳</div><div><div class="award-text"><strong>National Scholarship</strong></div><div class="award-year">2016</div></div></div>
+    <div class="award-item"><div class="award-icon">📚</div><div><div class="award-text"><strong>National Encouragement Scholarship</strong> ×2</div><div class="award-year">2015 &amp; 2017</div></div></div>
+    <div class="award-item"><div class="award-icon">🌟</div><div><div class="award-text"><strong>Outstanding Graduate &amp; Merit Student of Hebei Province</strong></div><div class="award-year">2021</div></div></div>
+    <div class="award-item"><div class="award-icon">🌏</div><div><div class="award-text"><strong>CSC Scholarship</strong> (China Scholarship Council)</div><div class="award-year">2024 — 2025</div></div></div>
+    <div class="award-item"><div class="award-icon">🎓</div><div><div class="award-text"><strong>Academic Scholarship</strong> — PhD, 3 consecutive years</div><div class="award-year">2022 — 2025</div></div></div>
+    <div class="award-item"><div class="award-icon">🏆</div><div><div class="award-text"><strong>"Huawei Cup"</strong> 17th China Graduate Mathematical Modelling — 3rd Prize</div><div class="award-year">2020</div></div></div>
+    <div class="award-item"><div class="award-icon">🛡️</div><div><div class="award-text"><strong>Hebei Province Graduate Network &amp; Info Security Competition</strong> — 3rd Prize</div><div class="award-year">2019</div></div></div>
+    <div class="award-item"><div class="award-icon">⭐</div><div><div class="award-text"><strong>Outstanding League Cadre</strong></div><div class="award-year">2016</div></div></div>
+    <div class="award-item"><div class="award-icon">📖</div><div><div class="award-text"><strong>Academic Scholarship</strong> — Graduate, 2 consecutive years</div><div class="award-year">2020 &amp; 2021</div></div></div>
   </div>
 </section>
 
+<hr>
+
 <!-- ═══ TALKS ═══ -->
 <section class="section" id="talks">
-  <div class="section-header reveal">
+  <div class="section-header">
     <span class="section-num">05</span>
     <span class="section-icon">🎤</span>
     <h2 class="section-title">Invited Talks</h2>
   </div>
   <div class="talks-list">
-    <div class="talk-item reveal">
-      <span class="talk-date">Nov 2025</span>
+    <div class="talk-item">
+      <span class="talk-date"><a href="https://">Nov 2025</a></span>
       <div>
         <div class="talk-content"><strong>Security and Privacy in Personalised AI</strong>: From Federated to Multimodal LLM-based Recommender Systems</div>
-        <div class="talk-venue">Institute of Science Tokyo, Tokyo, Japan</div>
+        <div class="talk-venue">Institute of Science Tokyo, Tokyo, Japan.</div>
       </div>
     </div>
-    <div class="talk-item reveal">
-      <span class="talk-date">Oct 2024</span>
+    <div class="talk-item">
+      <span class="talk-date"><a href="https://">Oct 2024</a></span>
       <div>
         <div class="talk-content"><strong>Not One Less</strong>: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</div>
-        <div class="talk-venue">ACM CCS 2024 Oral · Salt Lake City, USA</div>
+        <div class="talk-venue">ACM CCS 2024 oral, Salt Lake City, The United States.</div>
       </div>
     </div>
-    <div class="talk-item reveal">
-      <span class="talk-date">Sep 2024</span>
+    <div class="talk-item">
+      <span class="talk-date"><a href="https://">Sep 2024</a></span>
       <div>
-        <div class="talk-content"><strong>Trustworthy AI</strong> — Poisoning Attacks & Defence</div>
-        <div class="talk-venue">Nanyang Technological University, Singapore</div>
+        <div class="talk-content"><strong>Trustworthy AI</strong> — poisoning Attacks &amp; Defence</div>
+        <div class="talk-venue">Nanyang Technological University, Singapore.</div>
       </div>
     </div>
   </div>
 </section>
+
+<hr>
 
 <!-- ═══ CONTACT ═══ -->
 <section class="contact-section" id="contact">
-  <div class="reveal">
-    <p class="hero-hello" style="margin-bottom:0.6rem;">// Let's Connect</p>
-    <h2 class="contact-heading">Open to<br><em>Collaboration</em></h2>
-    <p class="contact-desc">Feel free to reach out for research collaboration or academic exchange.</p>
-    <a href="mailto:yurong.hao@ntu.edu.sg" class="contact-email">yurong.hao@ntu.edu.sg</a>
-    <div class="social-row">
-      <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" class="social-btn" target="_blank">Google Scholar</a>
-      <a href="https://dblp.org/pid/260/9439.html" class="social-btn" target="_blank">dblp</a>
-    </div>
+  <h3>Contact <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Visit tracker"></a></h3>
+  <div class="contact-card">
+    <p>Yurong Hao</p>
+    <p>Email: yurong.hao AT ntu DOT edu DOT sg</p>
   </div>
 </section>
 
-<footer>© 2026 Yurong Hao · Research Fellow @ NTU</footer>
-
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 70);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior:'smooth' });
-  });
-});
-</script>
 </body>
 </html>
