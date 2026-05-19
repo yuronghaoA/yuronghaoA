@@ -39,29 +39,39 @@ body {
   max-width: 1140px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 290px 1fr;
   gap: 45px;
   padding: 45px 20px;
 }
 
-/* ================= 左侧固定个人信息栏 ================= */
+/* ================= 左侧固定个人信息栏 (Elaine 风格增强版) ================= */
 .sidebar {
   position: sticky;
   top: 30px;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .profile-img-container {
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.profile-img {
   width: 190px;
   height: 190px;
+  margin: 0 auto;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
+  background-color: #f1f5f9; /* 避免缩小时边缘空洞 */
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* 核心优化1：通过缩放让内部人像缩小一些显得更完整，同时确保不露出原图的方形边界 */
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(0.85);
+  transform-origin: center center;
 }
 
 .name {
@@ -69,8 +79,36 @@ body {
   font-weight: 700;
   color: var(--text-dark);
   line-height: 1.2;
-  margin-bottom: 12px;
   text-align: center;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--text-main);
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-item i {
+  color: var(--accent-color);
+  margin-top: 4px;
+  width: 14px;
+  text-align: center;
+}
+
+.info-item a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.info-item a:hover {
+  text-decoration: underline;
 }
 
 .social-links {
@@ -78,7 +116,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  padding-top: 5px;
 }
 
 .social-links a {
@@ -92,48 +130,47 @@ body {
 }
 
 .social-links img {
-  height: 25px;
+  height: 22px;
   width: auto;
 }
 
-.contact-card {
-  background-color: var(--bg-light);
-  border-radius: 12px;
-  padding: 18px;
-  border: 1px solid var(--border-color);
-}
-
-.contact-card h3 {
-  font-size: 13px;
+/* 左侧 Elaine 风格的侧边栏小标题组件 */
+.sidebar-heading {
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: var(--text-dark);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+  margin-top: 10px;
+}
+
+/* 侧边栏专属 Honors 紧凑排版 */
+.sidebar-awards {
+  list-style: none;
+}
+
+.sidebar-awards li {
+  font-size: 13px;
+  line-height: 1.4;
   margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.contact-item {
-  font-size: 13.5px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
   color: var(--text-main);
-  word-break: break-all;
+  position: relative;
+  padding-left: 14px;
 }
 
-.contact-item i {
+.sidebar-awards li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
   color: var(--accent-color);
-  margin-top: 3px;
-  width: 14px;
-  text-align: center;
+  font-weight: bold;
 }
 
 .visitor-map {
-  margin-top: 12px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 12px;
   text-align: center;
+  margin-top: 5px;
 }
 
 .visitor-map img {
@@ -173,6 +210,15 @@ h2 a {
 
 h2 a:hover {
   text-decoration: underline;
+}
+
+/* 说明小字样式 */
+.publication-note {
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+  margin-top: -8px;
+  margin-bottom: 16px;
 }
 
 p {
@@ -216,7 +262,7 @@ p a:hover {
   flex-shrink: 0;
 }
 
-/* ================= Selected Publications 极致紧凑优化 ================= */
+/* ================= Selected Publications ================= */
 .papers {
   display: flex;
   flex-direction: column;
@@ -225,7 +271,7 @@ p a:hover {
 
 .paper-card {
   display: grid;
-  grid-template-columns: 230px 1fr; /* 适当微调比例 */
+  grid-template-columns: 230px 1fr;
   gap: 24px;
   padding: 16px;
   border: 1px solid var(--border-color);
@@ -239,7 +285,6 @@ p a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
 }
 
-/* 图片外框容器 */
 .paper-thumb {
   width: 100%;
   aspect-ratio: 16 / 10; 
@@ -249,17 +294,16 @@ p a:hover {
   background: #ffffff;
 }
 
-/* 核心修改 2：让图充满整个框架，拒绝图框内上下留白 */
 .paper-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 完美填满整个图框 */
+  object-fit: cover;
 }
 
 .paper-meta {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 居中对齐，让文字分布更均匀均匀 */
+  justify-content: center;
 }
 
 .paper-title {
@@ -291,12 +335,11 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* 核心修改 1：合并会议标签与链接，消除下方一整行多余留白 */
 .paper-venue-line {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px; /* 标签与操作按钮紧凑排在一行 */
+  gap: 12px;
   margin-bottom: 8px;
 }
 
@@ -328,6 +371,25 @@ p a:hover {
   opacity: 0.8;
 }
 
+/* Elaine Zhao 风格原生嵌入的紧凑级 TL;DR 框 */
+.tldr-box {
+  margin-top: 6px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: var(--bg-light);
+  border-left: 3px solid #cbd5e1;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.tldr-box strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
 .paper-tags {
   display: flex;
   flex-wrap: wrap;
@@ -338,9 +400,9 @@ p a:hover {
 .research-tag {
   background-color: var(--tag-bg);
   color: var(--accent-color);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 500;
-  padding: 2px 10px;
+  padding: 1px 8px;
   border-radius: 20px;
   display: inline-flex;
   align-items: center;
@@ -397,6 +459,9 @@ p a:hover {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 25px;
   }
+  .info-items {
+    align-items: center;
+  }
   .paper-card { grid-template-columns: 1fr; gap: 14px; }
 }
 </style>
@@ -413,6 +478,17 @@ p a:hover {
       </div>
       <h1 class="name">Yurong Hao</h1>
       
+      <div class="info-items">
+        <div class="info-item">
+          <i class="fa-solid fa-building"></i>
+          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
+        </div>
+        <div class="info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:Yurong.hao@ntu.edu.sg">Yurong.hao@ntu.edu.sg</a>
+        </div>
+      </div>
+      
       <div class="social-links">
         <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" target="_blank" title="Google Scholar">
           <img src="./files/scholar_logo.png" alt="Google Scholar">
@@ -420,27 +496,26 @@ p a:hover {
         <a href="https://dblp.org/pid/260/9439.html" target="_blank" title="DBLP">
           <img src="./files/dblp_logo.png" alt="DBLP">
         </a>
-        <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 24px; color: #334155;">
+        <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 22px; color: #334155;">
           <i class="fa-brands fa-github"></i>
         </a>
       </div>
 
-      <div class="contact-card">
-        <h3>Contact</h3>
-        <div class="contact-item">
-          <i class="fa-solid fa-building"></i>
-          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
-        </div>
-        <div class="contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <span>yurong.hao AT ntu DOT edu DOT sg</span>
-        </div>
-        
-        <div class="visitor-map">
-          <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
-            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
-          </a>
-        </div>
+      <div class="sidebar-heading">Honors & Awards</div>
+      <ul class="sidebar-awards">
+        <li>CSC Scholarship (2024-2025)</li>
+        <li>PhD Academic Scholarship (2022-2025)</li>
+        <li>Outstanding Graduate of Hebei Province (2021)</li>
+        <li>"Huawei Cup" Mathematical Modeling Competition 3rd Prize (2020)</li>
+        <li>Graduate Academic Scholarship (2020 & 2021)</li>
+        <li>National Scholarship (2016)</li>
+      </ul>
+
+      <div class="sidebar-heading">Visitor Map</div>
+      <div class="visitor-map">
+        <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
+          <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
+        </a>
       </div>
     </aside>
 
@@ -469,6 +544,7 @@ p a:hover {
           <a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ" target="_blank">[Google Scholar]</a> 
           <a href="https://dblp.org/pid/260/9439.html" target="_blank">[DBLP]</a>
         </h2>
+        <div class="publication-note">* Equal contribution, † Corresponding author (for publications)</div>
 
         <div class="papers">
           
@@ -489,6 +565,9 @@ p a:hover {
                   <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">Paper</a>
                   <a href="#" target="_blank">Code</a>
                 </div>
+              </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> This paper uncovers critical security gaps in cross-modal alignment inside multi-modal recommendation systems. We introduce interactive perturbation vectors that can effectively force targeted product recommendations while completely evading multi-modal consistency firewalls.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># Trustworthy AI</span>
@@ -515,6 +594,9 @@ p a:hover {
                   <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">Paper</a>
                 </div>
               </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> We provide a rigorous empirical dissection of partial weight-merging systems against strategic model duplication strategies. The results highlight hidden vulnerabilities in downstream parameter scaling, offering key directions for secure open-source model composition.
+              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Model Merging</span>
                 <span class="research-tag"># Model Security</span>
@@ -538,6 +620,9 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
                 </div>
+              </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> This work presents a native runtime acceleration pipeline that dynamically thin-slices heavy networks during inference. By leveraging dedicated representation probes, the architecture can efficiently prune non-essential sub-spaces on the fly without loss of precision.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># Model Efficiency</span>
@@ -564,6 +649,9 @@ p a:hover {
                   <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
                 </div>
               </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> We establish a comprehensive debugging matrix designed to track Multi-Domain scientific knowledge deduction breaks inside frontier LLMs. The platform highlights systemic chain breakage patterns when combining complex cross-disciplinary data.
+              </div>
               <div class="paper-tags">
                 <span class="research-tag"># LLM Evaluation</span>
                 <span class="research-tag"># Scientific Reasoning</span>
@@ -588,6 +676,9 @@ p a:hover {
                   <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Paper</a>
                 </div>
               </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> This paper targets decentralized federated settings by proposing a stealthy localized clustering group poisoning pipeline. The framework can systematically degrade the target user base's recommendation utility matrix while staying invisible to global detection.
+              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Federated Learning</span>
                 <span class="research-tag"># Poisoning Attacks</span>
@@ -611,6 +702,9 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">Paper</a>
                 </div>
+              </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> We present an intelligent partitioned inference system that secures fragile local adapter weights within hardware-isolated TEEs. A reinforcement learning engine optimizes parameter execution routing to clear edge-side computational bottlenecks.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># On-Device Inference</span>
@@ -637,6 +731,9 @@ p a:hover {
                   <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Paper</a>
                 </div>
               </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> This paper explores the mathematical and structural game-theoretic dynamics when multiple adversarial poisoning entities compete in a shared ecosystem. We design corresponding algorithmic boundary walls to safely filter server aggregation lines.
+              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Federated Recommendation</span>
                 <span class="research-tag"># Targeted Poisoning</span>
@@ -660,6 +757,9 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Paper</a>
                 </div>
+              </div>
+              <div class="tldr-box">
+                <strong>[TL;DR]</strong> We systematically analyze the tightly coupled relationship between user metadata matrices and item vectors in untargeted settings. The study maps out how small coordinated data poisoning inputs can cascade into a massive user recommendation system collapse.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># Untargeted Attacks</span>
