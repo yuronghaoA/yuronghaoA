@@ -14,7 +14,7 @@
   --primary-color: #0f172a; 
   --accent-color: #2563eb;  
   --tag-bg: #eff6ff;        
-  --tldr-bg: #f8fafc; /* TL;DR 专属淡雅灰背景 */
+  --tldr-bg: #f8fafc; /* TL;DR 专属高质感灰背景 */
   --text-main: #334155;     
   --text-dark: #1e293b;     
   --bg-light: #ffffff;      
@@ -24,44 +24,47 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text-main);
   line-height: 1.5;
-  background-color: #fefefe;
+  letter-spacing: -0.01em; 
+  background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 340px 1fr; /* 侧边栏稍宽以容纳 Awards */
+  grid-template-columns: 340px 1fr; /* 侧边栏加宽以优雅承载荣誉奖项 */
   gap: 40px;
   padding: 40px 20px;
 }
 
-/* ================= 侧边栏：模块化卡片布局 ================= */
+/* ================= 左侧固定个人信息卡片栏 ================= */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: sticky;
+  top: 30px;
+  height: fit-content;
 }
 
-/* 头像：保持圆框大小，缩小编内图像 */
 .sidebar-card-profile {
   text-align: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .profile-img {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  object-fit: cover; /* 保证底图填充 */
+  object-fit: cover;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  padding: 8px; /* 关键：增加 padding 使人像视觉上缩小并展示完整 */
-  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 8px; /* 增加内边距使人物头像在圆框内缩小并展示完整 */
+  background: #ffffff;
 }
 
 .name {
@@ -69,28 +72,44 @@ body {
   font-weight: 700;
   color: var(--text-dark);
   margin-top: 15px;
+  line-height: 1.2;
 }
 
 .sidebar-social {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  gap: 16px;
   margin: 15px 0;
 }
-.sidebar-social img { height: 24px; opacity: 0.85; transition: 0.3s; }
-.sidebar-social img:hover { opacity: 1; transform: translateY(-2px); }
 
-/* 通用侧边栏卡片样式 */
+.sidebar-social a {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-social a:hover {
+  transform: translateY(-2px);
+}
+
+.sidebar-social img {
+  height: 24px;
+  width: auto;
+}
+
+/* 模块化卡片通用样式 */
 .sidebar-card {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 18px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.01);
 }
 
 .sidebar-card h3 {
-  font-size: 15px;
+  font-size: 14.5px;
+  font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 12px;
   display: flex;
@@ -98,80 +117,245 @@ body {
   gap: 8px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 8px;
-}
-
-/* 侧边栏荣誉列表 */
-.sidebar-award-list {
-  list-style: none;
-  font-size: 13px;
-}
-.sidebar-award-list li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.award-date {
-  color: #94a3b8;
-  white-space: nowrap;
-  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .contact-item {
   font-size: 13.5px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
+  align-items: flex-start;
   gap: 10px;
   word-break: break-all;
 }
-.contact-item i { color: var(--accent-color); width: 14px; }
 
-/* ================= 右侧主内容 ================= */
-.main-content { display: flex; flex-direction: column; gap: 35px; }
+.contact-item:last-child { margin-bottom: 0; }
+
+.contact-item i {
+  color: var(--accent-color);
+  margin-top: 3px;
+  width: 14px;
+  text-align: center;
+}
+
+/* 侧边栏荣誉精细化排版 */
+.sidebar-award-list {
+  list-style: none;
+  font-size: 13px;
+}
+
+.sidebar-award-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.sidebar-award-list li:last-child { margin-bottom: 0; }
+
+.award-title {
+  color: var(--text-main);
+  padding-right: 8px;
+}
+
+.award-date {
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.visitor-map {
+  text-align: center;
+}
+
+.visitor-map img {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+/* ================= 右侧主内容区 ================= */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px; 
+}
+
+section {
+  width: 100%;
+}
 
 h2 {
   font-size: 22px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+}
+
+h2 a {
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-left: 8px;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+h2 a:hover {
+  text-decoration: underline;
 }
 
 .section-note {
   font-size: 12px;
   color: #64748b;
   margin-top: -8px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+  font-style: italic;
 }
 
-/* 论文卡片：TL;DR 风格 */
+p {
+  font-size: 15px; 
+  color: var(--text-main);
+  text-align: justify;
+}
+
+p a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+/* 动态列表（News） */
+.news-list {
+  list-style: none;
+}
+
+.news-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+}
+
+.news-badge {
+  color: var(--accent-color);
+  font-weight: 700;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+/* ================= Research Highlights (全量整合 & TL;DR) ================= */
+.papers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
 .paper-card {
   display: grid;
   grid-template-columns: 220px 1fr;
-  gap: 20px;
-  padding: 15px 0;
+  gap: 24px;
+  padding: 20px 0;
   border-bottom: 1px solid #f1f5f9;
 }
-.paper-card:last-child { border-bottom: none; }
+
+.paper-card:last-child {
+  border-bottom: none;
+}
 
 .paper-thumb {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 6px;
+  aspect-ratio: 16 / 10; 
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border-color);
+  background: #ffffff;
 }
-.paper-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-.paper-title { font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 5px; }
-.paper-authors { font-size: 14px; margin-bottom: 5px; }
-.paper-authors strong { text-decoration: underline; color: var(--text-dark); }
+.paper-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 完全撑满框架，无多余白边 */
+}
 
-.paper-venue-line { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.venue-badge { background: var(--accent-color); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
-.paper-links a { font-size: 13px; color: var(--accent-color); text-decoration: none; font-weight: 500; }
-.paper-links a:hover { text-decoration: underline; }
+.paper-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-/* TL;DR 区块样式 */
+.paper-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.paper-title a {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.paper-title a:hover {
+  color: var(--accent-color);
+}
+
+.paper-authors {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.paper-authors strong {
+  color: var(--text-dark);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.paper-venue-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.venue-badge {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.paper-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.paper-links a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.paper-links a:hover {
+  text-decoration: underline;
+}
+
+/* Elaine 风格 [TL;DR] 容器结构 */
 .paper-tldr {
   background-color: var(--tldr-bg);
   padding: 8px 12px;
@@ -179,22 +363,88 @@ h2 {
   font-size: 13.5px;
   border-left: 3px solid #cbd5e1;
   color: #475569;
-  margin-top: 5px;
+  margin-top: 6px;
+  line-height: 1.4;
+  text-align: justify;
 }
-.tldr-label { font-weight: 700; color: var(--text-dark); margin-right: 5px; }
 
-/* 其他通用样式 */
-.custom-list li { margin-bottom: 8px; font-size: 14.5px; }
-.badge { font-size: 11px; padding: 1px 5px; border-radius: 4px; margin-left: 5px; }
-.badge-orange { background: #ffedd5; color: #ea580c; }
-.badge-green { background: #d1fae5; color: #059669; }
+.tldr-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-right: 4px;
+}
 
+.paper-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.research-tag {
+  background-color: var(--tag-bg);
+  color: var(--accent-color);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 1px 8px;
+  border-radius: 20px;
+}
+
+/* ================= 通用列表区块样式 ================= */
+.custom-list {
+  list-style: none;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 14.5px;
+  text-align: justify;
+}
+
+.custom-list li::before {
+  content: "•";
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.badge-orange { background-color: #ffedd5; color: #ea580c; }  
+.badge-green  { background-color: #d1fae5; color: #059669; }  
+.badge-blue   { background-color: #e0f2fe; color: #0284c7; }  
+
+/* 移动端响应式适配 */
 @media (max-width: 900px) {
-  .container { grid-template-columns: 1fr; }
-  .sidebar { position: relative; top: 0; }
-  .paper-card { grid-template-columns: 1fr; }
+  .container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 25px 16px;
+  }
+  .sidebar {
+    position: relative;
+    top: 0;
+    text-align: center;
+  }
+  .sidebar-card-profile { display: flex; flex-direction: column; align-items: center; }
+  .sidebar-award-list li { justify-content: center; gap: 20px; }
+  .paper-card { grid-template-columns: 1fr; gap: 14px; }
 }
 </style>
+
 </head>
 
 <body>
@@ -205,10 +455,17 @@ h2 {
       <div class="sidebar-card-profile">
         <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
         <h1 class="name">Yurong Hao</h1>
+        
         <div class="sidebar-social">
-          <a href="https://scholar.google.com/citations?user=t6Q_2wcAAAAJ" target="_blank"><img src="./files/scholar_logo.png"></a>
-          <a href="https://dblp.org/pid/260/9439.html" target="_blank"><img src="./files/dblp_logo.png"></a>
-          <a href="https://github.com/yuronghaoa" target="_blank" style="font-size: 22px; color: #334155;"><i class="fa-brands fa-github"></i></a>
+          <a href="https://scholar.google.com/citations?user=t6Q_2wcAAAAJ" target="_blank" title="Google Scholar">
+            <img src="./files/scholar_logo.png" alt="Google Scholar">
+          </a>
+          <a href="https://dblp.org/pid/260/9439.html" target="_blank" title="DBLP">
+            <img src="./files/dblp_logo.png" alt="DBLP">
+          </a>
+          <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 24px; color: #334155;">
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
       </div>
 
@@ -219,27 +476,32 @@ h2 {
           <span>Yurong.hao@ntu.edu.sg</span>
         </div>
         <div class="contact-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <span>Midori Lab, CCDS, NTU</span>
+          <i class="fa-solid fa-building"></i>
+          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
         </div>
       </div>
 
       <div class="sidebar-card">
         <h3><i class="fa-solid fa-award"></i> Honors & Awards</h3>
         <ul class="sidebar-award-list">
-          <li><span>CSC Scholarship</span> <span class="award-date">2024</span></li>
-          <li><span>PhD Academic Scholarship</span> <span class="award-date">2022-25</span></li>
-          <li><span>Outstanding Graduate (Hebei)</span> <span class="award-date">2021</span></li>
-          <li><span>Huawei Cup Mathematical Contest</span> <span class="award-date">2020</span></li>
-          <li><span>National Scholarship</span> <span class="award-date">2016</span></li>
+          <li><span class="award-title">CSC Scholarship</span> <span class="award-date">2024-2025</span></li>
+          <li><span class="award-title">PhD Academic Scholarship</span> <span class="award-date">2022-2025</span></li>
+          <li><span class="award-title">Outstanding Graduate (Hebei)</span> <span class="award-date">2021</span></li>
+          <li><span class="award-title">Merit Student (Hebei)</span> <span class="award-date">2021</span></li>
+          <li><span class="award-title">"Huawei Cup" Modeling Competition (3rd)</span> <span class="award-date">2020</span></li>
+          <li><span class="award-title">Graduate Academic Scholarship</span> <span class="award-date">2020, 2021</span></li>
+          <li><span class="award-title">Network & Info Security Comp. (3rd)</span> <span class="award-date">2019</span></li>
+          <li><span class="award-title">National Scholarship</span> <span class="award-date">2016</span></li>
+          <li><span class="award-title">National Encouragement Scholarship</span> <span class="award-date">2015, 2017</span></li>
+          <li><span class="award-title">Outstanding League Cadre</span> <span class="award-date">2016</span></li>
         </ul>
       </div>
 
       <div class="sidebar-card">
         <h3><i class="fa-solid fa-earth-americas"></i> Visitor Map</h3>
-        <div class="visitor-map" style="text-align: center;">
-          <a href="https://mapmyvisitors.com/web/1bw1t" target="_blank">
-            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Visitors">
+        <div class="visitor-map">
+          <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
+            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
           </a>
         </div>
       </div>
@@ -247,81 +509,314 @@ h2 {
 
     <main class="main-content">
       
-      <section id="about">
+      <section id="biography">
         <h2>Biography</h2>
-        <p style="font-size: 15px; text-align: justify;">I am currently a Research Fellow at Nanyang Technological University (NTU), working with Prof. <a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan" target="_blank">Wei Yang Bryan Lim</a> and Prof. <a href="https://ece.ubc.ca/cyril-leung/" target="_blank">Cyril Leung</a> in <a href="https://sites.google.com/view/wyb/home" target="_blank">Midori Lab</a>. I received my Ph.D. degree in 2025 from Beijing Jiaotong University, supervised by Prof. Jiqiang Liu and Prof. Wei Wang. My research mainly focuses on <strong>Trustworthy AI</strong>, specifically poisoning attacks and defense in distributed deep learning, multimodal LLMs, and multi-agent systems.</p>
+        <p>I am currently a Research Fellow at Nanyang Technological University (NTU), working with Prof. <a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan" target="_blank">Wei Yang Bryan Lim</a> and Prof. <a href="https://ece.ubc.ca/cyril-leung/" target="_blank">Cyril Leung</a> in <a href="https://sites.google.com/view/wyb/home" target="_blank">Midori Lab</a>. Before this, I received my Ph.D. degree in 2025 from <a href="https://cst.bjtu.edu.cn/" target="_blank">the School of Cyberspace Science and Technology</a> at <a href="https://en.bjtu.edu.cn/" target="_blank">Beijing Jiaotong University</a>, supervised by Prof. <a href="https://faculty.bjtu.edu.cn/6279/" target="_blank">Jiqiang Liu</a> and Prof. <a href="https://weiwangup.github.io/" target="_blank">Wei Wang</a>. From 2024 to 2025, I was a visiting student at Nanyang Technological University.</p>
+        <br>
+        <p>My research mainly focuses on Trustworthy AI, with a particular focus on poisoning attacks and defence mechanisms in distributed deep learning systems. Recently, my research has shifted toward trustworthiness in multimodal LLM and multi-agent systems, where I explore potential vulnerabilities and develop robust defence mechanisms to enhance their integrity and user trust.</p>
       </section>
 
       <section id="news">
         <h2>News</h2>
-        <ul class="custom-list" style="list-style: none;">
-          <li style="display: flex; gap: 10px; font-size: 14.5px;"><span style="color: var(--accent-color); font-weight: 600; min-width: 75px;">May 2026</span><span>🎉 Four papers are accepted by <strong>ICML 2026!</strong></span></li>
-          <li style="display: flex; gap: 10px; font-size: 14.5px;"><span style="color: var(--accent-color); font-weight: 600; min-width: 75px;">Jul 2024</span><span>🎉 Our work is accepted by <strong>ACM CCS 2024!</strong></span></li>
+        <ul class="news-list">
+          <li><span class="news-badge">May 2026</span><span>🎉 Four papers are accepted by <strong>ICML 2026!</strong></span></li>
+          <li><span class="news-badge">Mar 2026</span><span>🎉 Our work is accepted by <strong>WWW 2026!</strong></span></li>
+          <li><span class="news-badge">Dec 2025</span><span>🎉 Our work is accepted by <strong>NeurIPS 2025!</strong></span></li>
+          <li><span class="news-badge">Oct 2024</span><span>🎉 Our work is accepted by <strong>IEEE TIFS!</strong></span></li>
+          <li><span class="news-badge">Jul 2024</span><span>🎉 Our work is accepted by <strong>ACM CCS 2024!</strong></span></li>
         </ul>
       </section>
 
       <section id="publications">
         <h2>Research Highlights</h2>
         <p class="section-note">* Equal contribution, † Corresponding author (for publications)</p>
-        
+
         <div class="papers">
           
           <div class="paper-card">
-            <div class="paper-thumb"><img src="assets/papers/VenomRec.png"></div>
+            <div class="paper-thumb">
+              <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
+            </div>
             <div class="paper-meta">
-              <p class="paper-title"><a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a></p>
-              <p class="paper-authors">Guowei Guan, <strong>Yurong Hao</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.</p>
+              <p class="paper-title">
+                <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a>
+              </p>
+              <p class="paper-authors">
+                Guowei Guan, <strong>Yurong Hao</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.
+              </p>
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
-                <span class="paper-links"><a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">[Paper]</a></span>
+                <div class="paper-links">
+                  <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">[Paper]</a>
+                  <a href="#" target="_blank">[Code]</a>
+                </div>
               </div>
               <div class="paper-tldr">
-                <span class="tldr-label">[TL;DR]</span> Investigates interactive poisoning in multimodal LLMs to manipulate targeted item promotions across vision and text modalities.
+                <span class="tldr-label">[TL;DR]</span> Exposes cross-modal alignment gaps to execute stealthy interactive poisoning, successfully driving targeted item exposure in multi-modal recommendation contexts.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Trustworthy AI</span>
+                <span class="research-tag"># Multimodal LLM</span>
+                <span class="research-tag"># Recommender Systems</span>
               </div>
             </div>
           </div>
 
           <div class="paper-card">
-            <div class="paper-thumb"><img src="assets/papers/ModelPirate.png"></div>
+            <div class="paper-thumb">
+              <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
+            </div>
             <div class="paper-meta">
-              <p class="paper-title"><a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a></p>
-              <p class="paper-authors">Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.</p>
+              <p class="paper-title">
+                <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a>
+              </p>
+              <p class="paper-authors">
+                Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.
+              </p>
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
-                <span class="paper-links"><a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">[Paper]</a></span>
+                <div class="paper-links">
+                  <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">[Paper]</a>
+                </div>
               </div>
               <div class="paper-tldr">
-                <span class="tldr-label">[TL;DR]</span> Analyzes the security implications of partial model merging and its vulnerability to emerging model clone/piracy attacks.
+                <span class="tldr-label">[TL;DR]</span> Provides a systematic evaluation of partial model merging resilience, detailing critical vulnerabilities when defending against advanced parameters-cloning threats.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Model Merging</span>
+                <span class="research-tag"># Model Security</span>
+              </div>
+            </div>
+          </div>
+            
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
+              </p>
+              <p class="paper-authors">
+                Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">ICML 2026</span>
+                <div class="paper-links">
+                  <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Develops an adaptive inference-time compression framework leveraging probe coupling to optimize sub-graph neural paths dynamically without retraining.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Model Efficiency</span>
+                <span class="research-tag"># Inference-Time Pruning</span>
+                <span class="research-tag"># Routing</span>
+              </div>
+            </div>
+          </div>
+            
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
+              </p>
+              <p class="paper-authors">
+                Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">ICML 2026</span>
+                <div class="paper-links">
+                  <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Establishes a rigorous diagnostic benchmark to uncover and address logical reasoning failures across complex scientific synthesis domains in LLMs.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># LLM Evaluation</span>
+                <span class="research-tag"># Scientific Reasoning</span>
               </div>
             </div>
           </div>
 
           <div class="paper-card">
-            <div class="paper-thumb"><img src="assets/papers/SubspacePath.png"></div>
+            <div class="paper-thumb">
+              <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
+            </div>
             <div class="paper-meta">
-              <p class="paper-title"><a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a></p>
-              <p class="paper-authors">Zhiren Gong, Yikun Hou, ..., <strong>Yurong Hao</strong>, ..., Wei Yang Bryan Lim.</p>
+              <p class="paper-title">
+                <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a>
+              </p>
+              <p class="paper-authors">
+                Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
+              </p>
               <div class="paper-venue-line">
-                <span class="venue-badge">ICML 2026</span>
-                <span class="paper-links"><a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">[Paper]</a></span>
+                <span class="venue-badge">WWW 2026</span> <span class="badge badge-orange">Oral</span>
+                <div class="paper-links">
+                  <a href="https://arxiv.org/pdf/2507.06258" target="_blank">[Paper]</a>
+                </div>
               </div>
               <div class="paper-tldr">
-                <span class="tldr-label">[TL;DR]</span> Proposes a novel inference-time pruning method that couples feature representations with model parameters via probe analysis.
+                <span class="tldr-label">[TL;DR]</span> Conceptualizes tailored subgroup cluster attacks to disrupt federated recommendation fairness via decentralized alignment perturbations.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Federated Learning</span>
+                <span class="research-tag"># Poisoning Attacks</span>
               </div>
             </div>
           </div>
 
           <div class="paper-card">
-            <div class="paper-thumb"><img src="assets/papers/FRecAttack2.png"></div>
+            <div class="paper-thumb">
+              <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
+            </div>
             <div class="paper-meta">
-              <p class="paper-title"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks</a></p>
-              <p class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang†.</p>
+              <p class="paper-title">
+                <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a>
+              </p>
+              <p class="paper-authors">
+                Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">NeurIPS 2025</span>
+                <div class="paper-links">
+                  <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Combines reinforcement learning with fine-grained secure partitioning inside TEEs to enforce leak-proof on-device adapter execution.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># On-Device Inference</span>
+                <span class="research-tag"># TEE Security</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/StairClimbing.png" alt="TIFS paper thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a>
+              </p>
+              <p class="paper-authors">
+                <strong>Yurong Hao</strong>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">IEEE TIFS</span>
+                <div class="paper-links">
+                  <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Formulates a game-theoretic competitive attack model for federated items optimization and introduces robust gradient-projection mitigation.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Federated Recommendation</span>
+                <span class="research-tag"># Targeted Poisoning</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/FRecAttack2.png" alt="CCS paper thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a>
+              </p>
+              <p class="paper-authors">
+                <strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang†.
+              </p>
               <div class="paper-venue-line">
                 <span class="venue-badge">ACM CCS 2024</span> <span class="badge badge-orange">Oral</span>
-                <span class="paper-links"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">[Paper]</a></span>
+                <div class="paper-links">
+                  <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">[Paper]</a>
+                </div>
               </div>
               <div class="paper-tldr">
-                <span class="tldr-label">[TL;DR]</span> First study to exploit the latent interplay between user profiles and items to launch untargeted poisoning against federated recommenders.
+                <span class="tldr-label">[TL;DR]</span> Uncovers global system vulnerability via a joint item-profile interaction matrix formulation, resulting in massive system-wide degradation.
+              </div>
+              <div class="paper-tags">
+                <span class="research-tag"># Untargeted Attacks</span>
+                <span class="research-tag"># User Profiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/ipm2023.png" alt="IP&M paper thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="#" target="_blank">Security and privacy in federated recommendation systems: A comprehensive survey</a>
+              </p>
+              <p class="paper-authors">
+                <strong>Yurong Hao</strong>, Wei Wang*, Jiqiang Liu, et al.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">Information Processing & Management</span>
+                <div class="paper-links">
+                  <a href="#" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Delivers a highly cited taxi-onomy on attacks and defenses in edge recommendation, outlining crucial future research vectors.
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/inf2022.png" alt="Information Sciences thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="#" target="_blank">Profile-aware shilling attacks simulation framework on distributed recommender topologies</a>
+              </p>
+              <p class="paper-authors">
+                <strong>Yurong Hao</strong>, Jiqiang Liu, Wei Wang*, et al.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">Information Sciences</span>
+                <div class="paper-links">
+                  <a href="#" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Evaluates malicious node distribution impacts within completely P2P decentralised matrix factorisation networks.
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-card">
+            <div class="paper-thumb">
+              <img src="assets/papers/soca2021.png" alt="SOCA thumbnail" loading="lazy">
+            </div>
+            <div class="paper-meta">
+              <p class="paper-title">
+                <a href="#" target="_blank">A local differential privacy approach for contextual location optimization in crowd-sourced frameworks</a>
+              </p>
+              <p class="paper-authors">
+                Chunhui Piao, <strong>Yurong Hao</strong>, et al.
+              </p>
+              <div class="paper-venue-line">
+                <span class="venue-badge">Service Oriented Computing and Applications</span>
+                <div class="paper-links">
+                  <a href="#" target="_blank">[Paper]</a>
+                </div>
+              </div>
+              <div class="paper-tldr">
+                <span class="tldr-label">[TL;DR]</span> Constructs a customized obfuscation mechanism enabling extreme location utilities under strict mathematical privacy guarantees.
               </div>
             </div>
           </div>
@@ -330,10 +825,41 @@ h2 {
       </section>
 
       <section id="patents">
-        <h2>Patents & Projects</h2>
+        <h2>Patents</h2>
         <ul class="custom-list">
-          <li>Method for Privacy Leak detection in VFL. <span class="badge badge-green">Granted</span></li>
-          <li>Privacy Preserving Recommender System, Ant Group. <span class="badge badge-orange">PI</span></li>
+          <li>Method for Privacy Leak detection method For Vertical Federated Learning Based on Feature Embedding Analysis, Wei Wang, Yurong Hao, et al., CN116341004B. <span class="badge badge-green">China Patent Granted</span></li>
+          <li>Defence Method for Federated Learning Poisoning Attacks, Wei Wang, Yurong Hao, et al., CN116527393A. <span class="badge badge-green">China Patent Granted</span></li>
+          <li>Local Differential Privacy Method for Government Data Sharing, Chunhui Piao, Yurong Hao, et al., CN112329056B. <span class="badge badge-green">China Patent Granted</span></li>
+          <li>Privacy-Preserving Method for POI Recommendation, Wei Wang, Yurong Hao, et al., CN117272370B. <span class="badge badge-green">China Patent Granted</span></li>
+        </ul>
+      </section>
+
+      <section id="monographs">
+        <h2>Monographs</h2>
+        <ul class="custom-list">
+          <li>Wei Wang et al., Privacy Preserving Computation[M], People's Posts and Telecommunications Press, 2023. <span class="badge badge-blue">Yurong Hao contributed to Section 8 (Differential Privacy)</span></li>
+          <li>Wei Wang et al., Artificial Intelligence Security Assessment Technology[M], Hans Publishing House, 2023. <span class="badge badge-blue">Yurong Hao served as an Editorial Board Member</span></li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Research Projects</h2>
+        <ul class="custom-list">
+          <li>Privacy Preserving Recommender System, Ant Group. <span class="badge badge-orange">PI</span></li> 
+          <li>Privacy Preserved Methods for Federated Recommendation, Central Universities Basic Scientific Research Fund Project. <span class="badge badge-orange">PI</span></li>
+          <li>Privacy Preserved Methods for Government Data Sharing, innovation project for M.S. students. <span class="badge badge-orange">PI</span></li>
+          <li>Artificial Intelligence System Security Testing and Robust Enhancement Integration, National Major Project. <span class="badge badge-blue">Core Participant</span></li>
+          <li>Research on key technologies for security detection and protection of AI applications, National Major Project. <span class="badge badge-blue">Core Participant</span></li>
+          <li>Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&D Program. <span class="badge badge-blue">Core Participant</span></li>
+        </ul>
+      </section>
+
+      <section id="talks">
+        <h2>Invited Talks</h2>
+        <ul class="news-list">
+          <li><span class="news-badge">Nov 2025</span><span>Security and Privacy in Personalised AI: From Federated to Multimodal LLM-based Recommender Systems, <strong>Institute of Science Tokyo</strong>, Tokyo, Japan.</span></li>
+          <li><span class="news-badge">Oct 2024</span><span>Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation, <strong>ACM CCS 2024 Oral</strong>, Salt Lake City, USA.</span></li>
+          <li><span class="news-badge">Sep 2024</span><span>Trustworthy AI-poisoning Attacks & Defence, <strong>Nanyang Technological University</strong>, Singapore.</span></li>
         </ul>
       </section>
 
