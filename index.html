@@ -14,169 +14,236 @@
   --primary-color: #0f172a; 
   --accent-color: #2563eb;  
   --tag-bg: #eff6ff;        
+  --tldr-bg: #f8fafc; /* TL;DR 专属淡雅灰背景 */
   --text-main: #334155;     
   --text-dark: #1e293b;     
-  --bg-light: #f8fafc;      
+  --bg-light: #ffffff;      
   --border-color: #e2e8f0;  
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  /* 严格遵循高质感无衬线字体体系，完美匹配几何感与现代字间距 */
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
   color: var(--text-main);
   line-height: 1.5;
-  letter-spacing: -0.015em; 
-  background-color: #ffffff;
+  background-color: #fefefe;
   -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 1140px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 45px;
-  padding: 45px 20px;
+  grid-template-columns: 340px 1fr; /* 侧边栏稍宽以容纳 Awards */
+  gap: 40px;
+  padding: 40px 20px;
 }
 
-/* ================= 左侧固定个人信息栏 ================= */
+/* ================= 侧边栏：模块化卡片布局 ================= */
 .sidebar {
-  position: sticky;
-  top: 30px;
-  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.profile-img-container {
+/* 头像：保持圆框大小，缩小编内图像 */
+.sidebar-card-profile {
   text-align: center;
+  padding: 20px 0;
 }
 
 .profile-img {
-  width: 190px;
-  height: 190px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  /* 核心修改 1：改用 contain 配合背景色，并加入适度 padding，确保头像不被裁剪、展示完整 */
-  object-fit: contain; 
-  background-color: #f1f5f9;
-  padding: 4px;
+  object-fit: cover; /* 保证底图填充 */
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 8px; /* 关键：增加 padding 使人像视觉上缩小并展示完整 */
+  background: #fff;
 }
 
 .name {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--text-dark);
-  line-height: 1.2;
-  margin-bottom: 4px;
-  text-align: center;
-  letter-spacing: -0.02em;
+  margin-top: 15px;
 }
 
-.social-links {
+.sidebar-social {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 5px;
+  gap: 15px;
+  margin: 15px 0;
 }
+.sidebar-social img { height: 24px; opacity: 0.85; transition: 0.3s; }
+.sidebar-social img:hover { opacity: 1; transform: translateY(-2px); }
 
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.social-links a:hover {
-  transform: translateY(-2px);
-}
-
-.social-links img {
-  height: 25px;
-  width: auto;
-}
-
-.contact-card {
-  background-color: var(--bg-light);
+/* 通用侧边栏卡片样式 */
+.sidebar-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 18px;
-  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
-.contact-card h3, .sidebar-section h3 {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #64748b;
+.sidebar-card h3 {
+  font-size: 15px;
+  color: var(--text-dark);
   margin-bottom: 12px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* 侧边栏荣誉列表 */
+.sidebar-award-list {
+  list-style: none;
+  font-size: 13px;
+}
+.sidebar-award-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.award-date {
+  color: #94a3b8;
+  white-space: nowrap;
+  margin-left: 10px;
 }
 
 .contact-item {
   font-size: 13.5px;
   margin-bottom: 8px;
   display: flex;
-  align-items: flex-start;
   gap: 10px;
-  color: var(--text-main);
   word-break: break-all;
 }
+.contact-item i { color: var(--accent-color); width: 14px; }
 
-.contact-item i {
-  color: var(--accent-color);
-  margin-top: 3px;
-  width: 14px;
-  text-align: center;
+/* ================= 右侧主内容 ================= */
+.main-content { display: flex; flex-direction: column; gap: 35px; }
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
 }
 
-/* 左侧新增的荣誉与地图区域 */
-.sidebar-section {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 4px 0;
+.section-note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: -8px;
+  margin-bottom: 15px;
 }
 
-.sidebar-honor-list {
-  list-style: none;
-  font-size: 12.5px;
-  line-height: 1.4;
-  color: var(--text-main);
+/* 论文卡片：TL;DR 风格 */
+.paper-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
+.paper-card:last-child { border-bottom: none; }
 
-.sidebar-honor-list li {
-  position: relative;
-  padding-left: 14px;
-  margin-bottom: 8px;
-}
-
-.sidebar-honor-list li::before {
-  content: "•";
-  color: var(--accent-color);
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  top: -1px;
-}
-
-.visitor-map {
-  border-top: 1px solid var(--border-color);
-  padding-top: 16px;
-  text-align: center;
-}
-
-.visitor-map img {
-  max-width: 100%;
-  border-radius: 8px;
+.paper-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
   border: 1px solid var(--border-color);
 }
+.paper-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.paper-title { font-size: 16px; font-weight: 600; color: var(--text-dark); margin-bottom: 5px; }
+.paper-authors { font-size: 14px; margin-bottom: 5px; }
+.paper-authors strong { text-decoration: underline; color: var(--text-dark); }
+
+.paper-venue-line { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.venue-badge { background: var(--accent-color); color: #fff; font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+.paper-links a { font-size: 13px; color: var(--accent-color); text-decoration: none; font-weight: 500; }
+.paper-links a:hover { text-decoration: underline; }
+
+/* TL;DR 区块样式 */
+.paper-tldr {
+  background-color: var(--tldr-bg);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  border-left: 3px solid #cbd5e1;
+  color: #475569;
+  margin-top: 5px;
+}
+.tldr-label { font-weight: 700; color: var(--text-dark); margin-right: 5px; }
+
+/* 其他通用样式 */
+.custom-list li { margin-bottom: 8px; font-size: 14.5px; }
+.badge { font-size: 11px; padding: 1px 5px; border-radius: 4px; margin-left: 5px; }
+.badge-orange { background: #ffedd5; color: #ea580c; }
+.badge-green { background: #d1fae5; color: #059669; }
+
+@media (max-width: 900px) {
+  .container { grid-template-columns: 1fr; }
+  .sidebar { position: relative; top: 0; }
+  .paper-card { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+  <div class="container">
+    
+    <aside class="sidebar">
+      <div class="sidebar-card-profile">
+        <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
+        <h1 class="name">Yurong Hao</h1>
+        <div class="sidebar-social">
+          <a href="https://scholar.google.com/citations?user=t6Q_2wcAAAAJ" target="_blank"><img src="./files/scholar_logo.png"></a>
+          <a href="https://dblp.org/pid/260/9439.html" target="_blank"><img src="./files/dblp_logo.png"></a>
+          <a href="https://github.com/yuronghaoa" target="_blank" style="font-size: 22px; color: #334155;"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3><i class="fa-solid fa-envelope"></i> Contact</h3>
+        <div class="contact-item">
+          <i class="fa-solid fa-at"></i>
+          <span>Yurong.hao@ntu.edu.sg</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Midori Lab, CCDS, NTU</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3><i class="fa-solid fa-award"></i> Honors & Awards</h3>
+        <ul class="sidebar-award-list">
+          <li><span>CSC Scholarship</span> <span class="award-date">2024</span></li>
+          <li><span>PhD Academic Scholarship</span> <span class="award-date">2022-25</span></li>
+          <li><span>Outstanding Graduate (Hebei)</span> <span class="award-date">2021</span></li>
+          <li><span>Huawei Cup Mathematical Contest</span> <span class="award-date">2020</span></li>
+          <li><span>National Scholarship</span> <span class="award-date">2016</span></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3><i class="fa-solid fa-earth-americas"></i> Visitor Map</h3>
+        <div class="visitor-map" style="text-align: center;">
+          <a href="https://mapmyvisitors.com/web/1bw1t" target="_blank">
+            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Visitors">
+          </a>
+        </div>
+      </div>
+    </aside>
 
 /* ================= 右侧主内容区 ================= */
 .main-content {
