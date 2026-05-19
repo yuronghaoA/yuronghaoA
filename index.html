@@ -1,1108 +1,370 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yurong Hao | Academic Homepage</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-
-<style type="text/css">
+<style>
+:root {
+  --bg: #fafaf8;
+  --surface: #ffffff;
+  --surface-2: #f3f3f0;
+  --surface-3: #eaeae6;
+  --border: rgba(0,0,0,0.07);
+  --border-hover: rgba(22,101,52,0.22);
+  --text: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-dim: #7a7a7a;
+  --accent: #166534;
+  --accent-light: #22c55e;
+  --accent-bg: rgba(22,101,52,0.05);
+  --accent-bg2: rgba(22,101,52,0.08);
+  --warm: #b45309;
+  --warm-bg: rgba(180,83,9,0.06);
+  --blue: #1e40af;
+  --blue-bg: rgba(30,64,175,0.05);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+  --base: https://yuronghaoa.github.io/yuronghaoA;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.4;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans); overflow-x:hidden; line-height:1.65;
+}
+a { color:var(--accent); text-decoration:none; transition:color 0.3s; }
+a:hover { color:var(--accent-light); }
 
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
+/* ─── NAV ─── */
+nav {
+  position:fixed; top:0; width:100%; z-index:100;
+  padding:1rem 3rem;
+  display:flex; justify-content:space-between; align-items:center;
+  backdrop-filter:blur(20px);
+  background:rgba(250,250,248,0.85);
+  border-bottom:1px solid var(--border);
+}
+.nav-name { font-family:var(--serif); font-size:1.3rem; font-weight:700; }
+.nav-name span { color:var(--accent); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a {
+  color:var(--text-dim); text-decoration:none;
+  font-size:0.8rem; font-weight:500;
+  letter-spacing:0.06em; text-transform:uppercase;
+  transition:color 0.3s; position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1.5px; background:var(--accent); transition:width 0.3s;
+}
+.nav-links a:hover { color:var(--text); }
+.nav-links a:hover::after { width:100%; }
 
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 30px;
-  color: black; }
-
-h2 {
-  font-size: 26px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 22px; }
-
-h4 {
-  font-size: 18px; }
-
-h5 {
-  font-size: 15px; }
-
-h6 {
-  color: #777777;
-  font-size: 15px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 11px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
+/* ─── HERO ─── */
+.hero {
+  display:grid;
+  grid-template-columns:300px 1fr; gap:3rem;
+  align-items:center; padding:7rem 3rem 3rem;
+  max-width:1400px; margin:0 auto;
+}
+.profile-card { opacity:0; animation:fadeUp 0.8s 0.3s forwards; }
+.avatar-wrap {
+  width:240px; height:300px;
+  border-radius:160px 160px 28px 28px;
+  overflow:hidden; border:3px solid var(--surface-3);
+  background:var(--surface-2); margin:0 auto 1.4rem;
+  box-shadow:var(--shadow-md);
+}
+.avatar-wrap img { width:100%; height:100%; object-fit:cover; }
+.profile-name {
+  font-family:var(--serif); font-size:1.7rem; font-weight:700;
+  text-align:center; margin-bottom:0.3rem;
+}
+.profile-title {
+  font-size:0.82rem; color:var(--text-dim);
+  text-align:center; line-height:1.55; margin-bottom:1.2rem;
+}
+.profile-links {
+  display:flex; justify-content:center; gap:0.5rem;
+  margin-bottom:1.2rem; flex-wrap:wrap;
+}
+.profile-link-btn {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  padding:0.4rem 0.85rem; border-radius:20px;
+  font-size:0.72rem; font-weight:500;
+  border:1px solid var(--border); color:var(--text-dim);
+  text-decoration:none; transition:all 0.3s; font-family:var(--mono);
+}
+.profile-link-btn:hover {
+  border-color:var(--accent); color:var(--accent); background:var(--accent-bg);
+}
+.tag-cloud { display:flex; flex-wrap:wrap; justify-content:center; gap:0.35rem; }
+.tag {
+  font-size:0.65rem; font-family:var(--mono);
+  padding:0.25rem 0.65rem; border-radius:12px;
+  background:var(--accent-bg); color:var(--accent);
+  border:1px solid rgba(22,101,52,0.1); white-space:nowrap;
 }
 
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
+.hero-content { opacity:0; animation:fadeUp 0.8s 0.5s forwards; }
+.hero-hello {
+  font-family:var(--mono); font-size:0.72rem; color:var(--accent);
+  letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.8rem;
+}
+.hero-content h1 {
+  font-family:var(--serif);
+  font-size:clamp(2rem,4.2vw,3.2rem); font-weight:700;
+  line-height:1.12; letter-spacing:-0.02em; margin-bottom:1.2rem;
+}
+.hero-content h1 em { font-style:italic; color:var(--accent); }
+.hero-bio {
+  font-size:0.98rem; color:var(--text-mid);
+  max-width:680px; line-height:1.8; font-weight:300; margin-bottom:1.2rem;
+}
+.hero-bio strong { font-weight:500; color:var(--text); }
+.research-focus {
+  padding:1rem 1.3rem; border-radius:12px;
+  background:var(--accent-bg); border:1px solid rgba(22,101,52,0.1);
+  font-size:0.88rem; color:var(--text-mid); line-height:1.7; font-weight:300;
+}
+.research-focus strong { color:var(--accent); font-weight:600; }
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
+/* ─── SECTIONS ─── */
+.section { padding:3rem 3rem; max-width:1400px; margin:0 auto; }
+.section-header {
+  display:flex; align-items:baseline; gap:0.8rem;
+  margin-bottom:1.5rem; padding-bottom:0.6rem;
+  border-bottom:2px solid var(--surface-3);
+}
+.section-num { font-family:var(--mono); font-size:0.7rem; color:var(--accent); opacity:0.5; }
+.section-icon { font-size:1.3rem; }
+.section-title {
+  font-family:var(--serif); font-size:1.8rem; font-weight:700;
+  letter-spacing:-0.02em;
 }
 
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
+/* ─── NEWS ─── */
+.news-list { display:flex; flex-direction:column; gap:0.4rem; }
+.news-item {
+  display:flex; align-items:flex-start; gap:1rem;
+  padding:0.9rem 1.1rem; border-radius:10px;
+  border:1px solid var(--border); background:var(--surface);
+  transition:all 0.3s; box-shadow:var(--shadow-sm);
+}
+.news-item:hover { border-color:var(--border-hover); transform:translateX(4px); box-shadow:var(--shadow-md); }
+.news-badge {
+  font-family:var(--mono); font-size:0.68rem;
+  padding:0.2rem 0.55rem; border-radius:8px;
+  background:var(--accent-bg2); color:var(--accent);
+  white-space:nowrap; font-weight:500; flex-shrink:0;
+}
+.news-text { font-size:0.88rem; color:var(--text-mid); font-weight:300; line-height:1.55; }
+.news-text strong { color:var(--text); font-weight:600; }
+
+/* ─── PUBLICATIONS ─── */
+.pub-list { display:flex; flex-direction:column; gap:0.8rem; }
+.pub-card {
+  display:grid; grid-template-columns:200px 1fr; gap:1.3rem;
+  padding:1.3rem; border-radius:14px;
+  border:1px solid var(--border); background:var(--surface);
+  transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  box-shadow:var(--shadow-sm);
+}
+.pub-card:hover {
+  border-color:var(--border-hover); transform:translateY(-2px); box-shadow:var(--shadow-lg);
+}
+.pub-thumb {
+  width:200px; height:125px; border-radius:10px;
+  background:var(--surface-2); border:1px solid var(--border);
+  overflow:hidden;
+}
+.pub-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.pub-info { display:flex; flex-direction:column; justify-content:center; }
+.pub-venue {
+  display:inline-flex; align-items:center; gap:0.3rem;
+  font-family:var(--mono); font-size:0.68rem;
+  padding:0.2rem 0.55rem; border-radius:6px;
+  width:fit-content; margin-bottom:0.4rem; font-weight:500;
+}
+.pub-venue.top { background:var(--accent-bg2); color:var(--accent); }
+.pub-venue.journal { background:var(--blue-bg); color:var(--blue); }
+.pub-venue.other { background:var(--warm-bg); color:var(--warm); }
+.pub-title-text {
+  font-family:var(--serif); font-size:1.05rem; font-weight:600;
+  line-height:1.35; margin-bottom:0.3rem;
+}
+.pub-title-text a { color:var(--text); text-decoration:none; transition:color 0.3s; }
+.pub-title-text a:hover { color:var(--accent); }
+.pub-authors { font-size:0.76rem; color:var(--text-dim); line-height:1.5; margin-bottom:0.5rem; }
+.pub-authors .me { color:var(--accent); font-weight:600; }
+.pub-links { display:flex; gap:0.35rem; flex-wrap:wrap; }
+.pub-link {
+  display:inline-flex; align-items:center; gap:0.25rem;
+  padding:0.25rem 0.65rem; border-radius:7px;
+  font-size:0.7rem; font-weight:500; font-family:var(--mono);
+  border:1px solid var(--border); color:var(--text-dim);
+  text-decoration:none; transition:all 0.3s;
+}
+.pub-link:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-bg); }
+
+/* ─── INFO BLOCKS ─── */
+.info-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.info-block {
+  padding:1.4rem; border-radius:14px;
+  border:1px solid var(--border); background:var(--surface); box-shadow:var(--shadow-sm);
+}
+.info-block-title {
+  font-family:var(--mono); font-size:0.7rem; color:var(--accent);
+  letter-spacing:0.1em; text-transform:uppercase;
+  margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border);
+}
+.info-item {
+  font-size:0.85rem; color:var(--text-mid); line-height:1.6; font-weight:300;
+  padding:0.6rem 0; border-bottom:1px solid rgba(0,0,0,0.03);
+}
+.info-item:last-child { border-bottom:none; }
+.info-item strong { color:var(--text); font-weight:500; }
+.info-item .badge {
+  display:inline-block; font-family:var(--mono); font-size:0.65rem;
+  padding:0.15rem 0.5rem; border-radius:6px;
+  background:var(--accent-bg2); color:var(--accent); margin-left:0.3rem; font-weight:500;
+}
+.info-item .role-badge {
+  display:inline-block; font-family:var(--mono); font-size:0.65rem;
+  padding:0.15rem 0.5rem; border-radius:6px;
+  background:var(--warm-bg); color:var(--warm); font-weight:500;
 }
 
-* {
-	-webkit-print-color-adjust: exact;
+/* ─── AWARDS ─── */
+.awards-list {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:0.5rem;
 }
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
+.award-item {
+  display:flex; align-items:center; gap:0.7rem;
+  padding:0.8rem 1rem; border-radius:10px;
+  border:1px solid var(--border); background:var(--surface);
+  transition:all 0.3s; box-shadow:var(--shadow-sm);
 }
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-  body {
-    padding: 2cm; 
-  }
+.award-item:hover { border-color:var(--border-hover); transform:translateX(3px); }
+.award-icon {
+  width:32px; height:32px; border-radius:8px;
+  background:var(--warm-bg); display:flex; align-items:center; justify-content:center;
+  font-size:0.9rem; flex-shrink:0;
+}
+.award-text { font-size:0.84rem; color:var(--text-mid); font-weight:300; line-height:1.45; }
+.award-text strong { color:var(--text); font-weight:500; }
+.award-year { font-family:var(--mono); font-size:0.68rem; color:var(--accent); margin-top:0.1rem; }
+
+/* ─── TALKS ─── */
+.talks-list { display:flex; flex-direction:column; gap:0.4rem; }
+.talk-item {
+  display:flex; align-items:flex-start; gap:1rem;
+  padding:0.9rem 1.1rem; border-radius:10px;
+  border:1px solid var(--border); background:var(--surface);
+  transition:all 0.3s; box-shadow:var(--shadow-sm);
+}
+.talk-item:hover { border-color:var(--border-hover); transform:translateX(3px); }
+.talk-date {
+  font-family:var(--mono); font-size:0.7rem; color:var(--accent);
+  white-space:nowrap; min-width:75px; padding-top:2px;
+}
+.talk-content { font-size:0.86rem; color:var(--text-mid); font-weight:300; line-height:1.6; }
+.talk-content strong { color:var(--text); font-weight:500; }
+.talk-venue { font-size:0.78rem; color:var(--text-dim); margin-top:0.15rem; }
+
+/* ─── CONTACT ─── */
+.contact-section {
+  text-align:center; padding:3.5rem 3rem; max-width:1400px; margin:0 auto; position:relative;
+}
+.contact-section::before {
+  content:''; position:absolute; width:400px; height:400px; border-radius:50%;
+  background:radial-gradient(circle, rgba(22,101,52,0.04), transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;
+}
+.contact-heading {
+  font-family:var(--serif); font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:700; margin-bottom:0.8rem; letter-spacing:-0.02em;
+}
+.contact-heading em { color:var(--accent); font-style:italic; }
+.contact-desc { font-size:0.95rem; color:var(--text-dim); font-weight:300; margin-bottom:1.2rem; }
+.contact-email { font-family:var(--mono); font-size:0.9rem; color:var(--accent); }
+.social-row { display:flex; justify-content:center; gap:0.6rem; margin-top:1.2rem; }
+.social-btn {
+  padding:0.5rem 1.1rem; border-radius:22px;
+  border:1px solid var(--border); color:var(--text-dim);
+  font-size:0.78rem; font-weight:500; text-decoration:none;
+  transition:all 0.3s; font-family:var(--mono);
+}
+.social-btn:hover {
+  border-color:var(--accent); color:var(--accent);
+  transform:translateY(-2px); box-shadow:0 4px 14px rgba(22,101,52,0.1);
+}
+
+footer {
+  padding:1.5rem 3rem; border-top:1px solid var(--border);
+  text-align:center; font-size:0.76rem; color:var(--text-dim);
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.reveal {
+  opacity:0; transform:translateY(20px);
+  transition:all 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+  nav { padding:0.8rem 1.2rem; }
+  .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; padding:6.5rem 1.2rem 2.5rem; gap:2rem; }
+  .section { padding:2rem 1.2rem; }
+  .pub-card { grid-template-columns:1fr; }
+  .pub-thumb { width:100%; height:130px; }
+  .info-grid { grid-template-columns:1fr; }
+  .awards-list { grid-template-columns:1fr; }
+  .contact-section { padding:3rem 1.2rem; }
 }
 </style>
-
-<style type="text/css">
-/**
- * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/chriskempson/tomorrow-theme
- * @author Rose Pritchard
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: #ccc;
-	background: none;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #2d2d2d;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
-}
-
-.token.comment,
-.token.block-comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: #999;
-}
-
-.token.punctuation {
-	color: #ccc;
-}
-
-.token.tag,
-.token.attr-name,
-.token.namespace,
-.token.deleted {
-	color: #e2777a;
-}
-
-.token.function-name {
-	color: #6196cc;
-}
-
-.token.boolean,
-.token.number,
-.token.function {
-	color: #f08d49;
-}
-
-.token.property,
-.token.class-name,
-.token.constant,
-.token.symbol {
-	color: #f8c555;
-}
-
-.token.selector,
-.token.important,
-.token.atrule,
-.token.keyword,
-.token.builtin {
-	color: #cc99cd;
-}
-
-.token.string,
-.token.char,
-.token.attr-value,
-.token.regex,
-.token.variable {
-	color: #7ec699;
-}
-
-.token.operator,
-.token.entity,
-.token.url {
-	color: #67cdcc;
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-.token.inserted {
-	color: green;
-}
-</style>
-
-<style type="text/css">
-div.prism-show-language {
-	position: relative;
-}
-
-div.prism-show-language > div.prism-show-language-label {
-	color: black;
-	background-color: #CFCFCF;
-	display: inline-block;
-	position: absolute;
-	bottom: auto;
-	left: auto;
-	top: 0;
-	right: 0;
-	width: auto;
-	height: auto;
-	font-size: 0.9em;
-	border-radius: 0 0 0 5px;
-	padding: 0 0.5em;
-	text-shadow: none;
-	z-index: 1;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	-webkit-transform: none;
-	-moz-transform: none;
-	-ms-transform: none;
-	-o-transform: none;
-	transform: none;
-}
-</style>
-
-	<style>
-/* ---- paper cards ---- */
-.papers { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
-
-.paper-card{
-  display: flex;
-  gap: 14px;
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 12px;
-  background: #fff;
-  align-items: flex-start;
-}
-
-.paper-thumb{
-  width: 220px;
-  min-width: 220px;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,.10);
-  background: #f6f6f6;
-}
-
-.paper-thumb img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.paper-meta{ flex: 1; min-width: 0; }
-.paper-title{
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  line-height: 1.25;
-}
-.paper-title a{ text-decoration: none; }
-.paper-authors{ margin: 0 0 6px 0; }
-.paper-venue{ margin: 0 0 10px 0; color: rgba(0,0,0,.75); }
-
-.paper-links{ display: flex; flex-wrap: wrap; gap: 8px; }
-.paper-links a{
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid rgba(0,0,0,.18);
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.95em;
-}
-
-@media (max-width: 720px){
-  .paper-card{ flex-direction: column; }
-  .paper-thumb{ width: 100%; min-width: 0; }
-}
-</style>
-
-
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yurong Hao | Academic Homepage</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-
-<style type="text/css">
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.4;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 30px;
-  color: black; }
-
-h2 {
-  font-size: 26px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 22px; }
-
-h4 {
-  font-size: 18px; }
-
-h5 {
-  font-size: 15px; }
-
-h6 {
-  color: #777777;
-  font-size: 15px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 11px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
-}
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
-}
-
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-  body {
-    padding: 2cm; 
-  }
-}
-</style>
-
-<style type="text/css">
-/**
- * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/chriskempson/tomorrow-theme
- * @author Rose Pritchard
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: #ccc;
-	background: none;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #2d2d2d;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
-}
-
-.token.comment,
-.token.block-comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: #999;
-}
-
-.token.punctuation {
-	color: #ccc;
-}
-
-.token.tag,
-.token.attr-name,
-.token.namespace,
-.token.deleted {
-	color: #e2777a;
-}
-
-.token.function-name {
-	color: #6196cc;
-}
-
-.token.boolean,
-.token.number,
-.token.function {
-	color: #f08d49;
-}
-
-.token.property,
-.token.class-name,
-.token.constant,
-.token.symbol {
-	color: #f8c555;
-}
-
-.token.selector,
-.token.important,
-.token.atrule,
-.token.keyword,
-.token.builtin {
-	color: #cc99cd;
-}
-
-.token.string,
-.token.char,
-.token.attr-value,
-.token.regex,
-.token.variable {
-	color: #7ec699;
-}
-
-.token.operator,
-.token.entity,
-.token.url {
-	color: #67cdcc;
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-.token.inserted {
-	color: green;
-}
-</style>
-
-<style type="text/css">
-div.prism-show-language {
-	position: relative;
-}
-
-div.prism-show-language > div.prism-show-language-label {
-	color: black;
-	background-color: #CFCFCF;
-	display: inline-block;
-	position: absolute;
-	bottom: auto;
-	left: auto;
-	top: 0;
-	right: 0;
-	width: auto;
-	height: auto;
-	font-size: 0.9em;
-	border-radius: 0 0 0 5px;
-	padding: 0 0.5em;
-	text-shadow: none;
-	z-index: 1;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	-webkit-transform: none;
-	-moz-transform: none;
-	-ms-transform: none;
-	-o-transform: none;
-	transform: none;
-}
-</style>
-
-	<style>
-/* ---- paper cards ---- */
-.papers { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
-
-.paper-card{
-  display: flex;
-  gap: 14px;
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 12px;
-  background: #fff;
-  align-items: flex-start;
-}
-
-.paper-thumb{
-  width: 220px;
-  min-width: 220px;
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,.10);
-  background: #f6f6f6;
-}
-
-.paper-thumb img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.paper-meta{ flex: 1; min-width: 0; }
-.paper-title{
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  line-height: 1.25;
-}
-.paper-title a{ text-decoration: none; }
-.paper-authors{ margin: 0 0 6px 0; }
-.paper-venue{ margin: 0 0 10px 0; color: rgba(0,0,0,.75); }
-
-.paper-links{ display: flex; flex-wrap: wrap; gap: 8px; }
-.paper-links a{
-  display: inline-block;
-  padding: 4px 10px;
-  border: 1px solid rgba(0,0,0,.18);
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.95em;
-}
-
-@media (max-width: 720px){
-  .paper-card{ flex-direction: column; }
-  .paper-thumb{ width: 100%; min-width: 0; }
-}
-</style>
-
-
 </head>
-
 <body>
 
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-name">Yurong<span>.</span>Hao</div>
+  <ul class="nav-links">
+    <li><a href="#news">News</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents & Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<section class="homepage-hero">
-
+<!-- ═══ HERO ═══ -->
+<section class="hero">
   <div class="profile-card">
     <div class="avatar-wrap">
-      <img src="./files/yuronghaoa.jpg" alt="Yurong Hao">
+      <img src="https://yuronghaoa.github.io/yuronghaoA/files/yuronghaoa.jpg" alt="Yurong Hao">
     </div>
-
     <div class="profile-name">Yurong Hao</div>
-
     <div class="profile-title">
       Research Fellow · NTU<br>
       Ph.D., Beijing Jiaotong University
     </div>
-
     <div class="profile-links">
       <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" class="profile-link-btn" target="_blank">Google Scholar</a>
       <a href="https://dblp.org/pid/260/9439.html" class="profile-link-btn" target="_blank">dblp</a>
       <a href="mailto:yurong.hao@ntu.edu.sg" class="profile-link-btn">Email</a>
     </div>
-
     <div class="tag-cloud">
       <span class="tag">Trustworthy AI</span>
       <span class="tag">Poisoning Attacks</span>
@@ -1113,14 +375,12 @@ div.prism-show-language > div.prism-show-language-label {
 
   <div class="hero-content">
     <p class="hero-hello">// Research Fellow · NTU Singapore</p>
-
     <h1>Building <em>Trustworthy</em><br>AI Systems</h1>
-
     <p class="hero-bio">
       I am currently a Research Fellow at <strong>Nanyang Technological University (NTU)</strong>, working with
-      Prof. <a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan" target="_blank">Wei Yang Bryan Lim</a>
-      and Prof. <a href="https://ece.ubc.ca/cyril-leung/" target="_blank">Cyril Leung</a> in
-      <a href="https://sites.google.com/view/wyb/home" target="_blank">Midori Lab</a>.
+      Prof. <a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan" target="_blank">Wei Yang Bryan Lim</a> and
+      Prof. <a href="https://ece.ubc.ca/cyril-leung/" target="_blank">Cyril Leung</a> in
+      <a href="https://sites.google.com/view/wyb/home" target="_blank">Midori</a> Lab.
       Before this, I received my Ph.D. degree in 2025 from
       <a href="https://cst.bjtu.edu.cn/" target="_blank">the School of Cyberspace Science and Technology</a> at
       <a href="https://en.bjtu.edu.cn/" target="_blank">Beijing Jiaotong University</a>,
@@ -1128,695 +388,287 @@ div.prism-show-language > div.prism-show-language-label {
       Prof. <a href="https://weiwangup.github.io/" target="_blank">Wei Wang</a>.
       From 2024 to 2025, I was a visiting student at Nanyang Technological University.
     </p>
-
     <div class="research-focus">
-      <strong>Research Focus:</strong>
-      Trustworthy AI — poisoning attacks and defence mechanisms in distributed deep learning systems.
-      Recently shifted toward trustworthiness in <strong>multimodal LLM and agent</strong>,
-      exploring potential vulnerabilities and developing robust defence mechanisms to enhance their
-      integrity and user trust.
+      <strong>Research Focus:</strong> Trustworthy AI — poisoning attacks and defence mechanisms in distributed deep learning systems. Recently shifted toward trustworthiness in <strong>multimodal LLM and agent</strong>, exploring potential vulnerabilities and developing robust defence mechanisms to enhance their integrity and user trust.
     </div>
   </div>
-
 </section>
 
-<hr>
-
-	
-
-<h2 id="toc_2">News</h2>
-
-<ul>
-<li>Four papers are accepted by <a href="https://"> ICML 2026!</a>.</li>
-<li>Our work is accepted by <a href="https://"> WWW 2026!</a>.</li>
-<li>Our work is accepted by <a href="https://"> NeurIPS 2025!</a>.</li>
-<li>Our work is accepted by <a href="https://"> IEEE TIFS!</a>.</li>
-<li>Our work is accepted by <a href="https://"> ACM CCS 2024!</a>.</li>
-</ul>
-
-<hr>
-
-<h2 id="toc_3">Selected Publications [<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ&gmla=AKKJWFdO6kaQ_xpR2oGgYaNcObt-X2bU3c6jzqjYS0-P5WmKFsEeubKeBcQPQoViI0UzgmFrkNUNoEOlTxULJcRHQ9Eatrj2dajjsHh0OXvKJkArKg">google scholar</a>] 
-	[<a href="https://dblp.org/pid/260/9439.html">dblp</a>]</h2>
-
-<div class="papers">
-	
-<!-- Paper VenomRec -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
+<!-- ═══ NEWS ═══ -->
+<section class="section" id="news">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <span class="section-icon">📢</span>
+    <h2 class="section-title">News</h2>
+  </div>
+  <div class="news-list">
+    <div class="news-item reveal">
+      <span class="news-badge">🎉 ICML</span>
+      <span class="news-text">Four papers accepted by <strong>ICML 2026</strong>!</span>
     </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/61520">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a>
-      </p>
-      <p class="paper-authors">
-		  Guowei Guan, <strong>Yurong Hao</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/61520">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
+    <div class="news-item reveal">
+      <span class="news-badge">WWW</span>
+      <span class="news-text">Our work is accepted by <strong>WWW 2026</strong>!</span>
+    </div>
+    <div class="news-item reveal">
+      <span class="news-badge">NeurIPS</span>
+      <span class="news-text">Our work is accepted by <strong>NeurIPS 2025</strong>!</span>
+    </div>
+    <div class="news-item reveal">
+      <span class="news-badge">TIFS</span>
+      <span class="news-text">Our work is accepted by <strong>IEEE TIFS</strong>!</span>
+    </div>
+    <div class="news-item reveal">
+      <span class="news-badge">CCS</span>
+      <span class="news-text">Our work is accepted by <strong>ACM CCS 2024</strong>!</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section class="section" id="publications">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <span class="section-icon">📄</span>
+    <h2 class="section-title">Selected Publications</h2>
+    <span style="margin-left:auto; font-size:0.82rem;">
+      [<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ&gmla=AKKJWFdO6kaQ_xpR2oGgYaNcObt-X2bU3c6jzqjYS0-P5WmKFsEeubKeBcQPQoViI0UzgmFrkNUNoEOlTxULJcRHQ9Eatrj2dajjsHh0OXvKJkArKg" target="_blank">google scholar</a>]
+      [<a href="https://dblp.org/pid/260/9439.html" target="_blank">dblp</a>]
+    </span>
+  </div>
+  <div class="pub-list">
+
+    <!-- VenomRec -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/VenomRec.png" alt="VenomRec"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">ICML 2026</div>
+        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a></div>
+        <div class="pub-authors">Guowei Guan, <span class="me">Yurong Hao</span>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.</div>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/61520" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- ModelPirate -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/ModelPirate.png" alt="ModelPirate"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">ICML 2026</div>
+        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a></div>
+        <div class="pub-authors">Tiantong Wu, <span class="me">Yurong Hao</span>, Wei Yang Bryan Lim.</div>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/65910" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- SubspacePath -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/SubspacePath.png" alt="SubspacePath Pruner"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">ICML 2026</div>
+        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a></div>
+        <div class="pub-authors">Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <span class="me">Yurong Hao</span>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</div>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/62512" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- XDomainBench -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/XDomainBench.png" alt="XDomainBench"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">ICML 2026</div>
+        <div class="pub-title-text"><a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a></div>
+        <div class="pub-authors">Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <span class="me">Yurong Hao</span>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.</div>
+        <div class="pub-links"><a href="https://icml.cc/virtual/2026/poster/63740" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- Spattack -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/Spattack.png" alt="Spattack"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">WWW 2026 · Oral</div>
+        <div class="pub-title-text"><a href="https://arxiv.org/pdf/2507.06258" target="_blank">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a></div>
+        <div class="pub-authors">Bo Yan, <span class="me">Yurong Hao</span>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.</div>
+        <div class="pub-links"><a href="https://arxiv.org/pdf/2507.06258" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- AegisGuard -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/AegisGuard.png" alt="AegisGuard"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">NeurIPS 2025 · Poster</div>
+        <div class="pub-title-text"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a></div>
+        <div class="pub-authors">Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <span class="me">Yurong Hao</span>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.</div>
+        <div class="pub-links"><a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- Eyes on Federated (TIFS) -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/StairClimbing.png" alt="TIFS"></div>
+      <div class="pub-info">
+        <div class="pub-venue journal">IEEE TIFS</div>
+        <div class="pub-title-text"><a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a></div>
+        <div class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.</div>
+        <div class="pub-links"><a href="https://ieeexplore.ieee.org/document/10739366" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- Not One Less (CCS) -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/FRecAttack2.png" alt="CCS"></div>
+      <div class="pub-info">
+        <div class="pub-venue top">ACM CCS 2024 · Oral</div>
+        <div class="pub-title-text"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a></div>
+        <div class="pub-authors"><span class="me">Yurong Hao</span>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.</div>
+        <div class="pub-links"><a href="https://dl.acm.org/doi/10.1145/3658644.3670365" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- SOC (IP&M) -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/SOC.png" alt="SOC"></div>
+      <div class="pub-info">
+        <div class="pub-venue journal">IP&M</div>
+        <div class="pub-title-text"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" target="_blank">Privacy Preserving in Blockchain-based Government Data Sharing: A Service-On-Chain (SOC) Approach</a></div>
+        <div class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</div>
+        <div class="pub-links"><a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+    <!-- LDP (SOCA) -->
+    <div class="pub-card reveal">
+      <div class="pub-thumb"><img src="https://yuronghaoa.github.io/yuronghaoA/assets/papers/LDP.png" alt="LDP"></div>
+      <div class="pub-info">
+        <div class="pub-venue journal">SOCA</div>
+        <div class="pub-title-text"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" target="_blank">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a></div>
+        <div class="pub-authors">Chunhui Piao, <span class="me">Yurong Hao</span>, Jiaqi Yan, Xuehong Jiang.</div>
+        <div class="pub-links"><a href="https://link.springer.com/article/10.1007/s11761-021-00315-3" class="pub-link" target="_blank">📄 Paper</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PATENTS, MONOGRAPHS & PROJECTS ═══ -->
+<section class="section" id="patents">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <span class="section-icon">💡</span>
+    <h2 class="section-title">Patents, Monographs & Projects</h2>
+  </div>
+  <div class="info-grid">
+    <div class="info-block reveal">
+      <div class="info-block-title">Patents</div>
+      <div class="info-item">Method for Privacy Leak Detection for Vertical Federated Learning Based on Feature Embedding Analysis. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
+      <div class="info-item">Defence Method for Federated Learning Poisoning Attacks. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
+      <div class="info-item">Local Differential Privacy Method for Government Data Sharing. Chunhui Piao, Yurong Hao, et al. <span class="badge">Granted</span></div>
+      <div class="info-item">Privacy-Preserving Method for POI Recommendation. Wei Wang, Yurong Hao, et al. <span class="badge">Granted</span></div>
+    </div>
+    <div class="info-block reveal">
+      <div class="info-block-title">Monographs</div>
+      <div class="info-item"><strong>Privacy Preserving Computation</strong>, People's Posts and Telecommunications Press, 2023.<br><em style="font-size:0.78rem; color:var(--accent);">Contributed Section 8 (Differential Privacy)</em></div>
+      <div class="info-item"><strong>Artificial Intelligence Security Assessment Technology</strong>, Hans Publishing House, 2023.<br><em style="font-size:0.78rem; color:var(--accent);">Editorial Board Member</em></div>
+    </div>
+    <div class="info-block reveal" style="grid-column:1/-1;">
+      <div class="info-block-title">Research Projects</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1.5rem;">
+        <div class="info-item">Privacy Preserving Recommender System, Ant Group <span class="role-badge">PI</span></div>
+        <div class="info-item">Privacy Preserved Methods for Federated Recommendation, Central Universities Fund <span class="role-badge">PI</span></div>
+        <div class="info-item">Privacy Preserved Methods for Government Data Sharing, M.S. Innovation Project <span class="role-badge">PI</span></div>
+        <div class="info-item">AI System Security Testing and Robust Enhancement, National Major Project</div>
+        <div class="info-item">Security Detection and Protection of AI Applications, National Major Project</div>
+        <div class="info-item">Trustworthy Mechanism of Urban Intelligent Systems, National Key R&D Program</div>
       </div>
     </div>
   </div>
+</section>
 
-<!-- Paper ModelPirate -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
+<!-- ═══ AWARDS ═══ -->
+<section class="section" id="awards">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <span class="section-icon">🏅</span>
+    <h2 class="section-title">Selected Awards</h2>
+  </div>
+  <div class="awards-list">
+    <div class="award-item reveal"><div class="award-icon">🇨🇳</div><div><div class="award-text"><strong>National Scholarship</strong></div><div class="award-year">2016</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">📚</div><div><div class="award-text"><strong>National Encouragement Scholarship</strong> ×2</div><div class="award-year">2015 & 2017</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">🌟</div><div><div class="award-text"><strong>Outstanding Graduate & Merit Student of Hebei Province</strong></div><div class="award-year">2021</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">🌏</div><div><div class="award-text"><strong>CSC Scholarship</strong> (China Scholarship Council)</div><div class="award-year">2024 — 2025</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">🎓</div><div><div class="award-text"><strong>Academic Scholarship</strong> — PhD, 3 consecutive years</div><div class="award-year">2022 — 2025</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">🏆</div><div><div class="award-text"><strong>"Huawei Cup"</strong> 17th China Graduate Mathematical Modelling — 3rd Prize</div><div class="award-year">2020</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">🛡️</div><div><div class="award-text"><strong>Hebei Province Graduate Network & Info Security Competition</strong> — 3rd Prize</div><div class="award-year">2019</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">⭐</div><div><div class="award-text"><strong>Outstanding League Cadre</strong></div><div class="award-year">2016</div></div></div>
+    <div class="award-item reveal"><div class="award-icon">📖</div><div><div class="award-text"><strong>Academic Scholarship</strong> — Graduate, 2 consecutive years</div><div class="award-year">2020 & 2021</div></div></div>
+  </div>
+</section>
+
+<!-- ═══ TALKS ═══ -->
+<section class="section" id="talks">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <span class="section-icon">🎤</span>
+    <h2 class="section-title">Invited Talks</h2>
+  </div>
+  <div class="talks-list">
+    <div class="talk-item reveal">
+      <span class="talk-date">Nov 2025</span>
+      <div>
+        <div class="talk-content"><strong>Security and Privacy in Personalised AI</strong>: From Federated to Multimodal LLM-based Recommender Systems</div>
+        <div class="talk-venue">Institute of Science Tokyo, Tokyo, Japan</div>
+      </div>
     </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/65910">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a>
-      </p>
-      <p class="paper-authors">
-		 Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/65910">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
+    <div class="talk-item reveal">
+      <span class="talk-date">Oct 2024</span>
+      <div>
+        <div class="talk-content"><strong>Not One Less</strong>: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</div>
+        <div class="talk-venue">ACM CCS 2024 Oral · Salt Lake City, USA</div>
+      </div>
+    </div>
+    <div class="talk-item reveal">
+      <span class="talk-date">Sep 2024</span>
+      <div>
+        <div class="talk-content"><strong>Trustworthy AI</strong> — Poisoning Attacks & Defence</div>
+        <div class="talk-venue">Nanyang Technological University, Singapore</div>
       </div>
     </div>
   </div>
-	
-<!-- Paper SubspacePath -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/SubspacePath.png" alt="XDomainBench thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/62512">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
-      </p>
-      <p class="paper-authors">
-		  Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/62512">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <p class="hero-hello" style="margin-bottom:0.6rem;">// Let's Connect</p>
+    <h2 class="contact-heading">Open to<br><em>Collaboration</em></h2>
+    <p class="contact-desc">Feel free to reach out for research collaboration or academic exchange.</p>
+    <a href="mailto:yurong.hao@ntu.edu.sg" class="contact-email">yurong.hao@ntu.edu.sg</a>
+    <div class="social-row">
+      <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" class="social-btn" target="_blank">Google Scholar</a>
+      <a href="https://dblp.org/pid/260/9439.html" class="social-btn" target="_blank">dblp</a>
     </div>
   </div>
-	
-  <!-- Paper XDomainBench -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/63740">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
-      </p>
-      <p class="paper-authors">
-       Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/63740">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
+</section>
 
-  <!-- Paper Spattack -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://arxiv.org/pdf/2507.06258">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a>
-      </p>
-      <p class="paper-authors">
-        Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
-      </p>
-      <p class="paper-venue">ACM WEB Conference (WWW), 2026. <span style="font-weight:600;">(Oral)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://arxiv.org/pdf/2507.06258">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
+<footer>© 2026 Yurong Hao · Research Fellow @ NTU</footer>
 
-<!-- Paper AegisGuard -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a>
-      </p>
-      <p class="paper-authors">
-        Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">Neural Information Processing Systems (NeurIPS), 2025. <span style="font-weight:600;">(Poster)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper StairClimbing -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/StairClimbing.png" alt="StairClimbing thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://ieeexplore.ieee.org/document/10739366">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a>
-      </p>
-      <p class="paper-authors">
-        <strong>Yurong Hao</strong>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.
-      </p>
-      <p class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://ieeexplore.ieee.org/document/10739366">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper FRecAttack2 -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/FRecAttack2.png" alt="FRecAttack2 thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://dl.acm.org/doi/10.1145/3658644.3670365">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a>
-      </p>
-      <p class="paper-authors">
-        <strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.
-      </p>
-      <p class="paper-venue">ACM Conference on Computer and Communications Security (CCS), 2024. <span style="font-weight:600;">(Oral)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://dl.acm.org/doi/10.1145/3658644.3670365">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
- <!-- Paper SOC -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/SOC.png" alt="SOC thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651">Privacy preserving in blockchain-based government data sharing: : A Service-On-Chain (SOC) approach</a>
-      </p>
-      <p class="paper-authors">
-        Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-      </p>
-      <p class="paper-venue">Information Processing & Management. (IP&M). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper LDP -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/LDP.png" alt="LDP thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a>
-      </p>
-      <p class="paper-authors">
-        Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-      </p>
-      <p class="paper-venue">Service Oriented Computing and Applications (SOCA). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-	
-</div>
-
-<hr>
-
-
-<h2 id="toc_4">Patents</h2>
-<ul>
-<li><p>Method for Privacy Leak detection method For Vertical Federated Learning Based on Feature Embedding Analysis, Wei Wang, Yurong Hao, et al., CN116341004B, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt></p></li>
-<li><p>Defence Method for Federated Learning Poisoning Attacks, Wei Wang, Yurong Hao, et al., CN116527393A, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-<li><p>Local Differential Privacy Method for Government Data Sharing. Chunhui Piao, Yurong Hao, et al., CN112329056B, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-<li><p>Privacy-Preserving Method for POI Recommendation. Wei Wang, Yurong Hao, et al., CN117272370B, in Chinese.<tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-<h2 id="toc_6">Monographs</h2>
-<ul>
-<li><p>Wei Wang et al., Privacy Preserving Computation[M], People's Posts and Telecommunications Press, 2023. <tt><font color=#FF1000><strong>Yurong Hao contributed to the writing of Section 8 (Differential Privacy)</strong></font></tt> </p></li>
-<li><p>Wei Wang et al., Artificial Intelligence Security Assessment Technology[M], Hans Publishing House, 2023. <tt><font color=#FF1000><strong>Yurong Hao served as an Editorial Board Member</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-
-<h2 id="toc_7">Research Projects</h2>
-<ul>
-<li><p>Privacy Preserving Recommender System, Ant Group.  <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>	
-<li><p>Privacy Preserved Methods for Federated Recommendation, Central Universities Basic Scientific Research Business Fund Project. <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>
-<li><p>Privacy Preserved Methods for Government Data Sharing, innovation project for M.S. students. <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>
-<li><p>Artificial Intelligence System Security Testing and Robust Enhancement Software and Hardware Integration, National Major Project. 
-<tt><font color=#FF1000><strong>participates in project application, management and technology research</strong></font></tt></p></li>
-<li><p>Research on key technologies for security detection and protection of artificial intelligence applications, National Major Project.
-<tt><font color=#FF1000><strong>participates in technology research and development</strong></font></tt></p></li>
-<li><p>Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&D Program Project. <tt><font color=#FF1000><strong>participates in technology research and development</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-<h2 id="toc_8">Selected Awards</h2>
-<ul>
-<li>Awarded the National Scholarship (2016), and National Encouragement Scholarship 2 times (2015&2017) during undergraduate studies; </li>
-<li>Awarded the title of "Outstanding League Cadre" during undergraduate studies (2016); </li>
-<li>Awarded the Academic Scholarship for two consecutive years during graduate studies (2020&2021);</li>
-<li>Won the third prize in the 3rd Hebei Province Graduate Student Network and Information Security Technology Competition (2019);</li>
-<li>Won the third prize in the "Huawei Cup" Competition at the 17th China Graduate Student Mathematical Contest in Modelling (2020);</li>
-<li>Awarded the title of "Outstanding Graduate of Heibei Province" and "Merit Student of Heibei Province" (2021);</li>	
-<li>Awarded the Academic Scholarship for three consecutive years in my PhD studies (2022-2025);</li>
-<li>Awarded the China Scholarship Council (CSC) Scholarship (2024-2025);</li>
-</ul>
-<hr>
-
-
-<h2 id="toc_9"> Invited Talks</h2>
-<ul>
-<li><a href="https://"> Nov 2025 </a> Security and Privacy in Personalised AI: From Federated to Multimodal LLM-based Recommender Systems, Institute of Science Tokyo, Tokyo, Japan. </li>
-<li><a href="https://"> Oct 2024 </a> Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation, ACM CCS 2024 oral, Salt Lake City, The United States. </li>
-<li><a href="https://"> Sep 2024 </a> Trustworthy AI-poisoning Attacks & Defence, Nanyang Technological University, Singapore. </li>
-</ul>
-<hr>
-
-
-
-<h3 id="toc_10">Contact <a href="https://mapmyvisitors.com/web/1bw1t"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" /></a></h3>
-
-<p>Yurong Hao</p>
-
-<p>Email: yurong.hao AT ntu DOT edu DOT sg </p>
-
-	
-	
-<script type="text/javascript">
-var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
-</script>
-
-
-	
-<script type="text/javascript">
-!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
-</script>
-
-<script type="text/x-mathjax-config">
-(function () {
-
-MathJax.Hub.Config({
-	'showProcessingMessages': false,
-	'messageStyle': 'none'
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior:'smooth' });
+  });
 });
-
-if (typeof MathJaxListener !== 'undefined') {
-	MathJax.Hub.Register.StartupHook('End', function () {
-		MathJaxListener.invokeCallbackForKey_('End');
-	});
-}
-
-})();
 </script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
 </body>
-
-</html>
-
-
-
-
-	
-
-</head>
-
-<body>
-
-<h1 id="toc_0">Yurong Hao &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title"> <img src="./files/scholar_logo.png" alt="Google Scholar" height="25"></a>  <a href="https://dblp.org/pid/260/9439.html"> <img src="./files/dblp_logo.png" alt="dblp" height="25"></a></h1>
-
-<hr>
-
-<p><img align="right" src="./files/yuronghaoa.jpg" style="width:150px"/> I am currently a Research Fellow at Nanyang Technological University (NTU), working with Prof.<a href="https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan"> Wei Yang Bryan Lim</a> and Prof.<a href="https://ece.ubc.ca/cyril-leung/"> Cyril Leung</a> in <a href="https://sites.google.com/view/wyb/home"> Midori</a> Lab. 
-	Before this, I received my Ph.D. degree in 2025 from <a href="https://cst.bjtu.edu.cn/">the School of Cyberspace Science and Technology</a> at <a href="https://en.bjtu.edu.cn/">Beijing Jiaotong University</a>, supervised by Prof.<a href="https://faculty.bjtu.edu.cn/6279/"> Jiqiang Liu</a> and Prof.<a href="https://weiwangup.github.io/"> Wei Wang</a>.
-	From 2024 to 2025, I was a visting student at Nanyang Technological University.
-<p>My research mainly focuses on Trustworthy AI, with a particular focus on poisoning attacks and defence mechanisms in distributed deep learning systems. 
-	Recently, my research has shifted toward trustworthiness in multimodal LLM and agent, where I explore potential vulnerabilities and develope robust defence mechanisms to enhance their integrity and user trust.</p>
-
-<hr>
-
-<h2 id="toc_2">News</h2>
-
-<ul>
-<li>Four papers are accepted by <a href="https://"> ICML 2026!</a>.</li>
-<li>Our work is accepted by <a href="https://"> WWW 2026!</a>.</li>
-<li>Our work is accepted by <a href="https://"> NeurIPS 2025!</a>.</li>
-<li>Our work is accepted by <a href="https://"> IEEE TIFS!</a>.</li>
-<li>Our work is accepted by <a href="https://"> ACM CCS 2024!</a>.</li>
-</ul>
-
-<hr>
-
-<h2 id="toc_3">Selected Publications [<a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ&gmla=AKKJWFdO6kaQ_xpR2oGgYaNcObt-X2bU3c6jzqjYS0-P5WmKFsEeubKeBcQPQoViI0UzgmFrkNUNoEOlTxULJcRHQ9Eatrj2dajjsHh0OXvKJkArKg">google scholar</a>] 
-	[<a href="https://dblp.org/pid/260/9439.html">dblp</a>]</h2>
-
-<div class="papers">
-	
-<!-- Paper VenomRec -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/61520">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a>
-      </p>
-      <p class="paper-authors">
-		  Guowei Guan, <strong>Yurong Hao</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/61520">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper ModelPirate -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/65910">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a>
-      </p>
-      <p class="paper-authors">
-		 Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/65910">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-	
-<!-- Paper SubspacePath -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/SubspacePath.png" alt="XDomainBench thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/62512">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
-      </p>
-      <p class="paper-authors">
-		  Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/62512">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-	
-  <!-- Paper XDomainBench -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-		  <a href="https://icml.cc/virtual/2026/poster/63740">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
-      </p>
-      <p class="paper-authors">
-       Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">International Conference on Machine Learning (ICML), 2026. <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://icml.cc/virtual/2026/poster/63740">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Paper Spattack -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://arxiv.org/pdf/2507.06258">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a>
-      </p>
-      <p class="paper-authors">
-        Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
-      </p>
-      <p class="paper-venue">ACM WEB Conference (WWW), 2026. <span style="font-weight:600;">(Oral)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://arxiv.org/pdf/2507.06258">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper AegisGuard -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a>
-      </p>
-      <p class="paper-authors">
-        Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.
-      </p>
-      <p class="paper-venue">Neural Information Processing Systems (NeurIPS), 2025. <span style="font-weight:600;">(Poster)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper StairClimbing -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/StairClimbing.png" alt="StairClimbing thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://ieeexplore.ieee.org/document/10739366">Eyes on Federated Recommendation: Targeted Poisoning With Competition and Its Mitigation</a>
-      </p>
-      <p class="paper-authors">
-        <strong>Yurong Hao</strong>, Xihui Chen, Wei Wang*, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz.
-      </p>
-      <p class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://ieeexplore.ieee.org/document/10739366">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper FRecAttack2 -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/FRecAttack2.png" alt="FRecAttack2 thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://dl.acm.org/doi/10.1145/3658644.3670365">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</a>
-      </p>
-      <p class="paper-authors">
-        <strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang*.
-      </p>
-      <p class="paper-venue">ACM Conference on Computer and Communications Security (CCS), 2024. <span style="font-weight:600;">(Oral)</span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://dl.acm.org/doi/10.1145/3658644.3670365">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
- <!-- Paper SOC -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/SOC.png" alt="SOC thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651">Privacy preserving in blockchain-based government data sharing: : A Service-On-Chain (SOC) approach</a>
-      </p>
-      <p class="paper-authors">
-        Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-      </p>
-      <p class="paper-venue">Information Processing & Management. (IP&M). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://dl.acm.org/doi/abs/10.1016/j.ipm.2021.102651">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-
-<!-- Paper LDP -->
-  <div class="paper-card">
-    <div class="paper-thumb">
-      <img src="assets/papers/LDP.png" alt="LDP thumbnail" loading="lazy">
-    </div>
-    <div class="paper-meta">
-      <p class="paper-title">
-        <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3">Privacy Protection in Government Data Sharing: An Improved LDP-based Approach</a>
-      </p>
-      <p class="paper-authors">
-        Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang.
-      </p>
-      <p class="paper-venue">Service Oriented Computing and Applications (SOCA). <span style="font-weight:600;"></span></p>
-      <div class="paper-links">
-        <!-- <a href="project链接">Project page</a> -->
-        <a href="https://link.springer.com/article/10.1007/s11761-021-00315-3">Paper</a>
-        <!-- <a href="code链接">Code</a> -->
-      </div>
-    </div>
-  </div>
-	
-</div>
-
-<hr>
-
-
-<h2 id="toc_4">Patents</h2>
-<ul>
-<li><p>Method for Privacy Leak detection method For Vertical Federated Learning Based on Feature Embedding Analysis, Wei Wang, Yurong Hao, et al., CN116341004B, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt></p></li>
-<li><p>Defence Method for Federated Learning Poisoning Attacks, Wei Wang, Yurong Hao, et al., CN116527393A, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-<li><p>Local Differential Privacy Method for Government Data Sharing. Chunhui Piao, Yurong Hao, et al., CN112329056B, in Chinese. <tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-<li><p>Privacy-Preserving Method for POI Recommendation. Wei Wang, Yurong Hao, et al., CN117272370B, in Chinese.<tt><font color=#FF1000><strong>China Patent Granted</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-<h2 id="toc_6">Monographs</h2>
-<ul>
-<li><p>Wei Wang et al., Privacy Preserving Computation[M], People's Posts and Telecommunications Press, 2023. <tt><font color=#FF1000><strong>Yurong Hao contributed to the writing of Section 8 (Differential Privacy)</strong></font></tt> </p></li>
-<li><p>Wei Wang et al., Artificial Intelligence Security Assessment Technology[M], Hans Publishing House, 2023. <tt><font color=#FF1000><strong>Yurong Hao served as an Editorial Board Member</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-
-<h2 id="toc_7">Research Projects</h2>
-<ul>
-<li><p>Privacy Preserving Recommender System, Ant Group.  <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>	
-<li><p>Privacy Preserved Methods for Federated Recommendation, Central Universities Basic Scientific Research Business Fund Project. <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>
-<li><p>Privacy Preserved Methods for Government Data Sharing, innovation project for M.S. students. <tt><font color=#FF1000><strong>PI</strong></font></tt></p></li>
-<li><p>Artificial Intelligence System Security Testing and Robust Enhancement Software and Hardware Integration, National Major Project. 
-<tt><font color=#FF1000><strong>participates in project application, management and technology research</strong></font></tt></p></li>
-<li><p>Research on key technologies for security detection and protection of artificial intelligence applications, National Major Project.
-<tt><font color=#FF1000><strong>participates in technology research and development</strong></font></tt></p></li>
-<li><p>Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&D Program Project. <tt><font color=#FF1000><strong>participates in technology research and development</strong></font></tt> </p></li>
-</ul>
-<hr>
-
-<h2 id="toc_8">Selected Awards</h2>
-<ul>
-<li>Awarded the National Scholarship (2016), and National Encouragement Scholarship 2 times (2015&2017) during undergraduate studies; </li>
-<li>Awarded the title of "Outstanding League Cadre" during undergraduate studies (2016); </li>
-<li>Awarded the Academic Scholarship for two consecutive years during graduate studies (2020&2021);</li>
-<li>Won the third prize in the 3rd Hebei Province Graduate Student Network and Information Security Technology Competition (2019);</li>
-<li>Won the third prize in the "Huawei Cup" Competition at the 17th China Graduate Student Mathematical Contest in Modelling (2020);</li>
-<li>Awarded the title of "Outstanding Graduate of Heibei Province" and "Merit Student of Heibei Province" (2021);</li>	
-<li>Awarded the Academic Scholarship for three consecutive years in my PhD studies (2022-2025);</li>
-<li>Awarded the China Scholarship Council (CSC) Scholarship (2024-2025);</li>
-</ul>
-<hr>
-
-
-<h2 id="toc_9"> Invited Talks</h2>
-<ul>
-<li><a href="https://"> Nov 2025 </a> Security and Privacy in Personalised AI: From Federated to Multimodal LLM-based Recommender Systems, Institute of Science Tokyo, Tokyo, Japan. </li>
-<li><a href="https://"> Oct 2024 </a> Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation, ACM CCS 2024 oral, Salt Lake City, The United States. </li>
-<li><a href="https://"> Sep 2024 </a> Trustworthy AI-poisoning Attacks & Defence, Nanyang Technological University, Singapore. </li>
-</ul>
-<hr>
-
-
-
-<h3 id="toc_10">Contact <a href="https://mapmyvisitors.com/web/1bw1t"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" /></a></h3>
-
-<p>Yurong Hao</p>
-
-<p>Email: yurong.hao AT ntu DOT edu DOT sg </p>
-
-	
-	
-<script type="text/javascript">
-var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
-</script>
-
-
-	
-<script type="text/javascript">
-!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
-</script>
-
-<script type="text/x-mathjax-config">
-(function () {
-
-MathJax.Hub.Config({
-	'showProcessingMessages': false,
-	'messageStyle': 'none'
-});
-
-if (typeof MathJaxListener !== 'undefined') {
-	MathJax.Hub.Register.StartupHook('End', function () {
-		MathJaxListener.invokeCallbackForKey_('End');
-	});
-}
-
-})();
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-</body>
-
 </html>
