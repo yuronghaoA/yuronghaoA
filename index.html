@@ -8,23 +8,23 @@
 
 <style>
 :root {
-  --bg: #fafaf8;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #f3f3f0;
-  --surface-3: #eaeae6;
-  --border: rgba(0,0,0,0.10);
-  --border-hover: rgba(22,101,52,0.22);
+  --surface-2: #f6f8fa;
+  --surface-3: #d8e5f5;
+  --border: rgba(65,131,196,0.18);
+  --border-hover: rgba(65,131,196,0.35);
   --text: #000000;
   --text-mid: rgba(0,0,0,0.78);
   --text-dim: #777777;
-  --accent: #166534;
-  --accent-light: #22c55e;
-  --accent-bg: rgba(22,101,52,0.05);
-  --accent-bg2: rgba(22,101,52,0.08);
+  --accent: #4183C4;
+  --accent-light: #2f6fa8;
+  --accent-bg: rgba(65,131,196,0.06);
+  --accent-bg2: rgba(65,131,196,0.10);
   --warm: #b45309;
   --warm-bg: rgba(180,83,9,0.06);
-  --blue: #1e40af;
-  --blue-bg: rgba(30,64,175,0.05);
+  --blue: #4183C4;
+  --blue-bg: rgba(65,131,196,0.08);
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans-v2: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: 'JetBrains Mono', monospace;
@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 30px; color: black; }
 h2 {
   font-size: 26px;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: none !important;
   color: black;
 }
 h3 { font-size: 22px; }
@@ -75,12 +75,7 @@ li { margin: 0; }
 img { max-width: 100%; }
 
 hr {
-  border: 0;
-  border-top: 1px solid #cccccc;
-  height: 1px;
-  margin: 14px auto;
-  max-width: 1180px;
-  background: transparent;
+  display: none;
 }
 
 code, tt {
@@ -104,8 +99,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(18px);
-  background: rgba(250,250,248,0.88);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.92);
+  border-bottom: none;
 }
 
 .nav-name {
@@ -114,7 +109,7 @@ nav {
   color: black;
 }
 
-.nav-name span { color: var(--accent); }
+.nav-name span { color: #4183C4 !important; }
 
 .nav-links {
   display: flex;
@@ -137,25 +132,25 @@ nav {
 /* ─── HERO: Version-1 layout, adjusted to Version-2 scale ─── */
 .hero {
   display: grid;
-  grid-template-columns: 210px 1fr;
-  gap: 2.2rem;
-  align-items: center;
+  grid-template-columns: 165px 1fr;
+  gap: 1.9rem;
+  align-items: start;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 1.4rem 0 1.6rem;
+  padding: 1.15rem 0 1.15rem;
 }
 
 .profile-card { text-align: center; }
 
 .avatar-wrap {
-  width: 150px;
-  height: 190px;
-  border-radius: 95px 95px 18px 18px;
+  width: 138px;
+  height: 170px;
+  border-radius: 84px 84px 16px 16px;
   overflow: hidden;
   border: 2px solid var(--surface-3);
   background: var(--surface-2);
-  margin: 0 auto 0.8rem;
-  box-shadow: var(--shadow-md);
+  margin: 0 auto 0.65rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .avatar-wrap img {
@@ -166,35 +161,35 @@ nav {
 }
 
 .profile-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.18rem;
 }
 
 .profile-title {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-dim);
   text-align: center;
-  line-height: 1.35;
-  margin-bottom: 0.7rem;
+  line-height: 1.32;
+  margin-bottom: 0.45rem;
 }
 
 .profile-links {
   display: flex;
   justify-content: center;
-  gap: 0.35rem;
-  margin-bottom: 0.7rem;
+  gap: 0.3rem;
+  margin-bottom: 0.55rem;
   flex-wrap: wrap;
 }
 
 .profile-link-btn {
   display: inline-flex;
   align-items: center;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: 999px;
-  font-size: 13px;
-  border: 1px solid rgba(0,0,0,.18);
+  font-size: 12px;
+  border: 1px solid rgba(65,131,196,.28);
   color: #4183C4;
   background: #fff;
   text-decoration: none;
@@ -202,9 +197,9 @@ nav {
 }
 
 .profile-link-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-bg);
+  border-color: #4183C4;
+  color: #4183C4;
+  background: rgba(65,131,196,0.06);
 }
 
 .tag-cloud {
@@ -215,59 +210,59 @@ nav {
 }
 
 .tag {
-  font-size: 12px;
-  padding: 2px 8px;
+  font-size: 11px;
+  padding: 2px 7px;
   border-radius: 999px;
-  background: var(--accent-bg);
-  color: var(--accent);
-  border: 1px solid rgba(22,101,52,0.12);
+  background: rgba(65,131,196,0.06);
+  color: #4183C4 !important;
+  border: 1px solid rgba(65,131,196,0.16);
   white-space: nowrap;
 }
 
 .hero-hello {
   font-size: 14px;
-  color: var(--accent);
+  color: #4183C4 !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.38rem;
 }
 
 .hero-content h1 {
   font-size: 30px;
-  line-height: 1.18;
+  line-height: 1.15;
   color: black;
-  margin: 10px 0 10px;
+  margin: 8px 0 10px;
   white-space: nowrap;
 }
 
 .hero-content h1 em {
   font-style: italic;
-  color: var(--accent);
+  color: #4183C4 !important;
 }
 
 .hero-bio {
   font-size: 15px;
   color: var(--text-mid);
   line-height: 1.4;
-  max-width: 850px;
-  margin: 11px 0;
+  max-width: none;
+  margin: 8px 0;
 }
 
 .hero-bio strong { color: black; font-weight: bold; }
 
 .research-focus {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: var(--accent-bg);
-  border: 1px solid rgba(22,101,52,0.12);
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: rgba(65,131,196,0.06);
+  border: 1px solid rgba(65,131,196,0.16);
   color: var(--text-mid);
   font-size: 15px;
   line-height: 1.4;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .research-focus strong {
-  color: var(--accent);
+  color: #4183C4 !important;
   font-weight: bold;
 }
 
@@ -275,7 +270,7 @@ nav {
 .section {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0.65rem 0;
+  padding: 0.45rem 0;
 }
 
 .section-header {
@@ -288,11 +283,12 @@ nav {
 .section-header h2 {
   flex: 1;
   margin: 12px 0 8px;
+  border-bottom: none !important;
 }
 
 .section-num {
   font-size: 15px;
-  color: var(--accent);
+  color: #4183C4 !important;
   opacity: 0.7;
 }
 
@@ -359,15 +355,16 @@ nav {
 .pub-info { flex: 1; min-width: 0; }
 
 .pub-venue {
-  display: inline-block;
-  margin: 0 0 8px 0;
-  padding: 3px 8px;
+  display: inline;
+  margin: 0;
+  padding: 2px 7px;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
+  white-space: nowrap;
 }
 
-.pub-venue.top { background: var(--accent-bg2); color: var(--accent); }
+.pub-venue.top { background: rgba(65,131,196,0.10); color: #4183C4 !important; }
 .pub-venue.journal { background: var(--blue-bg); color: var(--blue); }
 .pub-venue.other { background: var(--warm-bg); color: var(--warm); }
 
@@ -425,7 +422,7 @@ nav {
   color: black;
   margin-bottom: 8px;
   padding-bottom: 7px;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: none !important;
 }
 
 .info-item {
@@ -593,12 +590,12 @@ nav {
       <a href="https://dblp.org/pid/260/9439.html" class="profile-link-btn" target="_blank">dblp</a>
       <a href="mailto:yurong.hao@ntu.edu.sg" class="profile-link-btn">Email</a>
     </div>
-    <!-- <div class="tag-cloud">
+    <div class="tag-cloud">
       <span class="tag">Trustworthy AI</span>
       <span class="tag">Poisoning Attacks</span>
       <span class="tag">Federated Learning</span>
       <span class="tag">Multimodal LLM</span>
-    </div> -->
+    </div>
   </div>
 
   <div class="hero-content">
@@ -622,7 +619,7 @@ nav {
   </div>
 </section>
 
-<hr>
+
 
 <!-- ═══ NEWS: Version-2 format retained ═══ -->
 <section class="section" id="news">
@@ -640,7 +637,7 @@ nav {
   </ul>
 </section>
 
-<hr>
+
 
 <!-- ═══ PUBLICATIONS ═══ -->
 <section class="section" id="publications">
@@ -747,7 +744,7 @@ nav {
   </div>
 </section>
 
-<hr>
+
 
 <!-- ═══ PATENTS, MONOGRAPHS & PROJECTS ═══ -->
 <section class="section" id="patents">
@@ -786,7 +783,7 @@ nav {
   </div>
 </section>
 
-<hr>
+
 
 <!-- ═══ AWARDS ═══ -->
 <section class="section" id="awards">
@@ -808,7 +805,7 @@ nav {
   </div>
 </section>
 
-<hr>
+
 
 <!-- ═══ TALKS ═══ -->
 <section class="section" id="talks">
@@ -842,7 +839,7 @@ nav {
   </div>
 </section>
 
-<hr>
+
 
 <!-- ═══ CONTACT ═══ -->
 <section class="contact-section" id="contact">
