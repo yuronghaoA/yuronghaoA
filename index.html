@@ -29,7 +29,7 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.5;
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
@@ -40,20 +40,20 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 50px;
-  padding: 60px 20px;
+  gap: 45px;
+  padding: 45px 20px;
 }
 
 /* ================= 左侧固定个人信息栏 ================= */
 .sidebar {
   position: sticky;
-  top: 40px;
+  top: 30px;
   height: fit-content;
 }
 
 .profile-img-container {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .profile-img {
@@ -61,7 +61,6 @@ body {
   height: 190px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ffffff;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
 }
@@ -71,7 +70,7 @@ body {
 }
 
 .name {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-dark);
   line-height: 1.2;
@@ -85,7 +84,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .social-links a {
@@ -99,7 +98,7 @@ body {
 }
 
 .social-links img {
-  height: 26px;
+  height: 25px;
   width: auto;
 }
 
@@ -107,22 +106,22 @@ body {
 .contact-card {
   background-color: var(--bg-light);
   border-radius: 12px;
-  padding: 20px;
+  padding: 18px;
   border: 1px solid var(--border-color);
 }
 
 .contact-card h3 {
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
 .contact-item {
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 13.5px;
+  margin-bottom: 8px;
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -132,15 +131,15 @@ body {
 
 .contact-item i {
   color: var(--accent-color);
-  margin-top: 4px;
+  margin-top: 3px;
   width: 14px;
   text-align: center;
 }
 
 .visitor-map {
-  margin-top: 15px;
+  margin-top: 12px;
   border-top: 1px solid var(--border-color);
-  padding-top: 15px;
+  padding-top: 12px;
   text-align: center;
 }
 
@@ -154,7 +153,7 @@ body {
 .main-content {
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 32px; /* 紧凑的内容模块间距 */
 }
 
 section {
@@ -162,17 +161,17 @@ section {
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 20px;
-  padding-bottom: 6px;
+  margin-bottom: 14px; /* 减少标题下方的留白 */
+  padding-bottom: 4px;
   border-bottom: 2px solid var(--primary-color);
   display: inline-block;
 }
 
 h2 a {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   margin-left: 8px;
   color: var(--accent-color);
@@ -184,7 +183,7 @@ h2 a:hover {
 }
 
 p {
-  font-size: 15.5px;
+  font-size: 15px;
   color: var(--text-main);
   text-align: justify;
 }
@@ -207,19 +206,19 @@ p a:hover {
 .news-list li {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 12px;
-  font-size: 15px;
+  gap: 12px;
+  margin-bottom: 8px; /* 紧凑列表间距 */
+  font-size: 14.5px;
 }
 
 .news-badge {
   background-color: #eff6ff;
   color: var(--accent-color);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
-  padding: 2px 8px;
+  padding: 1px 6px;
   border-radius: 4px;
-  min-width: 85px;
+  min-width: 80px;
   text-align: center;
   flex-shrink: 0;
 }
@@ -228,14 +227,14 @@ p a:hover {
 .papers {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px; /* 论文卡片间距稍微收紧 */
 }
 
 .paper-card {
   display: grid;
-  grid-template-columns: 210px 1fr;
+  grid-template-columns: 240px 1fr; /* 拓宽图片列，给图片更大的展示空间 */
   gap: 20px;
-  padding: 16px;
+  padding: 14px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
   background: #fff;
@@ -250,18 +249,17 @@ p a:hover {
 
 .paper-thumb {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  border-radius: 8px;
+  aspect-ratio: 16 / 9; /* 更扁平的黄金比例，减少上下无效留白 */
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: #fdfdfd;
+  background: #ffffff; /* 纯白背景与结构图更好地融为一体 */
 }
 
 .paper-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* 保证论文系统结构图完美居中不裁剪 */
-  padding: 4px;
+  object-fit: contain; /* 保证论文结构图比例完美不被裁剪 */
 }
 
 .paper-meta {
@@ -271,11 +269,11 @@ p a:hover {
 }
 
 .paper-title {
-  font-size: 16.5px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 6px;
-  line-height: 1.35;
+  margin-bottom: 4px;
+  line-height: 1.3;
 }
 
 .paper-title a {
@@ -289,9 +287,9 @@ p a:hover {
 }
 
 .paper-authors {
-  font-size: 14.5px;
+  font-size: 14px;
   color: #475569;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .paper-authors strong {
@@ -301,9 +299,9 @@ p a:hover {
 }
 
 .paper-venue {
-  font-size: 14.5px;
+  font-size: 14px;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .paper-links {
@@ -316,11 +314,11 @@ p a:hover {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 14px;
+  padding: 3px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   color: #475569;
   background-color: #ffffff;
@@ -341,8 +339,8 @@ p a:hover {
 .custom-list li {
   position: relative;
   padding-left: 18px;
-  margin-bottom: 12px;
-  font-size: 15px;
+  margin-bottom: 8px; /* 列表项间距收紧 */
+  font-size: 14.5px;
   text-align: justify;
 }
 
@@ -359,7 +357,7 @@ p a:hover {
 /* 高级学术标签样式 */
 .badge {
   display: inline-block;
-  padding: 1px 7px;
+  padding: 1px 6px;
   font-size: 11px;
   font-weight: 600;
   border-radius: 4px;
@@ -375,19 +373,19 @@ p a:hover {
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 35px;
-    padding: 30px 16px;
+    gap: 30px;
+    padding: 25px 16px;
   }
   .sidebar {
     position: relative;
     top: 0;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
   .social-links { justify-content: center; }
   .contact-card { text-align: left; }
-  .paper-card { grid-template-columns: 1fr; gap: 15px; }
+  .paper-card { grid-template-columns: 1fr; gap: 12px; }
 }
 </style>
 
