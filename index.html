@@ -27,10 +27,11 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* 严格遵循高质感无衬线字体体系，完美匹配几何感与现代字间距 */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-main);
   line-height: 1.5;
-  letter-spacing: -0.01em; 
+  letter-spacing: -0.015em; 
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
@@ -49,19 +50,25 @@ body {
   position: sticky;
   top: 30px;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .profile-img-container {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .profile-img {
   width: 190px;
   height: 190px;
   border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  /* 核心修改 1：改用 contain 配合背景色，并加入适度 padding，确保头像不被裁剪、展示完整 */
+  object-fit: contain; 
+  background-color: #f1f5f9;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
 }
 
 .name {
@@ -69,8 +76,9 @@ body {
   font-weight: 700;
   color: var(--text-dark);
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .social-links {
@@ -78,7 +86,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .social-links a {
@@ -103,13 +111,13 @@ body {
   border: 1px solid var(--border-color);
 }
 
-.contact-card h3 {
-  font-size: 13px;
+.contact-card h3, .sidebar-section h3 {
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: #64748b;
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .contact-item {
@@ -129,16 +137,44 @@ body {
   text-align: center;
 }
 
+/* 左侧新增的荣誉与地图区域 */
+.sidebar-section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 4px 0;
+}
+
+.sidebar-honor-list {
+  list-style: none;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.sidebar-honor-list li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 8px;
+}
+
+.sidebar-honor-list li::before {
+  content: "•";
+  color: var(--accent-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: -1px;
+}
+
 .visitor-map {
-  margin-top: 12px;
   border-top: 1px solid var(--border-color);
-  padding-top: 12px;
+  padding-top: 16px;
   text-align: center;
 }
 
 .visitor-map img {
   max-width: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
 }
 
@@ -161,6 +197,7 @@ h2 {
   padding-bottom: 4px;
   border-bottom: 2px solid var(--primary-color);
   display: inline-block;
+  letter-spacing: -0.01em;
 }
 
 h2 a {
@@ -173,6 +210,14 @@ h2 a {
 
 h2 a:hover {
   text-decoration: underline;
+}
+
+.author-note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  font-style: italic;
 }
 
 p {
@@ -225,7 +270,7 @@ p a:hover {
 
 .paper-card {
   display: grid;
-  grid-template-columns: 230px 1fr; /* 适当微调比例 */
+  grid-template-columns: 230px 1fr;
   gap: 24px;
   padding: 16px;
   border: 1px solid var(--border-color);
@@ -239,7 +284,6 @@ p a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
 }
 
-/* 图片外框容器 */
 .paper-thumb {
   width: 100%;
   aspect-ratio: 16 / 10; 
@@ -249,17 +293,16 @@ p a:hover {
   background: #ffffff;
 }
 
-/* 核心修改 2：让图充满整个框架，拒绝图框内上下留白 */
 .paper-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 完美填满整个图框 */
+  object-fit: cover; 
 }
 
 .paper-meta {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 居中对齐，让文字分布更均匀均匀 */
+  justify-content: center; 
 }
 
 .paper-title {
@@ -268,6 +311,7 @@ p a:hover {
   color: var(--text-dark);
   margin-bottom: 6px;
   line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .paper-title a {
@@ -291,12 +335,11 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* 核心修改 1：合并会议标签与链接，消除下方一整行多余留白 */
 .paper-venue-line {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px; /* 标签与操作按钮紧凑排在一行 */
+  gap: 12px; 
   margin-bottom: 8px;
 }
 
@@ -328,11 +371,52 @@ p a:hover {
   opacity: 0.8;
 }
 
+/* 修改 4: TL;DR 原生折叠样式设计 */
+.tldr-container {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.tldr-container details {
+  background-color: var(--bg-light);
+  border-radius: 6px;
+  border: 1px dashed #cbd5e1;
+  transition: background-color 0.2s ease;
+}
+
+.tldr-container details[open] {
+  background-color: #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.tldr-container summary {
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-color);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.tldr-container summary:hover {
+  color: #1d4ed8;
+}
+
+.tldr-content {
+  padding: 4px 12px 0 12px;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.45;
+  text-align: justify;
+}
+
 .paper-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .research-tag {
@@ -393,7 +477,6 @@ p a:hover {
   .sidebar {
     position: relative;
     top: 0;
-    text-align: center;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 25px;
   }
@@ -425,6 +508,7 @@ p a:hover {
         </a>
       </div>
 
+      <!-- 核心修改 2: 规范化邮箱地址 -->
       <div class="contact-card">
         <h3>Contact</h3>
         <div class="contact-item">
@@ -433,14 +517,27 @@ p a:hover {
         </div>
         <div class="contact-item">
           <i class="fa-solid fa-envelope"></i>
-          <span>yurong.hao AT ntu DOT edu DOT sg</span>
+          <span>Yurong.hao@ntu.edu.sg</span>
         </div>
-        
-        <div class="visitor-map">
-          <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
-            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
-          </a>
-        </div>
+      </div>
+
+      <!-- 核心修改 3: 左侧信息栏新增 Honors & Awards 以及 Visitor Map -->
+      <div class="sidebar-section">
+        <h3>Honors & Awards</h3>
+        <ul class="sidebar-honor-list">
+          <li>CSC Scholarship (2024-2025)</li>
+          <li>PhD Academic Scholarship (2022-2025)</li>
+          <li>Outstanding Graduate of Hebei Province (2021)</li>
+          <li>"Huawei Cup" Modeling Competition, 3rd Prize (2020)</li>
+          <li>Graduate Academic Scholarship (2020 & 2021)</li>
+          <li>Undergraduate National Scholarship (2016)</li>
+        </ul>
+      </div>
+
+      <div class="visitor-map">
+        <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
+          <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
+        </a>
       </div>
     </aside>
 
@@ -469,9 +566,12 @@ p a:hover {
           <a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=t6Q_2wcAAAAJ" target="_blank">[Google Scholar]</a> 
           <a href="https://dblp.org/pid/260/9439.html" target="_blank">[DBLP]</a>
         </h2>
+        <!-- 核心修改 5: 添加论文贡献与通讯标注微型提示字 -->
+        <div class="author-note">† Equal contribution, * Corresponding author (for publications)</div>
 
         <div class="papers">
           
+          <!-- Paper 1 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
@@ -486,6 +586,15 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
                 <div class="paper-links-inline">
+                  <!-- 核心修改 4: 嵌套内联可折叠 [TL;DR] 摘要块 -->
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        This paper investigates cross-modal security vulnerabilities within multimodal large language model (MLLM) based recommender systems. We introduce VenomRec, a stealthy poisoning framework featuring Exposure Alignment and Cross-modal Interactive Perturbation modules to achieve targeted promotion while evading multi-modal detection schemes.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">Paper</a>
                   <a href="#" target="_blank">Code</a>
                 </div>
@@ -498,6 +607,7 @@ p a:hover {
             </div>
           </div>
 
+          <!-- Paper 2 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
@@ -512,6 +622,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        We present a comprehensive empirical analysis analyzing the structural resilience of modern partial model merging approaches against specialized model cloning and pirate replication attacks, exposing key security architectural implications for distributed open-source development.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">Paper</a>
                 </div>
               </div>
@@ -522,6 +640,7 @@ p a:hover {
             </div>
           </div>
             
+          <!-- Paper 3 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
@@ -536,6 +655,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        This work designs an on-the-fly, inference-time network pruning framework leveraging localized probe representations to dynamically decouple and select key active parameters, dramatically decreasing latency without sacrificing task accuracy.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
                 </div>
               </div>
@@ -547,6 +674,7 @@ p a:hover {
             </div>
           </div>
             
+          <!-- Paper 4 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
@@ -561,6 +689,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">ICML 2026</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        We introduce a diagnostic evaluation benchmark named XDomainBench to systematically evaluate, track, and mitigate multi-disciplinary reasoning degradation and semantic knowledge collapse in large language models processing highly high-dimensional scientific queries.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
                 </div>
               </div>
@@ -571,6 +707,7 @@ p a:hover {
             </div>
           </div>
 
+          <!-- Paper 5 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
@@ -585,6 +722,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">WWW 2026</span> <span class="badge badge-orange">Oral</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        This paper explores targeted vulnerabilities in localized networks by proposing Spattack, a subgroup-oriented user profile poisoning method tailored to bypass conventional global defense filters within federated recommendation infrastructures.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Paper</a>
                 </div>
               </div>
@@ -595,6 +740,7 @@ p a:hover {
             </div>
           </div>
 
+          <!-- Paper 6 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
@@ -609,6 +755,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">NeurIPS 2025</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        AegisGuard proposes a reinforcement learning-guided lightweight adapter parameter tuning strategy designed explicitly for hardware-constrained Trusted Execution Environments (TEEs), achieving secure and highly dynamic on-device text processing.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">Paper</a>
                 </div>
               </div>
@@ -620,6 +774,7 @@ p a:hover {
             </div>
           </div>
 
+          <!-- Paper 7 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/StairClimbing.png" alt="StairClimbing thumbnail" loading="lazy">
@@ -634,6 +789,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">IEEE TIFS</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        We model and evaluate targeted optimization conflicts under competitive item environments within federated matrix completion architectures, designing robust mathematical parameter mitigation bounds against gradient injection.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Paper</a>
                 </div>
               </div>
@@ -644,6 +807,7 @@ p a:hover {
             </div>
           </div>
 
+          <!-- Paper 8 -->
           <div class="paper-card">
             <div class="paper-thumb">
               <img src="assets/papers/FRecAttack2.png" alt="FRecAttack2 thumbnail" loading="lazy">
@@ -658,6 +822,14 @@ p a:hover {
               <div class="paper-venue-line">
                 <span class="venue-badge">ACM CCS 2024</span> <span class="badge badge-orange">Oral</span>
                 <div class="paper-links-inline">
+                  <div class="tldr-container">
+                    <details>
+                      <summary>[TL;DR]</summary>
+                      <div class="tldr-content">
+                        This paper comprehensively uncovers underlying architectural interplays governing user explicit ratings and cross-item vectors, deploying stealthy untargeted gradient disruption models capable of dropping overall platform utility scores.
+                      </div>
+                    </details>
+                  </div>
                   <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Paper</a>
                 </div>
               </div>
@@ -698,20 +870,6 @@ p a:hover {
           <li>Artificial Intelligence System Security Testing and Robust Enhancement Software and Hardware Integration, National Major Project. <span class="badge badge-blue">Participated in Project Application, Management and Tech Research</span></li>
           <li>Research on key technologies for security detection and protection of artificial intelligence applications, National Major Project. <span class="badge badge-blue">Participated in Technology Research and Development</span></li>
           <li>Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&D Program Project. <span class="badge badge-blue">Participated in Technology Research and Development</span></li>
-        </ul>
-      </section>
-
-      <section id="awards">
-        <h2>Selected Awards</h2>
-        <ul class="custom-list">
-          <li>Awarded the National Scholarship (2016), and National Encouragement Scholarship 2 times (2015 & 2017) during undergraduate studies;</li>
-          <li>Awarded the title of "Outstanding League Cadre" during undergraduate studies (2016);</li>
-          <li>Awarded the Academic Scholarship for two consecutive years during graduate studies (2020 & 2021);</li>
-          <li>Won the third prize in the 3rd Hebei Province Graduate Student Network and Information Security Technology Competition (2019);</li>
-          <li>Won the third prize in the "Huawei Cup" Competition at the 17th China Graduate Student Mathematical Contest in Modelling (2020);</li>
-          <li>Awarded the title of "Outstanding Graduate of Hebei Province" and "Merit Student of Hebei Province" (2021);</li> 
-          <li>Awarded the Academic Scholarship for three consecutive years in my PhD studies (2022-2025);</li>
-          <li>Awarded the China Scholarship Council (CSC) Scholarship (2024-2025);</li>
         </ul>
       </section>
 
