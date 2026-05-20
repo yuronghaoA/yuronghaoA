@@ -36,12 +36,12 @@ body {
 }
 
 .container {
-  /* 原始 max-width 为 1140px，两侧各加 10mm（共计约 75.6px），这里四舍五入优雅扩容 */
+  /* 整体最大宽度增加 20mm（左右两侧各增加 10mm 的额度） */
   max-width: calc(1140px + 20mm);
   margin: 0 auto;
   display: grid;
-  /* 核心改动：左侧由 310px 变更为 310px + 10mm；右侧由 1fr 变更为 calc(1fr + 10mm) */
-  grid-template-columns: calc(310px + 10mm) calc(1fr + 10mm); 
+  /* 修复核心：左侧精准增加 10mm，右侧设为稳定的 1fr 自动填满增加后的宽幅，完美避免标准语法冲突 */
+  grid-template-columns: calc(310px + 10mm) 1fr; 
   gap: 40px;
   padding: 45px 20px;
 }
