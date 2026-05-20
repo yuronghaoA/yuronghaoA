@@ -691,14 +691,80 @@ h3.year-heading {
         <div class="publication-indexer">
           <span class="indexer-label"><i class="fa-solid fa-tags"></i> Research Topics:</span>
           <div class="indexer-buttons">
+            <a href="#topic-benchmark" class="index-btn">Benchmarks & Datasets</a>
             <a href="#topic-llm" class="index-btn">LLM Security</a>
             <a href="#topic-distributed" class="index-btn">Distributed AI Security</a>
             <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computation</a>
             <a href="#topic-efficiency" class="index-btn">Model Efficiency</a>
-            <a href="#topic-benchmark" class="index-btn">Benchmarks & Datasets</a>
+
           </div>
         </div>
 
+
+
+  <!-- ================= 5. Benchmark (Benchmarks & Datasets) ================= -->
+  <div class="papers-by-topic" id="topic-benchmark">
+    <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Benchmarks & Datasets</h3>
+    <div class="papers">
+
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
+                </p>
+                <p class="paper-authors">
+                  Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">ICML 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
+                    <a href="https://github.com/GongZhiren/XDomainBench" target="_blank">Code</a>
+                    <a href="https://gongzhiren.github.io/XDomainBench-website/" target="_blank">Website</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># LLM Evaluation</span>
+                  <span class="research-tag"># Scientific Reasoning</span>
+                  <span class="research-tag"># Benchmark and Datasets</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FraudBench (2026) -->
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/FraudBench" alt="FraudBench thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://arxiv.org/abs/2605.08820" target="_blank">FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence</a>
+                </p>
+                <p class="paper-authors">
+                  Xinyu Yan, Boyang Chen, Jiaming Zhang, Tiantong Wu, Hong Xi Tae, Yichen He, Tiantong Wang, Yachun Mi, <strong>Yurong Hao</strong>, Yilei Zhao, Lei Xiao, Longtao Huang, Pengjun Xie, Wei Liu, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">arXiv 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://arxiv.org/abs/2605.08820" target="_blank">Paper</a>
+                    <a href="https://github.com/Tristan0318/FraudBench" target="_blank">Code</a>
+                    <a href="https://tristan0318.github.io/FraudBench/" target="_blank">Website</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># MLLM Benchmark</span>
+                  <span class="research-tag"># Refund Fraud Detection</span>
+                </div>
+              </div>
+            </div>
+      
+    </div>
+  </div>
+
+        
    <!-- ================= 1. LLM安全 (LLM Security) ================= -->
   <div class="papers-by-topic" id="topic-llm">
     <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM & Agent Security</h3>
@@ -1040,69 +1106,6 @@ h3.year-heading {
       
     </div>
   </div>
-
-  <!-- ================= 5. Benchmark (Benchmarks & Datasets) ================= -->
-  <div class="papers-by-topic" id="topic-benchmark">
-    <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Benchmarks & Datasets</h3>
-    <div class="papers">
-
-            <div class="paper-card">
-              <div class="paper-thumb">
-                <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
-              </div>
-              <div class="paper-meta">
-                <p class="paper-title">
-                  <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
-                </p>
-                <p class="paper-authors">
-                  Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
-                </p>
-                <div class="paper-venue-line">
-                  <span class="venue-badge">ICML 2026</span>
-                  <div class="paper-links-inline">
-                    <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
-                    <a href="https://github.com/GongZhiren/XDomainBench" target="_blank">Code</a>
-                    <a href="https://gongzhiren.github.io/XDomainBench-website/" target="_blank">Website</a>
-                  </div>
-                </div>
-                <div class="paper-tags">
-                  <span class="research-tag"># LLM Evaluation</span>
-                  <span class="research-tag"># Scientific Reasoning</span>
-                  <span class="research-tag"># Benchmark and Datasets</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- FraudBench (2026) -->
-            <div class="paper-card">
-              <div class="paper-thumb">
-                <img src="assets/papers/FraudBench" alt="FraudBench thumbnail" loading="lazy">
-              </div>
-              <div class="paper-meta">
-                <p class="paper-title">
-                  <a href="https://arxiv.org/abs/2605.08820" target="_blank">FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence</a>
-                </p>
-                <p class="paper-authors">
-                  Xinyu Yan, Boyang Chen, Jiaming Zhang, Tiantong Wu, Hong Xi Tae, Yichen He, Tiantong Wang, Yachun Mi, <strong>Yurong Hao</strong>, Yilei Zhao, Lei Xiao, Longtao Huang, Pengjun Xie, Wei Liu, Wei Yang Bryan Lim.
-                </p>
-                <div class="paper-venue-line">
-                  <span class="venue-badge">arXiv 2026</span>
-                  <div class="paper-links-inline">
-                    <a href="https://arxiv.org/abs/2605.08820" target="_blank">Paper</a>
-                    <a href="https://github.com/Tristan0318/FraudBench" target="_blank">Code</a>
-                    <a href="https://tristan0318.github.io/FraudBench/" target="_blank">Website</a>
-                  </div>
-                </div>
-                <div class="paper-tags">
-                  <span class="research-tag"># MLLM Benchmark</span>
-                  <span class="research-tag"># Refund Fraud Detection</span>
-                </div>
-              </div>
-            </div>
-      
-    </div>
-  </div>
-
 
 </body>
 </html>
