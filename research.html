@@ -841,22 +841,22 @@ h3.year-heading {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publications - Yurong Hao</title>
   
-  <!-- 引入 FontAwesome 图标库（包含学术与安全图标） -->
+  <!-- FontAwesome Icons for academic and security themes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style type="text/css">
-    /* ================= 基础全局样式 ================= */
+    /* ================= Global Design Variables ================= */
     :root {
       --text-dark: #1e293b;
       --text-muted: #64748b;
-      --accent-color: #2563eb; /* 经典学术亮蓝 */
+      --accent-color: #2563eb; 
       --border-color: #e2e8f0;
       --bg-light: #f8fafc;
       --tag-bg: #eff6ff;
     }
 
     html {
-      scroll-behavior: smooth; /* 点击索引标签时平滑滚动 */
+      scroll-behavior: smooth; /* Smooth scrolling for anchor links */
     }
 
     body {
@@ -874,7 +874,7 @@ h3.year-heading {
       padding: 40px 20px;
     }
 
-    /* ================= 顶部标题与返回 ================= */
+    /* ================= Header and Navigation ================= */
     .research-header {
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 16px;
@@ -909,18 +909,18 @@ h3.year-heading {
       font-style: italic;
     }
 
-    /* ================= 右上角快速索引横条 ================= */
+    /* ================= Top Right Sticky Filter Bar ================= */
     .publication-indexer {
       display: flex;
       align-items: center;
-      justify-content: flex-end; /* 完美靠右对齐 */
+      justify-content: flex-end; 
       gap: 12px;
       margin: 24px 0 35px 0;
       padding: 12px 16px;
       background: var(--bg-light);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      position: sticky; /* 滚动时在右上方吸顶 */
+      position: sticky; 
       top: 20px;
       z-index: 10;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
@@ -959,9 +959,9 @@ h3.year-heading {
       transform: translateY(-1px);
     }
 
-    /* ================= 论文板块与卡片 ================= */
+    /* ================= Topic Sections and Paper Cards ================= */
     .papers-by-topic {
-      scroll-margin-top: 90px; /* 防止吸顶导航条挡住板块标题 */
+      scroll-margin-top: 90px; /* Offset to prevent sticky bar overlap */
       margin-bottom: 45px;
     }
 
@@ -1041,8 +1041,7 @@ h3.year-heading {
       text-decoration: underline;
     }
 
-    /* 引用强调块样式 */
-    blockquote {
+    footer blockquote {
       margin: 30px 0 0 0;
       padding: 12px 16px;
       background-color: var(--bg-light);
@@ -1052,10 +1051,10 @@ h3.year-heading {
       border-radius: 0 8px 8px 0;
     }
 
-    /* ================= 响应式媒体查询 ================= */
+    /* ================= Responsive Layout ================= */
     @media (max-width: 992px) {
       .publication-indexer {
-        position: static; /* 小屏幕取消吸顶，转为流式布局以防重叠 */
+        position: static; 
         justify-content: flex-start;
         flex-direction: column;
         align-items: flex-start;
@@ -1068,7 +1067,7 @@ h3.year-heading {
 
   <main class="container">
     
-    <!-- 顶部标题板块 -->
+    <!-- Research Page Header -->
     <header class="research-header">
       <h2>
         Research & Publications 
@@ -1077,7 +1076,7 @@ h3.year-heading {
       <div class="publication-note">* Equal contribution, † Corresponding author</div>
     </header>
 
-    <!-- 右上角智能分类快速索引横条 -->
+    <!-- Top Right Quick Index Bar -->
     <nav class="publication-indexer">
       <span class="indexer-label"><i class="fa-solid fa-tags"></i> Research Topics:</span>
       <div class="indexer-buttons">
@@ -1089,9 +1088,9 @@ h3.year-heading {
       </div>
     </nav>
 
-    <!-- 论文内容主体（按 5 个研究方向分类编排） -->
+    <!-- 主体内容栏：全面切换为 5 大 Topic 分类 -->
 
-    <!-- ================= 1. LLM安全 (LLM Security) ================= -->
+    <!-- ================= 1. LLM Security ================= -->
     <section class="papers-by-topic" id="topic-llm">
       <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM Security & Agent Safety</h3>
       <div class="papers">
@@ -1107,7 +1106,7 @@ h3.year-heading {
           </div>
         </div>
 
-        <!-- EchoCascade (2026) -->
+        <!-- EchoCascade -->
         <div class="paper-card">
           <div class="paper-title">EchoCascade: Collaborative-Reflection Hijacking in Agentic Recommender Systems</div>
           <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
@@ -1117,7 +1116,7 @@ h3.year-heading {
           </div>
         </div>
 
-        <!-- MimicryRAG (2026) -->
+        <!-- MimicryRAG -->
         <div class="paper-card">
           <div class="paper-title">MimicryRAG: Automated Agent-Based Attack Framework against Retrieval-Augmented Generation</div>
           <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
@@ -1127,7 +1126,7 @@ h3.year-heading {
           </div>
         </div>
 
-        <!-- DualTAP (2025) -->
+        <!-- DualTAP -->
         <div class="paper-card">
           <div class="paper-title">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</div>
           <div class="paper-authors">Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang</div>
@@ -1137,11 +1136,24 @@ h3.year-heading {
           </div>
         </div>
 
+        <!-- FUTURE_LLM_TEMPLATE: Copy this block to add new papers under LLM Security -->
+        <!-- 
+        <div class="paper-card">
+          <div class="paper-title">Your Paper Title Here</div>
+          <div class="paper-authors">Author 1, <strong>Yurong Hao</strong>, Author 3</div>
+          <div class="paper-venue">Conference/Journal Venue Name, 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-code"></i> Code</a>
+          </div>
+        </div>
+        -->
+
       </div>
     </section>
 
 
-    <!-- ================= 2. 分布式AI安全 (Distributed AI Security) ================= -->
+    <!-- ================= 2. Distributed AI Security ================= -->
     <section class="papers-by-topic" id="topic-distributed">
       <h3 class="topic-heading"><i class="fa-solid fa-network-wired"></i> Distributed & Federated AI Security</h3>
       <div class="papers">
@@ -1180,12 +1192,12 @@ h3.year-heading {
     </section>
 
 
-    <!-- ================= 3. 隐私保护计算 (Privacy-Preserving Computing) ================= -->
+    <!-- ================= 3. Privacy-Preserving Computing ================= -->
     <section class="papers-by-topic" id="topic-privacy">
       <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computing & Machine Unlearning</h3>
       <div class="papers">
 
-        <!-- MPU (2026) -->
+        <!-- MPU -->
         <div class="paper-card">
           <div class="paper-title">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</div>
           <div class="paper-authors">Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Fei Huang, Wei Yang Bryan Lim</div>
@@ -1199,13 +1211,13 @@ h3.year-heading {
         <div class="paper-card">
           <div class="paper-title">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</div>
           <div class="paper-authors">Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Ran Yan, Yang Cao, Wei Yang Bryan Lim</div>
-          <div class="paper-venue">AAAI Conference on Artificial Intelligence, 2026 / arXiv 2025</div>
+          <div class="paper-venue">AAAI Conference on Artificial Intelligence, 2026</div>
           <div class="paper-links">
             <a href="https://arxiv.org/abs/2505.11097" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
           </div>
         </div>
 
-        <!-- IF-SPR (2026) -->
+        <!-- IF-SPR -->
         <div class="paper-card">
           <div class="paper-title">IF-SPR: User-Assisted Embedding Sharing for Server-Side Federated Defense</div>
           <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
@@ -1215,7 +1227,7 @@ h3.year-heading {
           </div>
         </div>
 
-        <!-- Blockchain & Gov Sharing (IPM 2021) -->
+        <!-- Blockchain Sharing (IPM 2021) -->
         <div class="paper-card">
           <div class="paper-title">Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach</div>
           <div class="paper-authors">Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang</div>
@@ -1229,16 +1241,16 @@ h3.year-heading {
     </section>
 
 
-    <!-- ================= 4. 模型高效性 (Model Efficiency) ================= -->
+    <!-- ================= 4. Model Efficiency ================= -->
     <section class="papers-by-topic" id="topic-efficiency">
       <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency & On-Device Inference</h3>
       <div class="papers">
 
-        <!-- AegisGuard (NeurIPS 2025/2026) -->
+        <!-- AegisGuard (NeurIPS 2025) -->
         <div class="paper-card">
           <div class="paper-title">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</div>
           <div class="paper-authors">Che Wang, Zhaorun Zhang, Yo-Han Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Ji Gao, Tianwei Wei, Yang Cao, Zheng Chen</div>
-          <div class="paper-venue">Advances in Neural Information Processing Systems (NeurIPS), 2025 / 2026</div>
+          <div class="paper-venue">Advances in Neural Information Processing Systems (NeurIPS), 2025</div>
           <div class="paper-links">
             <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Publication</a>
           </div>
@@ -1248,7 +1260,7 @@ h3.year-heading {
     </section>
 
 
-    <!-- ================= 5. Benchmark (Benchmarks & Studies) ================= -->
+    <!-- ================= 5. Benchmarks & Studies ================= -->
     <section class="papers-by-topic" id="topic-benchmark">
       <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Empirical Benchmarks & Security Studies</h3>
       <div class="papers">
@@ -1266,10 +1278,10 @@ h3.year-heading {
       </div>
     </section>
 
-    <!-- 底部备注/声明 -->
+    <!-- Academic Disclaimer Footer -->
     <footer>
       <blockquote>
-        Disclaimer: This page is for academic sharing only. Intellectual property and copyrights of the publications belong to the respective publishers and co-authors.
+        Disclaimer: This page is configured for academic information sharing only. Copyrights belongs to the respective publishers and authors.
       </blockquote>
     </footer>
 
