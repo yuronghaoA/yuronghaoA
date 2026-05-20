@@ -44,7 +44,7 @@ body {
   padding: 45px 20px;
 }
 
-/* ================= 左侧固定个人信息栏 (Elaine 风格增强版) ================= */
+/* ================= 左侧固定个人信息栏 ================= */
 .sidebar {
   position: sticky;
   top: 30px;
@@ -61,11 +61,10 @@ body {
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #f1f5f9; /* 避免缩小时边缘空洞 */
+  background-color: #f1f5f9; 
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
 }
 
-/* 核心优化1：通过缩放让内部人像缩小一些显得更完整，同时确保不露出原图的方形边界 */
 .profile-img {
   width: 100%;
   height: 100%;
@@ -80,6 +79,30 @@ body {
   color: var(--text-dark);
   line-height: 1.2;
   text-align: center;
+  margin-bottom: -5px; /* 让名字与下方的社交图标靠得更近 */
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 5px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+}
+
+.social-links img {
+  height: 22px;
+  width: auto;
 }
 
 .info-items {
@@ -88,6 +111,7 @@ body {
   gap: 8px;
   font-size: 13.5px;
   color: var(--text-main);
+  margin-top: 5px;
 }
 
 .info-item {
@@ -111,30 +135,7 @@ body {
   text-decoration: underline;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  padding-top: 5px;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.social-links a:hover {
-  transform: translateY(-2px);
-}
-
-.social-links img {
-  height: 22px;
-  width: auto;
-}
-
-/* 左侧 Elaine 风格的侧边栏小标题组件 */
+/* 左侧侧边栏小标题组件 */
 .sidebar-heading {
   font-size: 14px;
   text-transform: uppercase;
@@ -371,25 +372,6 @@ p a:hover {
   opacity: 0.8;
 }
 
-/* Elaine Zhao 风格原生嵌入的紧凑级 TL;DR 框 */
-.tldr-box {
-  margin-top: 6px;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  background-color: var(--bg-light);
-  border-left: 3px solid #cbd5e1;
-  border-radius: 0 6px 6px 0;
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.4;
-  text-align: justify;
-}
-
-.tldr-box strong {
-  color: var(--text-dark);
-  font-weight: 600;
-}
-
 .paper-tags {
   display: flex;
   flex-wrap: wrap;
@@ -478,17 +460,6 @@ p a:hover {
       </div>
       <h1 class="name">Yurong Hao</h1>
       
-      <div class="info-items">
-        <div class="info-item">
-          <i class="fa-solid fa-building"></i>
-          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
-        </div>
-        <div class="info-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:Yurong.hao@ntu.edu.sg">Yurong.hao@ntu.edu.sg</a>
-        </div>
-      </div>
-      
       <div class="social-links">
         <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" target="_blank" title="Google Scholar">
           <img src="./files/scholar_logo.png" alt="Google Scholar">
@@ -499,6 +470,17 @@ p a:hover {
         <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 22px; color: #334155;">
           <i class="fa-brands fa-github"></i>
         </a>
+      </div>
+      
+      <div class="info-items">
+        <div class="info-item">
+          <i class="fa-solid fa-building"></i>
+          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
+        </div>
+        <div class="info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:Yurong.hao@ntu.edu.sg">Yurong.hao@ntu.edu.sg</a>
+        </div>
       </div>
 
       <div class="sidebar-heading">Honors & Awards</div>
@@ -566,9 +548,6 @@ p a:hover {
                   <a href="#" target="_blank">Code</a>
                 </div>
               </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> This paper uncovers critical security gaps in cross-modal alignment inside multi-modal recommendation systems. We introduce interactive perturbation vectors that can effectively force targeted product recommendations while completely evading multi-modal consistency firewalls.
-              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Trustworthy AI</span>
                 <span class="research-tag"># Multimodal LLM</span>
@@ -594,9 +573,6 @@ p a:hover {
                   <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">Paper</a>
                 </div>
               </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> We provide a rigorous empirical dissection of partial weight-merging systems against strategic model duplication strategies. The results highlight hidden vulnerabilities in downstream parameter scaling, offering key directions for secure open-source model composition.
-              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Model Merging</span>
                 <span class="research-tag"># Model Security</span>
@@ -620,9 +596,6 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
                 </div>
-              </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> This work presents a native runtime acceleration pipeline that dynamically thin-slices heavy networks during inference. By leveraging dedicated representation probes, the architecture can efficiently prune non-essential sub-spaces on the fly without loss of precision.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># Model Efficiency</span>
@@ -649,9 +622,6 @@ p a:hover {
                   <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
                 </div>
               </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> We establish a comprehensive debugging matrix designed to track Multi-Domain scientific knowledge deduction breaks inside frontier LLMs. The platform highlights systemic chain breakage patterns when combining complex cross-disciplinary data.
-              </div>
               <div class="paper-tags">
                 <span class="research-tag"># LLM Evaluation</span>
                 <span class="research-tag"># Scientific Reasoning</span>
@@ -676,9 +646,6 @@ p a:hover {
                   <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Paper</a>
                 </div>
               </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> This paper targets decentralized federated settings by proposing a stealthy localized clustering group poisoning pipeline. The framework can systematically degrade the target user base's recommendation utility matrix while staying invisible to global detection.
-              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Federated Learning</span>
                 <span class="research-tag"># Poisoning Attacks</span>
@@ -702,9 +669,6 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">Paper</a>
                 </div>
-              </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> We present an intelligent partitioned inference system that secures fragile local adapter weights within hardware-isolated TEEs. A reinforcement learning engine optimizes parameter execution routing to clear edge-side computational bottlenecks.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># On-Device Inference</span>
@@ -731,9 +695,6 @@ p a:hover {
                   <a href="https://ieeexplore.ieee.org/document/10739366" target="_blank">Paper</a>
                 </div>
               </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> This paper explores the mathematical and structural game-theoretic dynamics when multiple adversarial poisoning entities compete in a shared ecosystem. We design corresponding algorithmic boundary walls to safely filter server aggregation lines.
-              </div>
               <div class="paper-tags">
                 <span class="research-tag"># Federated Recommendation</span>
                 <span class="research-tag"># Targeted Poisoning</span>
@@ -757,9 +718,6 @@ p a:hover {
                 <div class="paper-links-inline">
                   <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank">Paper</a>
                 </div>
-              </div>
-              <div class="tldr-box">
-                <strong>[TL;DR]</strong> We systematically analyze the tightly coupled relationship between user metadata matrices and item vectors in untargeted settings. The study maps out how small coordinated data poisoning inputs can cascade into a massive user recommendation system collapse.
               </div>
               <div class="paper-tags">
                 <span class="research-tag"># Untargeted Attacks</span>
