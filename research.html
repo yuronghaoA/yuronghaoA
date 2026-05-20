@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -828,6 +828,452 @@ h3.year-heading {
 
     </main>
   </div>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications - Yurong Hao</title>
+  
+  <!-- 引入 FontAwesome 图标库（包含学术与安全图标） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style type="text/css">
+    /* ================= 基础全局样式 ================= */
+    :root {
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --accent-color: #2563eb; /* 经典学术亮蓝 */
+      --border-color: #e2e8f0;
+      --bg-light: #f8fafc;
+      --tag-bg: #eff6ff;
+    }
+
+    html {
+      scroll-behavior: smooth; /* 点击索引标签时平滑滚动 */
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ================= 顶部标题与返回 ================= */
+    .research-header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .research-header h2 {
+      font-size: 28px;
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-home {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-home:hover {
+      color: var(--accent-color);
+    }
+
+    .publication-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ================= 右上角快速索引横条 ================= */
+    .publication-indexer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; /* 完美靠右对齐 */
+      gap: 12px;
+      margin: 24px 0 35px 0;
+      padding: 12px 16px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      position: sticky; /* 滚动时在右上方吸顶 */
+      top: 20px;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .indexer-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .indexer-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .index-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .index-btn:hover {
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+      background: var(--tag-bg);
+      transform: translateY(-1px);
+    }
+
+    /* ================= 论文板块与卡片 ================= */
+    .papers-by-topic {
+      scroll-margin-top: 90px; /* 防止吸顶导航条挡住板块标题 */
+      margin-bottom: 45px;
+    }
+
+    .topic-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1e293b;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 12px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topic-heading i {
+      color: var(--accent-color);
+      font-size: 18px;
+    }
+
+    .papers {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .paper-card {
+      padding: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .paper-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .paper-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .paper-authors {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .paper-venue {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .paper-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .paper-links a {
+      font-size: 13px;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .paper-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* 引用强调块样式 */
+    blockquote {
+      margin: 30px 0 0 0;
+      padding: 12px 16px;
+      background-color: var(--bg-light);
+      border-left: 4px solid #94a3b8;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ================= 响应式媒体查询 ================= */
+    @media (max-width: 992px) {
+      .publication-indexer {
+        position: static; /* 小屏幕取消吸顶，转为流式布局以防重叠 */
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    
+    <!-- 顶部标题板块 -->
+    <header class="research-header">
+      <h2>
+        Research & Publications 
+        <a href="./index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> [Back to Home]</a>
+      </h2>
+      <div class="publication-note">* Equal contribution, † Corresponding author</div>
+    </header>
+
+    <!-- 右上角智能分类快速索引横条 -->
+    <nav class="publication-indexer">
+      <span class="indexer-label"><i class="fa-solid fa-tags"></i> Research Topics:</span>
+      <div class="indexer-buttons">
+        <a href="#topic-llm" class="index-btn">LLM Security</a>
+        <a href="#topic-distributed" class="index-btn">Distributed AI Security</a>
+        <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computing</a>
+        <a href="#topic-efficiency" class="index-btn">Model Efficiency</a>
+        <a href="#topic-benchmark" class="index-btn">Benchmarks & Studies</a>
+      </div>
+    </nav>
+
+    <!-- 论文内容主体（按 5 个研究方向分类编排） -->
+
+    <!-- ================= 1. LLM安全 (LLM Security) ================= -->
+    <section class="papers-by-topic" id="topic-llm">
+      <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM Security & Agent Safety</h3>
+      <div class="papers">
+
+        <!-- VENOMREC (ICML 2026) -->
+        <div class="paper-card">
+          <div class="paper-title">VENOMREC: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</div>
+          <div class="paper-authors">Guowei Guan*, <strong>Yurong Hao*</strong>, Jiaming Zhang*, Tiantong Wu*, Fuyao Zhang*, Tianxiang Chen†, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim</div>
+          <div class="paper-venue">International Conference on Machine Learning (ICML), 2026</div>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2602.06409" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-code"></i> Code</a>
+          </div>
+        </div>
+
+        <!-- EchoCascade (2026) -->
+        <div class="paper-card">
+          <div class="paper-title">EchoCascade: Collaborative-Reflection Hijacking in Agentic Recommender Systems</div>
+          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
+          <div class="paper-venue">Preprint, 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Project</a>
+          </div>
+        </div>
+
+        <!-- MimicryRAG (2026) -->
+        <div class="paper-card">
+          <div class="paper-title">MimicryRAG: Automated Agent-Based Attack Framework against Retrieval-Augmented Generation</div>
+          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
+          <div class="paper-venue">Preprint, 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Project</a>
+          </div>
+        </div>
+
+        <!-- DualTAP (2025) -->
+        <div class="paper-card">
+          <div class="paper-title">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</div>
+          <div class="paper-authors">Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang</div>
+          <div class="paper-venue">arXiv preprint arXiv:2511.13248, 2025</div>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2511.13248" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= 2. 分布式AI安全 (Distributed AI Security) ================= -->
+    <section class="papers-by-topic" id="topic-distributed">
+      <h3 class="topic-heading"><i class="fa-solid fa-network-wired"></i> Distributed & Federated AI Security</h3>
+      <div class="papers">
+
+        <!-- Spattack (WWW 2026) -->
+        <div class="paper-card">
+          <div class="paper-title">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</div>
+          <div class="paper-authors">Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi</div>
+          <div class="paper-venue">Proceedings of the ACM Web Conference (WWW), 2026</div>
+          <div class="paper-links">
+            <a href="https://doi.org/10.1145/3696410.3714732" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+          </div>
+        </div>
+
+        <!-- Not One Less (ACM CCS 2024) -->
+        <div class="paper-card">
+          <div class="paper-title">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</div>
+          <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang</div>
+          <div class="paper-venue">ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024</div>
+          <div class="paper-links">
+            <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+          </div>
+        </div>
+
+        <!-- Eyes on FedRec (TIFS 2024) -->
+        <div class="paper-card">
+          <div class="paper-title">Eyes on Federated Recommendation: Targeted Poisoning with Competition and its Mitigation</div>
+          <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Wei Wang, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz</div>
+          <div class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS), 2024</div>
+          <div class="paper-links">
+            <a href="https://ieeexplore.ieee.org/document/10495147" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= 3. 隐私保护计算 (Privacy-Preserving Computing) ================= -->
+    <section class="papers-by-topic" id="topic-privacy">
+      <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computing & Machine Unlearning</h3>
+      <div class="papers">
+
+        <!-- MPU (2026) -->
+        <div class="paper-card">
+          <div class="paper-title">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</div>
+          <div class="paper-authors">Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Fei Huang, Wei Yang Bryan Lim</div>
+          <div class="paper-venue">arXiv preprint arXiv:2602.23798, 2026</div>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2602.23798" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+          </div>
+        </div>
+
+        <!-- Verifiably Forgotten (AAAI 2026) -->
+        <div class="paper-card">
+          <div class="paper-title">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</div>
+          <div class="paper-authors">Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Ran Yan, Yang Cao, Wei Yang Bryan Lim</div>
+          <div class="paper-venue">AAAI Conference on Artificial Intelligence, 2026 / arXiv 2025</div>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2505.11097" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+          </div>
+        </div>
+
+        <!-- IF-SPR (2026) -->
+        <div class="paper-card">
+          <div class="paper-title">IF-SPR: User-Assisted Embedding Sharing for Server-Side Federated Defense</div>
+          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
+          <div class="paper-venue">Technical Report, 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Document</a>
+          </div>
+        </div>
+
+        <!-- Blockchain & Gov Sharing (IPM 2021) -->
+        <div class="paper-card">
+          <div class="paper-title">Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach</div>
+          <div class="paper-authors">Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang</div>
+          <div class="paper-venue">Information Processing & Management, 2021</div>
+          <div class="paper-links">
+            <a href="https://doi.org/10.1016/j.ipm.2021.102651" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= 4. 模型高效性 (Model Efficiency) ================= -->
+    <section class="papers-by-topic" id="topic-efficiency">
+      <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency & On-Device Inference</h3>
+      <div class="papers">
+
+        <!-- AegisGuard (NeurIPS 2025/2026) -->
+        <div class="paper-card">
+          <div class="paper-title">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</div>
+          <div class="paper-authors">Che Wang, Zhaorun Zhang, Yo-Han Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Ji Gao, Tianwei Wei, Yang Cao, Zheng Chen</div>
+          <div class="paper-venue">Advances in Neural Information Processing Systems (NeurIPS), 2025 / 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Publication</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ================= 5. Benchmark (Benchmarks & Studies) ================= -->
+    <section class="papers-by-topic" id="topic-benchmark">
+      <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Empirical Benchmarks & Security Studies</h3>
+      <div class="papers">
+
+        <!-- ModelPirate (ICML 2026) -->
+        <div class="paper-card">
+          <div class="paper-title">ModelPirate: Security Analysis of Partial Merging Against Model Stealing Attacks</div>
+          <div class="paper-authors">Tiantong Wu*, <strong>Yurong Hao*</strong>, Wei Yang Bryan Lim</div>
+          <div class="paper-venue">International Conference on Machine Learning (ICML), 2026</div>
+          <div class="paper-links">
+            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> ICML Link</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 底部备注/声明 -->
+    <footer>
+      <blockquote>
+        Disclaimer: This page is for academic sharing only. Intellectual property and copyrights of the publications belong to the respective publishers and co-authors.
+      </blockquote>
+    </footer>
+
+  </main>
 
 </body>
 </html>
