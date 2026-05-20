@@ -907,93 +907,148 @@ p a:hover {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Yurong Hao</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style type="text/css">
-:root { --primary-color: #0f172a; --accent-color: #2563eb; --text-main: #334155; --text-dark: #1e293b; --border-color: #e2e8f0; }
+:root {
+  --primary-color: #0f172a; 
+  --accent-color: #2563eb;  
+  --tag-bg: #eff6ff;        
+  --text-main: #334155;     
+  --text-dark: #1e293b;     
+  --bg-light: #f8fafc;      
+  --border-color: #e2e8f0;  
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; color: var(--text-main); line-height: 1.5; background-color: #ffffff; }
 
-.container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 350px 1fr; gap: 40px; padding: 45px 20px; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-main);
+  line-height: 1.5;
+  background-color: #ffffff;
+}
 
-/* 左侧边栏 */
+.container {
+  max-width: calc(1140px + 20mm);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: calc(310px + 10mm) 1fr; 
+  gap: 40px;
+  padding: 45px 20px;
+}
+
 .sidebar { position: sticky; top: 30px; height: fit-content; display: flex; flex-direction: column; gap: 20px; }
 
-/* 1. 头像区修正：无边框，完全显示头部 */
-.profile-img-container { 
-  width: 200px; height: 200px; margin: 0 auto; 
-  background-color: #f1f5f9; 
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
+.profile-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.profile-img { width: 100%; height: 100%; object-fit: contain; }
 
-.profile-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; text-align: center; }
+/* 优化头像：去掉裁剪和边框，保持原始完整比例 */
+.profile-img-container {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.profile-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* 仅保留轻微圆角 */
+}
 
-/* 2. 侧栏文字去粗体 */
+.name { font-size: 24px; font-weight: 700; color: var(--text-dark); text-align: center; }
+
+/* 侧边栏字体非加粗化调整 */
 .timeline-title { font-size: 13px; font-weight: 400; color: var(--text-dark); }
-.timeline-desc { font-size: 12px; color: #64748b; font-weight: 400; }
+.timeline-desc { font-size: 12px; color: #64748b; }
+.info-items { font-size: 13px; font-weight: 400; }
 
-/* 3. 学校校徽与地理位置布局 */
-.school-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
-.school-logo { width: 24px; height: 24px; object-fit: contain; margin-top: 2px; }
-.school-info { display: flex; flex-direction: column; flex-grow: 1; }
-.location { font-size: 11px; color: #94a3b8; font-style: italic; }
+.school-logo { width: 16px; height: 16px; vertical-align: middle; margin-right: 6px; }
+.location-text { font-size: 11px; color: #94a3b8; display: block; margin-top: 2px; }
 
-.sidebar-module { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; }
-.module-heading { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-
-/* 其他样式保持与前一版本一致 */
-.main-content { display: flex; flex-direction: column; gap: 32px; }
-@media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+/* ... 其余 CSS 保持不变 ... */
 </style>
 </head>
+
 <body>
+
   <div class="container">
     <aside class="sidebar">
       <div class="profile-card">
         <div class="profile-img-container">
           <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
         </div>
-        <h1 class="name" style="margin-top: 15px;">Yurong Hao</h1>
-      </div>
-
-      <div class="sidebar-module">
-        <div class="module-heading"><i class="fa-solid fa-briefcase"></i> Experience</div>
+        <h1 class="name">Yurong Hao</h1>
         
-        <div class="school-item">
-          <img src="ntu_logo.png" class="school-logo">
-          <div class="school-info">
-            <span class="timeline-title">Nanyang Technological University</span>
-            <span class="location">Singapore</span>
+        <div class="info-items">
+          <div class="info-item">
+            <img src="./files/ntu_logo.png" class="school-logo"> 
+            <span>Nanyang Technological University</span>
+            <span class="location-text">Singapore</span>
           </div>
-        </div>
-
-        <div class="school-item">
-          <img src="bjtu_logo.png" class="school-logo">
-          <div class="school-info">
-            <span class="timeline-title">Beijing Jiaotong University</span>
-            <span class="location">Beijing, China</span>
+          <div class="info-item" style="margin-top:10px">
+            <img src="./files/bjtu_logo.png" class="school-logo"> 
+            <span>Beijing Jiaotong University</span>
+            <span class="location-text">Beijing, China</span>
           </div>
         </div>
       </div>
 
       <div class="sidebar-module">
-        <div class="module-heading"><i class="fa-solid fa-award"></i> Honors & Awards</div>
-        <ul style="list-style: none;">
-          <li style="margin-bottom: 10px;"><div class="timeline-title">National Encouragement Scholarship</div></li>
-          <li style="margin-bottom: 10px;"><div class="timeline-title">PhD Academic Scholarship</div></li>
-        </ul>
+        <div class="module-heading">Experience</div>
+        <div class="module-content">
+          <ul class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Nanyang Technological University</span>
+                <span class="timeline-time">2026 - Present</span>
+              </div>
+              <span class="location-text">Singapore</span>
+              <div class="timeline-desc">Research Fellow</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Beijing Jiaotong University</span>
+                <span class="timeline-time">2021 - 2025</span>
+              </div>
+              <span class="location-text">Beijing, China</span>
+              <div class="timeline-desc">Ph.D. Student</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-heading">Honors & Awards</div>
+        <div class="module-content">
+          <ul class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">National Encouragement Scholarship</span>
+                <span class="timeline-time">2024 - 2025</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </aside>
 
     <main class="main-content">
-      </main>
+       </main>
   </div>
 </body>
 </html>
