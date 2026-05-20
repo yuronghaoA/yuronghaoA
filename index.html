@@ -229,12 +229,12 @@ body {
 }
 
 .visitor-map-container {
-  padding: 5; /* 去掉内边距以节省空间 */
+  padding: 0; /* 去掉内边距以节省空间 */
   text-align: center;
 }
 
 .visitor-map-container img {
-  width: 70%; /* 确保图片宽度撑满父容器 */
+  width: 100%; /* 确保图片宽度撑满父容器 */
   height: auto;
   border-radius: 8px;
   display: block;
@@ -633,7 +633,7 @@ p a:hover {
         </div>
       </div>
 
-      <div class="sidebar-module">
+      <!-- <div class="sidebar-module">
         <div class="module-heading">
           <i class="fa-solid fa-earth-americas"></i> Visitor Map
         </div>
@@ -642,7 +642,16 @@ p a:hover {
             <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
           </a>
         </div>
+      </div> -->
+      
+    <div class="sidebar-module">
+      <div class="module-heading">
+        <i class="fa-solid fa-earth-americas"></i> Visitor Map
       </div>
+      <div class="visitor-map-container">
+        <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=a9cded&w=a&t=n&d=yjsYkwPXwHqtkGGKuOZsGbFr_iYD71KNz8aFQvw7WKg&co=ffffff&ct=f4dcdc&cmo=db4b4b'></script>
+      </div>
+    </div>
       
     </aside>
 
