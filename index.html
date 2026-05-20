@@ -36,10 +36,12 @@ body {
 }
 
 .container {
-  max-width: 1140px;
+  /* 原始 max-width 为 1140px，两侧各加 10mm（共计约 75.6px），这里四舍五入优雅扩容 */
+  max-width: calc(1140px + 20mm);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 310px 1fr; /* 适当加宽侧边栏以支持优雅的时间向右对齐 */
+  /* 核心改动：左侧由 310px 变更为 310px + 10mm；右侧由 1fr 变更为 calc(1fr + 10mm) */
+  grid-template-columns: calc(310px + 10mm) calc(1fr + 10mm); 
   gap: 40px;
   padding: 45px 20px;
 }
@@ -890,20 +892,6 @@ p a:hover {
           <li>Trustworthy Mechanism and Key Technologies of Urban Intelligent Systems, National Key R&D Program Project. <span class="badge badge-blue">Participated in Technology Research and Development</span></li>
         </ul>
       </section>
-
-      <!-- <section id="awards">
-        <h2>Selected Awards</h2>
-        <ul class="custom-list">
-          <li>Awarded the National Scholarship (2016), and National Encouragement Scholarship 2 times (2015 & 2017) during undergraduate studies;</li>
-          <li>Awarded the title of "Outstanding League Cadre" during undergraduate studies (2016);</li>
-          <li>Awarded the Academic Scholarship for two consecutive years during graduate studies (2020 & 2021);</li>
-          <li>Won the third prize in the 3rd Hebei Province Graduate Student Network and Information Security Technology Competition (2019);</li>
-          <li>Won the third prize in the "Huawei Cup" Competition at the 17th China Graduate Student Mathematical Contest in Modelling (2020);</li>
-          <li>Awarded the title of "Outstanding Graduate of Hebei Province" and "Merit Student of Hebei Province" (2021);</li> 
-          <li>Awarded the Academic Scholarship for three consecutive years in my PhD studies (2022-2025);</li>
-          <li>Awarded the China Scholarship Council (CSC) Scholarship (2024-2025);</li>
-        </ul>
-      </section> -->
 
       <section id="talks">
         <h2>Invited Talks</h2>
