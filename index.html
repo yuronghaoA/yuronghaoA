@@ -31,7 +31,7 @@ body {
   color: var(--text-main);
   line-height: 1.5;
   letter-spacing: -0.01em; 
-  background-color: #ffffff;
+  background-color: #f8fafc; /* 底色改为高级微灰，衬托出左侧白色的名片卡片 */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -39,12 +39,12 @@ body {
   max-width: 1140px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 290px 1fr;
-  gap: 45px;
+  grid-template-columns: 310px 1fr; /* 略微拓宽侧边栏以支持优雅的时间对齐 */
+  gap: 40px;
   padding: 45px 20px;
 }
 
-/* ================= 左侧固定个人信息栏 ================= */
+/* ================= 左侧优雅名片风格栏 ================= */
 .sidebar {
   position: sticky;
   top: 30px;
@@ -54,32 +54,43 @@ body {
   gap: 20px;
 }
 
+/* 核心个人基本信息卡片 */
+.profile-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .profile-img-container {
   text-align: center;
-  width: 190px;
-  height: 190px;
+  width: 150px; /* 适当微调，配合放大效果 */
+  height: 150px;
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #f1f5f9; 
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  background-color: #f1f5f9;
 }
 
+/* 核心优化：放大头像，不露方形边缘 */
 .profile-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(0.85);
+  transform: scale(1.15); /* 放大图像，撑满圆形容器 */
   transform-origin: center center;
 }
 
 .name {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--text-dark);
   line-height: 1.2;
   text-align: center;
-  margin-bottom: -5px; /* 让名字与下方的社交图标靠得更近 */
 }
 
 .social-links {
@@ -87,7 +98,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  padding-bottom: 5px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
 }
 
 .social-links a {
@@ -108,10 +120,9 @@ body {
 .info-items {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 13.5px;
+  gap: 10px;
+  font-size: 13px;
   color: var(--text-main);
-  margin-top: 5px;
 }
 
 .info-item {
@@ -122,7 +133,7 @@ body {
 
 .info-item i {
   color: var(--accent-color);
-  margin-top: 4px;
+  margin-top: 3px;
   width: 14px;
   text-align: center;
 }
@@ -135,49 +146,89 @@ body {
   text-decoration: underline;
 }
 
-/* 左侧侧边栏小标题组件 */
-.sidebar-heading {
+/* 模块化名片组件风格 (借鉴 Elaine 风格) */
+.sidebar-module {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+.module-heading {
   font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--text-dark);
   font-weight: 700;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 6px;
-  margin-top: 10px;
+  background: #ffffff;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* 侧边栏专属 Honors 紧凑排版 */
-.sidebar-awards {
+.module-heading i {
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.module-content {
+  padding: 16px;
+}
+
+/* 名片内带有时间线的列表排版 */
+.timeline-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.sidebar-awards li {
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.timeline-title {
   font-size: 13px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-  color: var(--text-main);
-  position: relative;
-  padding-left: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
 }
 
-.sidebar-awards li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
-  color: var(--accent-color);
-  font-weight: bold;
+.timeline-time {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  font-style: italic;
 }
 
-.visitor-map {
+.timeline-desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+/* 升级版大图地图容器 */
+.visitor-map-container {
+  padding: 12px;
   text-align: center;
-  margin-top: 5px;
 }
 
-.visitor-map img {
+.visitor-map-container img {
   max-width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 }
 
 /* ================= 右侧主内容区 ================= */
@@ -189,13 +240,18 @@ body {
 
 section {
   width: 100%;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 h2 {
   font-size: 21px;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   padding-bottom: 4px;
   border-bottom: 2px solid var(--primary-color);
   display: inline-block;
@@ -213,12 +269,11 @@ h2 a:hover {
   text-decoration: underline;
 }
 
-/* 说明小字样式 */
 .publication-note {
   font-size: 12px;
   color: #64748b;
   font-style: italic;
-  margin-top: -8px;
+  margin-top: -12px;
   margin-bottom: 16px;
 }
 
@@ -247,7 +302,7 @@ p a:hover {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-size: 14.5px;
 }
 
@@ -263,7 +318,7 @@ p a:hover {
   flex-shrink: 0;
 }
 
-/* ================= Selected Publications ================= */
+/* ================= Publications Card ================= */
 .papers {
   display: flex;
   flex-direction: column;
@@ -272,9 +327,9 @@ p a:hover {
 
 .paper-card {
   display: grid;
-  grid-template-columns: 230px 1fr;
-  gap: 24px;
-  padding: 16px;
+  grid-template-columns: 210px 1fr;
+  gap: 20px;
+  padding: 14px;
   border: 1px solid var(--border-color);
   border-radius: 12px; 
   background: #ffffff;
@@ -289,10 +344,9 @@ p a:hover {
 .paper-thumb {
   width: 100%;
   aspect-ratio: 16 / 10; 
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: #ffffff;
 }
 
 .paper-thumb img {
@@ -308,10 +362,10 @@ p a:hover {
 }
 
 .paper-title {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   line-height: 1.35;
 }
 
@@ -325,7 +379,7 @@ p a:hover {
 }
 
 .paper-authors {
-  font-size: 14px;
+  font-size: 13.5px;
   color: #475569;
   margin-bottom: 6px;
 }
@@ -341,7 +395,7 @@ p a:hover {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .venue-badge {
@@ -361,36 +415,31 @@ p a:hover {
 
 .paper-links-inline a {
   text-decoration: none;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--accent-color);
-  transition: opacity 0.2s ease;
 }
 
 .paper-links-inline a:hover {
   text-decoration: underline;
-  opacity: 0.8;
 }
 
 .paper-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 2px;
 }
 
 .research-tag {
   background-color: var(--tag-bg);
   color: var(--accent-color);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 500;
   padding: 1px 8px;
   border-radius: 20px;
-  display: inline-flex;
-  align-items: center;
 }
 
-/* ================= 其他通用列表 ================= */
+/* 其他通用列表 */
 .custom-list {
   list-style: none;
 }
@@ -398,9 +447,8 @@ p a:hover {
 .custom-list li {
   position: relative;
   padding-left: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-size: 14.5px;
-  text-align: justify;
 }
 
 .custom-list li::before {
@@ -420,14 +468,12 @@ p a:hover {
   font-weight: 600;
   border-radius: 4px;
   margin-left: 6px;
-  vertical-align: middle;
 }
 
 .badge-orange { background-color: #ffedd5; color: #ea580c; }  
 .badge-green  { background-color: #d1fae5; color: #059669; }  
 .badge-blue   { background-color: #e0f2fe; color: #0284c7; }  
 
-/* 移动端响应式适配 */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
@@ -437,12 +483,6 @@ p a:hover {
   .sidebar {
     position: relative;
     top: 0;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 25px;
-  }
-  .info-items {
-    align-items: center;
   }
   .paper-card { grid-template-columns: 1fr; gap: 14px; }
 }
@@ -455,50 +495,125 @@ p a:hover {
   <div class="container">
     
     <aside class="sidebar">
-      <div class="profile-img-container">
-        <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
-      </div>
-      <h1 class="name">Yurong Hao</h1>
       
-      <div class="social-links">
-        <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" target="_blank" title="Google Scholar">
-          <img src="./files/scholar_logo.png" alt="Google Scholar">
-        </a>
-        <a href="https://dblp.org/pid/260/9439.html" target="_blank" title="DBLP">
-          <img src="./files/dblp_logo.png" alt="DBLP">
-        </a>
-        <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 22px; color: #334155;">
-          <i class="fa-brands fa-github"></i>
-        </a>
-      </div>
-      
-      <div class="info-items">
-        <div class="info-item">
-          <i class="fa-solid fa-building"></i>
-          <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
+      <div class="profile-card">
+        <div class="profile-img-container">
+          <img src="./files/yuronghaoa.jpg" alt="Yurong Hao" class="profile-img">
         </div>
-        <div class="info-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:Yurong.hao@ntu.edu.sg">Yurong.hao@ntu.edu.sg</a>
+        <h1 class="name">Yurong Hao</h1>
+        
+        <div class="social-links">
+          <a href="https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title" target="_blank" title="Google Scholar">
+            <img src="./files/scholar_logo.png" alt="Google Scholar">
+          </a>
+          <a href="https://dblp.org/pid/260/9439.html" target="_blank" title="DBLP">
+            <img src="./files/dblp_logo.png" alt="DBLP">
+          </a>
+          <a href="https://github.com/yuronghaoa" target="_blank" title="GitHub" style="font-size: 22px; color: #334155;">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        
+        <div class="info-items">
+          <div class="info-item">
+            <i class="fa-solid fa-building"></i>
+            <span>Midori Lab, CCDS,<br>Nanyang Technological University</span>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:Yurong.hao@ntu.edu.sg">Yurong.hao@ntu.edu.sg</a>
+          </div>
         </div>
       </div>
 
-      <div class="sidebar-heading">Honors & Awards</div>
-      <ul class="sidebar-awards">
-        <li>CSC Scholarship (2024-2025)</li>
-        <li>PhD Academic Scholarship (2022-2025)</li>
-        <li>Outstanding Graduate of Hebei Province (2021)</li>
-        <li>"Huawei Cup" Mathematical Modeling Competition 3rd Prize (2020)</li>
-        <li>Graduate Academic Scholarship (2020 & 2021)</li>
-        <li>National Scholarship (2016)</li>
-      </ul>
-
-      <div class="sidebar-heading">Visitor Map</div>
-      <div class="visitor-map">
-        <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
-          <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
-        </a>
+      <div class="sidebar-module">
+        <div class="module-heading">
+          <i class="fa-solid fa-briefcase"></i> Experience
+        </div>
+        <div class="module-content">
+          <ul class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Nanyang Technological University</span>
+                <span class="timeline-time">Jan. 2026 - Present</span>
+              </div>
+              <div class="timeline-desc">Research Fellow</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Nanyang Technological University</span>
+                <span class="timeline-time">2024 - 2025</span>
+              </div>
+              <div class="timeline-desc">Visiting Student</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Beijing Jiaotong University</span>
+                <span class="timeline-time">2022 - 2025</span>
+              </div>
+              <div class="timeline-desc">Ph.D. in Cyberspace Science</div>
+            </li>
+          </ul>
+        </div>
       </div>
+
+      <div class="sidebar-module">
+        <div class="module-heading">
+          <i class="fa-solid fa-award"></i> Honors & Awards
+        </div>
+        <div class="module-content">
+          <ul class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">CSC Scholarship</span>
+                <span class="timeline-time">2024 - 2025</span>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">PhD Academic Scholarship</span>
+                <span class="timeline-time">2022 - 2025</span>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Outstanding Graduate (Hebei)</span>
+                <span class="timeline-time">2021</span>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">"Huawei Cup" Modeling 3rd Prize</span>
+                <span class="timeline-time">2020</span>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">Graduate Academic Scholarship</span>
+                <span class="timeline-time">2020 & 2021</span>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-header">
+                <span class="timeline-title">National Scholarship</span>
+                <span class="timeline-time">2016</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sidebar-module">
+        <div class="module-heading">
+          <i class="fa-solid fa-earth-americas"></i> Visitor Map
+        </div>
+        <div class="visitor-map-container">
+          <a href="https://mapmyvisitors.com/web/1bw1t" title="Visit tracker" target="_blank">
+            <img src="https://mapmyvisitors.com/map.png?d=ameee7Th3ylUQEJTMfjnCPXds_fgiasubgxLLWuhVFA&cl=ffffff" alt="Map">
+          </a>
+        </div>
+      </div>
+      
     </aside>
 
     <main class="main-content">
