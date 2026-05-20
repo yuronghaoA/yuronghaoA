@@ -31,22 +31,20 @@ body {
   color: var(--text-main);
   line-height: 1.5;
   letter-spacing: -0.01em; 
-  background-color: #ffffff; /* 保持原本右侧大背景的干净色调 */
+  background-color: #ffffff; 
   -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  /* 整体最大宽度增加 20mm（左右两侧各增加 10mm 的额度） */
   max-width: calc(1140px + 20mm);
   margin: 0 auto;
   display: grid;
-  /* 修复核心：左侧精准增加 10mm，右侧设为稳定的 1fr 自动填满增加后的宽幅，完美避免标准语法冲突 */
   grid-template-columns: calc(310px + 10mm) 1fr; 
   gap: 40px;
   padding: 45px 20px;
 }
 
-/* ================= 左侧独享：名片卡片风格栏 ================= */
+/* ================= 左侧：名片卡片风格栏 ================= */
 .sidebar {
   position: sticky;
   top: 30px;
@@ -56,7 +54,6 @@ body {
   gap: 20px;
 }
 
-/* 核心基本信息名片 */
 .profile-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -68,23 +65,24 @@ body {
   gap: 16px;
 }
 
+/* 核心优化：改为优雅的方形头像容器 */
 .profile-img-container {
   text-align: center;
-  width: 150px; 
-  height: 150px;
+  width: 100%; 
+  aspect-ratio: 1 / 1; /* 保持正方形比例 */
+  max-width: 180px;    /* 适度加大方形展示面积，视觉上更大气 */
   margin: 0 auto;
-  border-radius: 50%;
+  border-radius: 12px; /* 搭配整体设计的微圆角 */
   overflow: hidden;
   background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
 }
 
-/* 核心优化：放大头像，完全不露原图的方形边框 */
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.15); /* 适度放大，完美无缝嵌入圆形 */
-  transform-origin: center center;
+  object-fit: cover; /* 保证方形图片完美平铺填充，不拉伸 */
+  display: block;
 }
 
 .name {
@@ -148,7 +146,6 @@ body {
   text-decoration: underline;
 }
 
-/* 左侧模块化名片小组件 */
 .sidebar-module {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -178,7 +175,6 @@ body {
   padding: 16px;
 }
 
-/* 名片内的列表排版（时间靠右对齐） */
 .timeline-list {
   list-style: none;
   display: flex;
@@ -219,7 +215,6 @@ body {
   line-height: 1.3;
 }
 
-/* 升级放大版的地图容器 */
 .visitor-map-container {
   padding: 12px;
   text-align: center;
@@ -233,7 +228,7 @@ body {
   margin: 0 auto;
 }
 
-/* ================= 右侧主内容区：保持原样现状 ================= */
+/* ================= 右侧主内容区 ================= */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -242,7 +237,7 @@ body {
 
 section {
   width: 100%;
-  background: transparent; /* 还原原本纯净普通的区域排版，去除白底卡片化 */
+  background: transparent;
   padding: 0;
   border-radius: 0;
   border: none;
@@ -295,7 +290,6 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* News 列表原样展示 */
 .news-list {
   list-style: none;
 }
@@ -320,7 +314,6 @@ p a:hover {
   flex-shrink: 0;
 }
 
-/* Publications 列表原样展示 */
 .papers {
   display: flex;
   flex-direction: column;
@@ -441,7 +434,6 @@ p a:hover {
   border-radius: 20px;
 }
 
-/* 其他基础通用列表排版 */
 .custom-list {
   list-style: none;
 }
@@ -567,7 +559,7 @@ p a:hover {
           <ul class="timeline-list">
             <li class="timeline-item">
               <div class="timeline-header">
-                <span class="timeline-title">CSC Scholarship</span>
+                <span class="timeline-title">National Encouragement Scholarship</span>
                 <span class="timeline-time">2024 - 2025</span>
               </div>
             </li>
@@ -603,7 +595,7 @@ p a:hover {
             </li>
             <li class="timeline-item">
               <div class="timeline-header">
-                <span class="timeline-title">National Encouragemen Scholarship X2</span>
+                <span class="timeline-title">National Encouragement Scholarship X2</span>
                 <span class="timeline-time">2015 & 2017</span>
               </div>
             </li>
