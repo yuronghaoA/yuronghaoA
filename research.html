@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -593,18 +593,30 @@ h3.year-heading {
     <main class="main-content">
       
       <section id="full-publications">
-        <!-- 💡 核心设计：顶部大标题与便捷的返回链接 -->
+        <!-- 💡 By Topic 右上角快速索引横条 -->
         <h2>Research & Publications 
           <a href="./index.html" style="font-size: 14px; margin-left: 10px; font-weight: 500;"><i class="fa-solid fa-arrow-left"></i> [Back to Home]</a>
         </h2>
         <div class="publication-note">* Equal contribution, † Corresponding author</div>
+        
+        <div class="publication-indexer">
+          <span class="indexer-label"><i class="fa-solid fa-tags"></i> Research Topics:</span>
+          <div class="indexer-buttons">
+            <a href="#topic-llm" class="index-btn">LLM Security</a>
+            <a href="#topic-distributed" class="index-btn">Distributed AI Security</a>
+            <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computing</a>
+            <a href="#topic-efficiency" class="index-btn">Model Efficiency</a>
+            <a href="#topic-benchmark" class="index-btn">Benchmarks & Studies</a>
+          </div>
+        </div>
 
-        <!-- ================= 2026年 分类 ================= -->
-        <div class="papers-by-year">
-          <h3 class="year-heading">2026</h3>
-          <div class="papers">
-            
-            <div class="paper-card">
+        <!-- ================= 1. LLM安全 (LLM Security) ================= -->
+  <div class="papers-by-topic" id="topic-llm">
+    <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM Security & Agent Safety</h3>
+    <div class="papers">
+
+      <!-- VENOMREC (ICML 2026) -->
+       <div class="paper-card">
               <div class="paper-thumb">
                 <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
               </div>
@@ -630,7 +642,7 @@ h3.year-heading {
               </div>
             </div>
 
-            <div class="paper-card">
+          <div class="paper-card">
               <div class="paper-thumb">
                 <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
               </div>
@@ -654,31 +666,188 @@ h3.year-heading {
               </div>
             </div>
 
-            <div class="paper-card">
+                  <div class="paper-card">
               <div class="paper-thumb">
-                <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
+                <img src="assets/papers/AegisGuard.png" alt="AegisGuard thumbnail" loading="lazy">
               </div>
               <div class="paper-meta">
                 <p class="paper-title">
-                  <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
+                  <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</a>
                 </p>
                 <p class="paper-authors">
-                  Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+                  Che Wang, Ziqi Zhang, Yinggui Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Jianbo Gao, Tao Wei, Yang Cao, Zhong Chen, Wei Yang Bryan Lim.
                 </p>
                 <div class="paper-venue-line">
-                  <span class="venue-badge">ICML 2026</span>
+                  <span class="venue-badge">NeurIPS 2025</span>
                   <div class="paper-links-inline">
-                    <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
-                    <a href="https://gongzhiren.github.io/SubspacePathPruner-website/" target="_blank">Website</a>
+                    <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/116589" target="_blank">Paper</a>
                   </div>
                 </div>
                 <div class="paper-tags">
-                  <span class="research-tag"># Model Efficiency</span>
-                  <span class="research-tag"># Inference-Time Pruning</span>
-                  <span class="research-tag"># Routing</span>
+                  <span class="research-tag"># On-Device Inference</span>
+                  <span class="research-tag"># TEE Security</span>
+                  <span class="research-tag"># Reinforcement Learning</span>
                 </div>
               </div>
             </div>
+
+
+      <!-- DualTAP (2025) -->
+      <div class="paper-card">
+        <div class="paper-title">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</div>
+        <div class="paper-authors">Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang</div>
+        <div class="paper-venue">arXiv preprint arXiv:2511.13248, 2025</div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2511.13248" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= 2. 分布式AI安全 (Distributed AI Security) ================= -->
+  <div class="papers-by-topic" id="topic-distributed">
+    <h3 class="topic-heading"><i class="fa-solid fa-network-wired"></i> Distributed & Federated AI Security</h3>
+    <div class="papers">
+
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</a>
+                </p>
+                <p class="paper-authors">
+                  Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">WWW 2026</span> <span class="badge badge-orange">Oral</span>
+                  <div class="paper-links-inline">
+                    <a href="https://arxiv.org/pdf/2507.06258" target="_blank">Paper</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Federated Learning</span>
+                  <span class="research-tag"># Poisoning Attacks</span>
+                </div>
+              </div>
+            </div>
+
+      
+
+      <!-- Not One Less (ACM CCS 2024) -->
+      <div class="paper-card">
+        <div class="paper-title">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</div>
+        <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang</div>
+        <div class="paper-venue">ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024</div>
+        <div class="paper-links">
+          <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+        </div>
+      </div>
+
+      <!-- Eyes on FedRec (TIFS 2024) -->
+      <div class="paper-card">
+        <div class="paper-title">Eyes on Federated Recommendation: Targeted Poisoning with Competition and its Mitigation</div>
+        <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Wei Wang, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz</div>
+        <div class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS), 2024</div>
+        <div class="paper-links">
+          <a href="https://ieeexplore.ieee.org/document/10495147" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= 3. 隐私保护计算 (Privacy-Preserving Computing) ================= -->
+  <div class="papers-by-topic" id="topic-privacy">
+    <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computing & Machine Unlearning</h3>
+    <div class="papers">
+
+      <!-- MPU (2026) -->
+      <div class="paper-card">
+        <div class="paper-title">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</div>
+        <div class="paper-authors">Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Fei Huang, Wei Yang Bryan Lim</div>
+        <div class="paper-venue">arXiv preprint arXiv:2602.23798, 2026</div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2602.23798" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+        </div>
+      </div>
+
+      <!-- Verifiably Forgotten (2025 / AAAI 2026) -->
+      <div class="paper-card">
+        <div class="paper-title">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</div>
+        <div class="paper-authors">Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Ran Yan, Yang Cao, Wei Yang Bryan Lim</div>
+        <div class="paper-venue">AAAI Conference on Artificial Intelligence (Poster), 2026 / arXiv 2025</div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2505.11097" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+        </div>
+      </div>
+
+      <!-- IF-SPR (2026) -->
+      <div class="paper-card">
+        <div class="paper-title">IF-SPR: User-Assisted Embedding Sharing for Server-Side Federated Defense</div>
+        <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
+        <div class="paper-venue">Technical Report, 2026</div>
+        <div class="paper-links">
+          <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Document</a>
+        </div>
+      </div>
+
+      <!-- Blockchain & Gov Sharing (2021) -->
+      <div class="paper-card">
+        <div class="paper-title">Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach</div>
+        <div class="paper-authors">Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang</div>
+        <div class="paper-venue">Information Processing & Management, 2021</div>
+        <div class="paper-links">
+          <a href="https://doi.org/10.1016/j.ipm.2021.102651" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= 4. 模型高效性 (Model Efficiency) ================= -->
+  <div class="papers-by-topic" id="topic-efficiency">
+    <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency & On-Device Inference</h3>
+    <div class="papers">
+
+    <div class="paper-card">
+        <div class="paper-thumb">
+          <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
+        </div>
+        <div class="paper-meta">
+          <p class="paper-title">
+            <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
+          </p>
+          <p class="paper-authors">
+            Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+          </p>
+          <div class="paper-venue-line">
+            <span class="venue-badge">ICML 2026</span>
+            <div class="paper-links-inline">
+              <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
+              <a href="https://gongzhiren.github.io/SubspacePathPruner-website/" target="_blank">Website</a>
+            </div>
+          </div>
+          <div class="paper-tags">
+            <span class="research-tag"># Model Efficiency</span>
+            <span class="research-tag"># Inference-Time Pruning</span>
+            <span class="research-tag"># Routing</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ================= 5. Benchmark (Benchmarks & Studies) ================= -->
+  <div class="papers-by-topic" id="topic-benchmark">
+    <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Empirical Benchmarks & Security Studies</h3>
+    <div class="papers">
 
             <div class="paper-card">
               <div class="paper-thumb">
@@ -707,6 +876,119 @@ h3.year-heading {
               </div>
             </div>
 
+
+    </div>
+  </div>
+
+        
+        <!-- <!-- ================= 2026年 分类 ================= -->
+        <div class="papers-by-year">
+          <h3 class="year-heading">2026</h3>
+          <div class="papers">
+            
+           <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/VenomRec.png" alt="VenomRec thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">VenomRec: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</a>
+                </p>
+                <p class="paper-authors">
+                  Guowei Guan, <strong>Yurong Hao†</strong>, Jiaming Zhang, Tiantong Wu, Fuyao Zhang, Tianxiang Chen, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">ICML 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://icml.cc/virtual/2026/poster/61520" target="_blank">Paper</a>
+                    <a href="#" target="_blank">Code</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Trustworthy AI</span>
+                  <span class="research-tag"># Multimodal LLM</span>
+                  <span class="research-tag"># Recommender Systems</span>
+                </div>
+              </div>
+            </div> 
+            
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/ModelPirate.png" alt="ModelPirate thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">An Empirical Study on the Resilience of Partial Merging to Model Clone Attacks</a>
+                </p>
+                <p class="paper-authors">
+                  Tiantong Wu, <strong>Yurong Hao</strong>, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">ICML 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://icml.cc/virtual/2026/poster/65910" target="_blank">Paper</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Model Merging</span>
+                  <span class="research-tag"># Model Security</span>
+                </div>
+              </div>
+            </div> 
+        
+          <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/SubspacePath.png" alt="SubspacePath thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">SubspacePath Pruner: Inference-time Pruning via Probe-based Representation–Parameter Coupling</a>
+                </p>
+                <p class="paper-authors">
+                  Zhiren Gong, Yikun Hou, Fan Wu, Che Wang, Fuyao Zhang, Tiantong Wu, <strong>Yurong Hao</strong>, Jiaming Zhang, Yiyang Duan, Tiantong Wang, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">ICML 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://icml.cc/virtual/2026/poster/62512" target="_blank">Paper</a>
+                    <a href="https://gongzhiren.github.io/SubspacePathPruner-website/" target="_blank">Website</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Model Efficiency</span>
+                  <span class="research-tag"># Inference-Time Pruning</span>
+                  <span class="research-tag"># Routing</span>
+                </div>
+              </div>
+            </div> 
+        
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/XDomainBench.png" alt="XDomainBench thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">XDomainBench: Diagnosing Reasoning Collapse in High-Dimensional Scientific Knowledge Composition</a>
+                </p>
+                <p class="paper-authors">
+                  Zhiren Gong, Tiantong Wu, Jiaming Zhang, Fuyao Zhang, Che Wang, <strong>Yurong Hao</strong>, Yikun Hou, Foo Ping, Yilei Zhao, Fei Huang, Chau Yuen, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">ICML 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://icml.cc/virtual/2026/poster/63740" target="_blank">Paper</a>
+                    <a href="https://github.com/GongZhiren/XDomainBench" target="_blank">Code</a>
+                    <a href="https://gongzhiren.github.io/XDomainBench-website/" target="_blank">Website</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># LLM Evaluation</span>
+                  <span class="research-tag"># Scientific Reasoning</span>
+                  <span class="research-tag"># Benchmark and Datasets</span>
+                </div>
+              </div>
+            </div> 
+        
             <div class="paper-card">
               <div class="paper-thumb">
                 <img src="assets/papers/Spattack.png" alt="Spattack thumbnail" loading="lazy">
@@ -729,7 +1011,7 @@ h3.year-heading {
                   <span class="research-tag"># Poisoning Attacks</span>
                 </div>
               </div>
-            </div>
+            </div> 
 
           </div>
         </div>
@@ -765,7 +1047,8 @@ h3.year-heading {
             </div>
 
           </div>
-        </div>
+        </div> -->
+  
 
         <!-- ================= 2024年 分类 ================= -->
         <div class="papers-by-year">
@@ -828,464 +1111,6 @@ h3.year-heading {
 
     </main>
   </div>
-
-</body>
-</html> -->
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publications - Yurong Hao</title>
-  
-  <!-- FontAwesome Icons for academic and security themes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style type="text/css">
-    /* ================= Global Design Variables ================= */
-    :root {
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
-      --accent-color: #2563eb; 
-      --border-color: #e2e8f0;
-      --bg-light: #f8fafc;
-      --tag-bg: #eff6ff;
-    }
-
-    html {
-      scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--text-dark);
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* ================= Header and Navigation ================= */
-    .research-header {
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 16px;
-      margin-bottom: 24px;
-    }
-
-    .research-header h2 {
-      font-size: 28px;
-      margin: 0 0 8px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .back-home {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .back-home:hover {
-      color: var(--accent-color);
-    }
-
-    .publication-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    /* ================= Top Right Sticky Filter Bar ================= */
-    .publication-indexer {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end; 
-      gap: 12px;
-      margin: 24px 0 35px 0;
-      padding: 12px 16px;
-      background: var(--bg-light);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      position: sticky; 
-      top: 20px;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    }
-
-    .indexer-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .indexer-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .index-btn {
-      display: inline-block;
-      padding: 6px 14px;
-      font-size: 12.5px;
-      font-weight: 500;
-      color: #475569;
-      text-decoration: none;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      transition: all 0.2s ease;
-    }
-
-    .index-btn:hover {
-      color: var(--accent-color);
-      border-color: var(--accent-color);
-      background: var(--tag-bg);
-      transform: translateY(-1px);
-    }
-
-    /* ================= Topic Sections and Paper Cards ================= */
-    .papers-by-topic {
-      scroll-margin-top: 90px; /* Offset to prevent sticky bar overlap */
-      margin-bottom: 45px;
-    }
-
-    .topic-heading {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1e293b;
-      border-left: 4px solid var(--accent-color);
-      padding-left: 12px;
-      margin-top: 0;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .topic-heading i {
-      color: var(--accent-color);
-      font-size: 18px;
-    }
-
-    .papers {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .paper-card {
-      padding: 16px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      background: #ffffff;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-
-    .paper-card:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    }
-
-    .paper-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #0f172a;
-      margin-bottom: 6px;
-    }
-
-    .paper-authors {
-      font-size: 14px;
-      color: #334155;
-      margin-bottom: 6px;
-    }
-
-    .paper-venue {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .paper-links {
-      display: flex;
-      gap: 12px;
-    }
-
-    .paper-links a {
-      font-size: 13px;
-      color: var(--accent-color);
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .paper-links a:hover {
-      text-decoration: underline;
-    }
-
-    footer blockquote {
-      margin: 30px 0 0 0;
-      padding: 12px 16px;
-      background-color: var(--bg-light);
-      border-left: 4px solid #94a3b8;
-      font-size: 13.5px;
-      color: var(--text-muted);
-      border-radius: 0 8px 8px 0;
-    }
-
-    /* ================= Responsive Layout ================= */
-    @media (max-width: 992px) {
-      .publication-indexer {
-        position: static; 
-        justify-content: flex-start;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <main class="container">
-    
-    <!-- Research Page Header -->
-    <header class="research-header">
-      <h2>
-        Research & Publications 
-        <a href="./index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> [Back to Home]</a>
-      </h2>
-      <div class="publication-note">* Equal contribution, † Corresponding author</div>
-    </header>
-
-    <!-- Top Right Quick Index Bar -->
-    <nav class="publication-indexer">
-      <span class="indexer-label"><i class="fa-solid fa-tags"></i> Research Topics:</span>
-      <div class="indexer-buttons">
-        <a href="#topic-llm" class="index-btn">LLM Security</a>
-        <a href="#topic-distributed" class="index-btn">Distributed AI Security</a>
-        <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computing</a>
-        <a href="#topic-efficiency" class="index-btn">Model Efficiency</a>
-        <a href="#topic-benchmark" class="index-btn">Benchmarks & Studies</a>
-      </div>
-    </nav>
-
-    <!-- 主体内容栏：全面切换为 5 大 Topic 分类 -->
-
-    <!-- ================= 1. LLM Security ================= -->
-    <section class="papers-by-topic" id="topic-llm">
-      <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM Security & Agent Safety</h3>
-      <div class="papers">
-
-        <!-- VENOMREC (ICML 2026) -->
-        <div class="paper-card">
-          <div class="paper-title">VENOMREC: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems</div>
-          <div class="paper-authors">Guowei Guan*, <strong>Yurong Hao*</strong>, Jiaming Zhang*, Tiantong Wu*, Fuyao Zhang*, Tianxiang Chen†, Longtao Huang, Cyril Leung, Wei Yang Bryan Lim</div>
-          <div class="paper-venue">International Conference on Machine Learning (ICML), 2026</div>
-          <div class="paper-links">
-            <a href="https://arxiv.org/abs/2602.06409" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-            <a href="#" target="_blank"><i class="fa-solid fa-code"></i> Code</a>
-          </div>
-        </div>
-
-        <!-- EchoCascade -->
-        <div class="paper-card">
-          <div class="paper-title">EchoCascade: Collaborative-Reflection Hijacking in Agentic Recommender Systems</div>
-          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
-          <div class="paper-venue">Preprint, 2026</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Project</a>
-          </div>
-        </div>
-
-        <!-- MimicryRAG -->
-        <div class="paper-card">
-          <div class="paper-title">MimicryRAG: Automated Agent-Based Attack Framework against Retrieval-Augmented Generation</div>
-          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
-          <div class="paper-venue">Preprint, 2026</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Project</a>
-          </div>
-        </div>
-
-        <!-- DualTAP -->
-        <div class="paper-card">
-          <div class="paper-title">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</div>
-          <div class="paper-authors">Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang</div>
-          <div class="paper-venue">arXiv preprint arXiv:2511.13248, 2025</div>
-          <div class="paper-links">
-            <a href="https://arxiv.org/abs/2511.13248" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-          </div>
-        </div>
-
-        <!-- FUTURE_LLM_TEMPLATE: Copy this block to add new papers under LLM Security -->
-        <!-- 
-        <div class="paper-card">
-          <div class="paper-title">Your Paper Title Here</div>
-          <div class="paper-authors">Author 1, <strong>Yurong Hao</strong>, Author 3</div>
-          <div class="paper-venue">Conference/Journal Venue Name, 2026</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> PDF</a>
-            <a href="#" target="_blank"><i class="fa-solid fa-code"></i> Code</a>
-          </div>
-        </div>
-        -->
-
-      </div>
-    </section>
-
-
-    <!-- ================= 2. Distributed AI Security ================= -->
-    <section class="papers-by-topic" id="topic-distributed">
-      <h3 class="topic-heading"><i class="fa-solid fa-network-wired"></i> Distributed & Federated AI Security</h3>
-      <div class="papers">
-
-        <!-- Spattack (WWW 2026) -->
-        <div class="paper-card">
-          <div class="paper-title">Spattack: Subgroup Poisoning Attacks on Federated Recommender Systems</div>
-          <div class="paper-authors">Bo Yan, <strong>Yurong Hao</strong>, Dingqi Liu, Huabin Sun, Pengpeng Qiao, Wei Yang Bryan Lim, Yang Cao, Chuan Shi</div>
-          <div class="paper-venue">Proceedings of the ACM Web Conference (WWW), 2026</div>
-          <div class="paper-links">
-            <a href="https://doi.org/10.1145/3696410.3714732" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
-          </div>
-        </div>
-
-        <!-- Not One Less (ACM CCS 2024) -->
-        <div class="paper-card">
-          <div class="paper-title">Not One Less: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation</div>
-          <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Xiaoting Lyu, Jiqiang Liu, Yongsheng Zhu, Zhiguo Wan, Sjouke Mauw, Wei Wang</div>
-          <div class="paper-venue">ACM SIGSAC Conference on Computer and Communications Security (CCS), 2024</div>
-          <div class="paper-links">
-            <a href="https://dl.acm.org/doi/10.1145/3658644.3670365" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
-          </div>
-        </div>
-
-        <!-- Eyes on FedRec (TIFS 2024) -->
-        <div class="paper-card">
-          <div class="paper-title">Eyes on Federated Recommendation: Targeted Poisoning with Competition and its Mitigation</div>
-          <div class="paper-authors"><strong>Yurong Hao</strong>, Xihui Chen, Wei Wang, Jiqiang Liu, Tao Li, Junyong Wang, Witold Pedrycz</div>
-          <div class="paper-venue">IEEE Transactions on Information Forensics and Security (TIFS), 2024</div>
-          <div class="paper-links">
-            <a href="https://ieeexplore.ieee.org/document/10495147" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= 3. Privacy-Preserving Computing ================= -->
-    <section class="papers-by-topic" id="topic-privacy">
-      <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computing & Machine Unlearning</h3>
-      <div class="papers">
-
-        <!-- MPU -->
-        <div class="paper-card">
-          <div class="paper-title">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</div>
-          <div class="paper-authors">Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Fei Huang, Wei Yang Bryan Lim</div>
-          <div class="paper-venue">arXiv preprint arXiv:2602.23798, 2026</div>
-          <div class="paper-links">
-            <a href="https://arxiv.org/abs/2602.23798" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-          </div>
-        </div>
-
-        <!-- Verifiably Forgotten (AAAI 2026) -->
-        <div class="paper-card">
-          <div class="paper-title">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</div>
-          <div class="paper-authors">Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Ran Yan, Yang Cao, Wei Yang Bryan Lim</div>
-          <div class="paper-venue">AAAI Conference on Artificial Intelligence, 2026</div>
-          <div class="paper-links">
-            <a href="https://arxiv.org/abs/2505.11097" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-          </div>
-        </div>
-
-        <!-- IF-SPR -->
-        <div class="paper-card">
-          <div class="paper-title">IF-SPR: User-Assisted Embedding Sharing for Server-Side Federated Defense</div>
-          <div class="paper-authors"><strong>Yurong Hao</strong>, et al.</div>
-          <div class="paper-venue">Technical Report, 2026</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Document</a>
-          </div>
-        </div>
-
-        <!-- Blockchain Sharing (IPM 2021) -->
-        <div class="paper-card">
-          <div class="paper-title">Privacy preserving in blockchain-based government data sharing: A Service-On-Chain (SOC) approach</div>
-          <div class="paper-authors">Chunhui Piao, <strong>Yurong Hao</strong>, Jiaqi Yan, Xuehong Jiang</div>
-          <div class="paper-venue">Information Processing & Management, 2021</div>
-          <div class="paper-links">
-            <a href="https://doi.org/10.1016/j.ipm.2021.102651" target="_blank"><i class="fa-solid fa-link"></i> DOI</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= 4. Model Efficiency ================= -->
-    <section class="papers-by-topic" id="topic-efficiency">
-      <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency & On-Device Inference</h3>
-      <div class="papers">
-
-        <!-- AegisGuard (NeurIPS 2025) -->
-        <div class="paper-card">
-          <div class="paper-title">AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference</div>
-          <div class="paper-authors">Che Wang, Zhaorun Zhang, Yo-Han Wang, Tiantong Wang, <strong>Yurong Hao</strong>, Ji Gao, Tianwei Wei, Yang Cao, Zheng Chen</div>
-          <div class="paper-venue">Advances in Neural Information Processing Systems (NeurIPS), 2025</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> Publication</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ================= 5. Benchmarks & Studies ================= -->
-    <section class="papers-by-topic" id="topic-benchmark">
-      <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Empirical Benchmarks & Security Studies</h3>
-      <div class="papers">
-
-        <!-- ModelPirate (ICML 2026) -->
-        <div class="paper-card">
-          <div class="paper-title">ModelPirate: Security Analysis of Partial Merging Against Model Stealing Attacks</div>
-          <div class="paper-authors">Tiantong Wu*, <strong>Yurong Hao*</strong>, Wei Yang Bryan Lim</div>
-          <div class="paper-venue">International Conference on Machine Learning (ICML), 2026</div>
-          <div class="paper-links">
-            <a href="#" target="_blank"><i class="fa-solid fa-file-pdf"></i> ICML Link</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Academic Disclaimer Footer -->
-    <footer>
-      <blockquote>
-        Disclaimer: This page is configured for academic information sharing only. Copyrights belongs to the respective publishers and authors.
-      </blockquote>
-    </footer>
-
-  </main>
 
 </body>
 </html>
