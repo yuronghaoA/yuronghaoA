@@ -31,7 +31,7 @@ body {
   color: var(--text-main);
   line-height: 1.5;
   letter-spacing: -0.01em; 
-  background-color: #f8fafc; /* 底色改为高级微灰，衬托出左侧白色的名片卡片 */
+  background-color: #ffffff; /* 保持原本右侧大背景的干净色调 */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -39,12 +39,12 @@ body {
   max-width: 1140px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 310px 1fr; /* 略微拓宽侧边栏以支持优雅的时间对齐 */
+  grid-template-columns: 310px 1fr; /* 适当加宽侧边栏以支持优雅的时间向右对齐 */
   gap: 40px;
   padding: 45px 20px;
 }
 
-/* ================= 左侧优雅名片风格栏 ================= */
+/* ================= 左侧独享：名片卡片风格栏 ================= */
 .sidebar {
   position: sticky;
   top: 30px;
@@ -54,7 +54,7 @@ body {
   gap: 20px;
 }
 
-/* 核心个人基本信息卡片 */
+/* 核心基本信息名片 */
 .profile-card {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -68,7 +68,7 @@ body {
 
 .profile-img-container {
   text-align: center;
-  width: 150px; /* 适当微调，配合放大效果 */
+  width: 150px; 
   height: 150px;
   margin: 0 auto;
   border-radius: 50%;
@@ -76,12 +76,12 @@ body {
   background-color: #f1f5f9;
 }
 
-/* 核心优化：放大头像，不露方形边缘 */
+/* 核心优化：放大头像，完全不露原图的方形边框 */
 .profile-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.15); /* 放大图像，撑满圆形容器 */
+  transform: scale(1.15); /* 适度放大，完美无缝嵌入圆形 */
   transform-origin: center center;
 }
 
@@ -146,7 +146,7 @@ body {
   text-decoration: underline;
 }
 
-/* 模块化名片组件风格 (借鉴 Elaine 风格) */
+/* 左侧模块化名片小组件 */
 .sidebar-module {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -176,7 +176,7 @@ body {
   padding: 16px;
 }
 
-/* 名片内带有时间线的列表排版 */
+/* 名片内的列表排版（时间靠右对齐） */
 .timeline-list {
   list-style: none;
   display: flex;
@@ -217,7 +217,7 @@ body {
   line-height: 1.3;
 }
 
-/* 升级版大图地图容器 */
+/* 升级放大版的地图容器 */
 .visitor-map-container {
   padding: 12px;
   text-align: center;
@@ -231,7 +231,7 @@ body {
   margin: 0 auto;
 }
 
-/* ================= 右侧主内容区 ================= */
+/* ================= 右侧主内容区：保持原样现状 ================= */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -240,11 +240,11 @@ body {
 
 section {
   width: 100%;
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  background: transparent; /* 还原原本纯净普通的区域排版，去除白底卡片化 */
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 h2 {
@@ -293,7 +293,7 @@ p a:hover {
   text-decoration: underline;
 }
 
-/* News 模块 */
+/* News 列表原样展示 */
 .news-list {
   list-style: none;
 }
@@ -318,7 +318,7 @@ p a:hover {
   flex-shrink: 0;
 }
 
-/* ================= Publications Card ================= */
+/* Publications 列表原样展示 */
 .papers {
   display: flex;
   flex-direction: column;
@@ -439,7 +439,7 @@ p a:hover {
   border-radius: 20px;
 }
 
-/* 其他通用列表 */
+/* 其他基础通用列表排版 */
 .custom-list {
   list-style: none;
 }
