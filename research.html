@@ -693,15 +693,15 @@ h3.year-heading {
           <div class="indexer-buttons">
             <a href="#topic-llm" class="index-btn">LLM Security</a>
             <a href="#topic-distributed" class="index-btn">Distributed AI Security</a>
-            <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computing</a>
+            <a href="#topic-privacy" class="index-btn">Privacy-Preserving Computation</a>
             <a href="#topic-efficiency" class="index-btn">Model Efficiency</a>
-            <a href="#topic-benchmark" class="index-btn">Benchmarks & Studies</a>
+            <a href="#topic-benchmark" class="index-btn">Benchmarks & Datasets</a>
           </div>
         </div>
 
    <!-- ================= 1. LLM安全 (LLM Security) ================= -->
   <div class="papers-by-topic" id="topic-llm">
-    <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM Security & Agent Safety</h3>
+    <h3 class="topic-heading"><i class="fa-solid fa-shield-halved"></i> LLM & Agent Security</h3>
     <div class="papers">
 
       <!-- VENOMREC (ICML 2026) -->
@@ -725,7 +725,7 @@ h3.year-heading {
                 </div>
                 <div class="paper-tags">
                   <span class="research-tag"># Trustworthy AI</span>
-                  <span class="research-tag"># Multimodal LLM</span>
+                  <span class="research-tag"># MLLM Security</span>
                   <span class="research-tag"># Recommender Systems</span>
                 </div>
               </div>
@@ -780,16 +780,32 @@ h3.year-heading {
               </div>
             </div>
 
-
-      <!-- DualTAP (2025) -->
-      <div class="paper-card">
-        <div class="paper-title">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</div>
-        <div class="paper-authors">Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang</div>
-        <div class="paper-venue">arXiv preprint arXiv:2511.13248, 2025</div>
-        <div class="paper-links">
-          <a href="https://arxiv.org/abs/2511.13248" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-        </div>
-      </div>
+    
+            <!-- DualTAP (2025) -->
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/DualTAP.png" alt="DualTAP thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://arxiv.org/abs/2511.13248" target="_blank">DualTAP: A Dual-Task Adversarial Protector for Mobile MLLM Agents</a>
+                </p>
+                <p class="paper-authors">
+                  Fuyao Zhang, Jiaming Zhang, Che Wang, Xiongtao Sun, <strong>Yurong Hao</strong>, Guowei Guan, Wenjie Li, Longtao Huang, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">arXiv 2025</span>
+                  <div class="paper-links-inline">
+                    <a href="https://arxiv.org/abs/2511.13248" target="_blank">Paper</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Mobile MLLM</span>
+                  <span class="research-tag"># Adversarial Defense</span>
+                  <span class="research-tag"># LLM Agent Safety</span>
+                </div>
+              </div>
+            </div>
 
     </div>
   </div>
@@ -824,6 +840,32 @@ h3.year-heading {
               </div>
             </div>
 
+            <!-- Gradient Reconstruction (2025) -->
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/IGF.png" alt="Gradient Reconstruction thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://arxiv.org/abs/2505.11097" target="_blank">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</a>
+                </p>
+                <p class="paper-authors">
+                  Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Yang Cao, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">arXiv 2025</span>
+                  <div class="paper-links-inline">
+                    <a href="https://arxiv.org/abs/2505.11097" target="_blank">Paper</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Federated Unlearning</span>
+                  <span class="research-tag"># Data Reconstruction Attack</span>
+                  <span class="research-tag"># Privacy Leakage</span>
+                </div>
+              </div>
+            </div>
+      
             <div class="paper-card">
               <div class="paper-thumb">
                 <img src="assets/papers/StairClimbing.png" alt="StairClimbing thumbnail" loading="lazy">
@@ -877,30 +919,37 @@ h3.year-heading {
   </div>
 
 
-  <!-- ================= 3. 隐私保护计算 (Privacy-Preserving Computing) ================= -->
+  <!-- ================= 3. 隐私保护计算 (Privacy-Preserving Computation) ================= -->
   <div class="papers-by-topic" id="topic-privacy">
-    <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computing & Machine Unlearning</h3>
+    <h3 class="topic-heading"><i class="fa-solid fa-user-lock"></i> Privacy-Preserving Computation</h3>
     <div class="papers">
 
       <!-- MPU (2026) -->
       <div class="paper-card">
-        <div class="paper-title">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</div>
-        <div class="paper-authors">Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Fei Huang, Wei Yang Bryan Lim</div>
-        <div class="paper-venue">arXiv preprint arXiv:2602.23798, 2026</div>
-        <div class="paper-links">
-          <a href="https://arxiv.org/abs/2602.23798" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
+        <div class="paper-thumb">
+          <img src="assets/papers/MPU.png" alt="MPU thumbnail" loading="lazy">
+        </div>
+        <div class="paper-meta">
+          <p class="paper-title">
+            <a href="https://arxiv.org/abs/2602.23798" target="_blank">MPU: Towards Secure and Privacy-Preserving Knowledge Unlearning for Large Language Models</a>
+          </p>
+          <p class="paper-authors">
+            Tiantong Wang, Xinyu Yan, Tiantong Wu, <strong>Yurong Hao</strong>, Pengjun Xie, Wei Yang Bryan Lim.
+          </p>
+          <div class="paper-venue-line">
+            <span class="venue-badge">arXiv 2026</span>
+            <div class="paper-links-inline">
+              <a href="https://arxiv.org/abs/2602.23798" target="_blank">Paper</a>
+            </div>
+          </div>
+          <div class="paper-tags">
+            <span class="research-tag"># Large Language Models</span>
+            <span class="research-tag"># Machine Unlearning</span>
+            <span class="research-tag"># Knowledge Erasure</span>
+          </div>
         </div>
       </div>
 
-      <!-- Verifiably Forgotten (2025 / AAAI 2026) -->
-      <div class="paper-card">
-        <div class="paper-title">Verifiably Forgotten? Gradient Differences Still Enable Data Reconstruction in Federated Unlearning</div>
-        <div class="paper-authors">Fuyao Zhang, Wenjie Li, <strong>Yurong Hao</strong>, Xinyu Yan, Ran Yan, Yang Cao, Wei Yang Bryan Lim</div>
-        <div class="paper-venue">AAAI Conference on Artificial Intelligence (Poster), 2026 / arXiv 2025</div>
-        <div class="paper-links">
-          <a href="https://arxiv.org/abs/2505.11097" target="_blank"><i class="fa-solid fa-file-pdf"></i> arXiv</a>
-        </div>
-      </div>
 
       <!-- Paper SOC (IPM 2021) -->
       <div class="paper-card">
@@ -960,7 +1009,7 @@ h3.year-heading {
 
   <!-- ================= 4. 模型高效性 (Model Efficiency) ================= -->
   <div class="papers-by-topic" id="topic-efficiency">
-    <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency & On-Device Inference</h3>
+    <h3 class="topic-heading"><i class="fa-solid fa-bolt"></i> Model Efficiency</h3>
     <div class="papers">
 
     <div class="paper-card">
@@ -992,9 +1041,9 @@ h3.year-heading {
     </div>
   </div>
 
-  <!-- ================= 5. Benchmark (Benchmarks & Studies) ================= -->
+  <!-- ================= 5. Benchmark (Benchmarks & Datasets) ================= -->
   <div class="papers-by-topic" id="topic-benchmark">
-    <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Empirical Benchmarks & Security Studies</h3>
+    <h3 class="topic-heading"><i class="fa-solid fa-chart-line"></i> Benchmarks & Datasets</h3>
     <div class="papers">
 
             <div class="paper-card">
@@ -1024,6 +1073,32 @@ h3.year-heading {
               </div>
             </div>
 
+            <!-- FraudBench (2026) -->
+            <div class="paper-card">
+              <div class="paper-thumb">
+                <img src="assets/papers/FedMUn.png" alt="FedMUn thumbnail" loading="lazy">
+              </div>
+              <div class="paper-meta">
+                <p class="paper-title">
+                  <a href="https://arxiv.org/abs/2605.08820" target="_blank">FedMUn: Federated Multi-Task Unlearning via Task-Specific Parameter Projections</a>
+                </p>
+                <p class="paper-authors">
+                  Xinyu Yan, Tiantong Wang, Tiantong Wu, <strong>Yurong Hao</strong>, Yong Jiang, Wei Yang Bryan Lim.
+                </p>
+                <div class="paper-venue-line">
+                  <span class="venue-badge">arXiv 2026</span>
+                  <div class="paper-links-inline">
+                    <a href="https://arxiv.org/abs/2605.08820" target="_blank">Paper</a>
+                  </div>
+                </div>
+                <div class="paper-tags">
+                  <span class="research-tag"># Federated Unlearning</span>
+                  <span class="research-tag"># Multi-Task Learning</span>
+                  <span class="research-tag"># Privacy Protection</span>
+                </div>
+              </div>
+            </div>
+      
     </div>
   </div>
 
