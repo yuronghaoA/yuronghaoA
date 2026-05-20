@@ -44,6 +44,95 @@ body {
   padding: 45px 20px;
 }
 
+/* 平滑滚动与位置修正 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 防止点击锚点后，标题被吸顶的导航条挡住，给目标加上偏移量 */
+.papers-by-topic {
+  scroll-margin-top: 80px; 
+  margin-bottom: 40px;
+}
+
+/* Topic 分类大标题样式 */
+.topic-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topic-heading i {
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+/* 之前提供的导航条样式（针对 By Topic 微调） */
+.publication-indexer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.indexer-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.indexer-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.index-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.index-btn:hover {
+  color: #2563eb; /* 亮蓝色高亮 */
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 992px) {
+  .publication-indexer {
+    position: static; /* 屏幕较小时取消吸顶，转为流式布局以防遮挡 */
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 /* ================= 左侧：名片卡片风格栏 ================= */
 .sidebar {
   position: sticky;
