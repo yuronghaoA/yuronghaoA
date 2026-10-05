@@ -304,11 +304,12 @@ p a:hover {
 } */
 
 .news-list {
-  position: relative;        /* 让 li 的 offsetTop 以列表为基准，JS 计算要用 */
+  position: relative;
   overflow-y: auto;
-  padding-right: 6px;        /* 给滚动条留点空间 */
-  scroll-behavior: smooth;
+  padding-right: 6px;
+  max-height: 240px;   /* 新增：初始占位高度，约等于 6 条的高度，不用很精确 */
 }
+  
 
 /* 可选：美化滚动条 */
 .news-list::-webkit-scrollbar { width: 6px; }
@@ -534,7 +535,9 @@ p a:hover {
 </head>
 
 <script>
-  function fitNewsList(visibleCount = 6) {
+  const NEWS_VISIBLE = 6;   // 想显示几条就改这里
+
+  function fitNewsList(visibleCount = NEWS_VISIBLE) {
     const list = document.querySelector('#news .news-list');
     if (!list) return;
     const items = list.children;
@@ -542,12 +545,17 @@ p a:hover {
       list.style.maxHeight = 'none';
       return;
     }
-    // 第 9 条的顶部与第 1 条的顶部之差，正好是前 8 条（含间距）的高度
     const h = items[visibleCount].offsetTop - items[0].offsetTop;
     list.style.maxHeight = h + 'px';
   }
-  window.addEventListener('load', () => fitNewsList(6));
-  window.addEventListener('resize', () => fitNewsList(6));
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => fitNewsList());
+  } else {
+    fitNewsList();
+  }
+  if (document.fonts) document.fonts.ready.then(() => fitNewsList());
+  window.addEventListener('resize', () => fitNewsList());
 </script>
 
 <body>
