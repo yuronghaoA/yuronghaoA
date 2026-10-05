@@ -299,9 +299,25 @@ p a:hover {
   text-decoration: underline;
 }
 
-.news-list {
+/* .news-list {
   list-style: none;
+} */
+
+.news-list {
+  position: relative;        /* 让 li 的 offsetTop 以列表为基准，JS 计算要用 */
+  overflow-y: auto;
+  padding-right: 6px;        /* 给滚动条留点空间 */
+  scroll-behavior: smooth;
 }
+
+/* 可选：美化滚动条 */
+.news-list::-webkit-scrollbar { width: 6px; }
+.news-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.news-list::-webkit-scrollbar-track { background: transparent; }
+.news-list { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.2) transparent; } /* Firefox */
 
 .news-list li {
   display: flex;
@@ -516,6 +532,23 @@ p a:hover {
 </style>
 
 </head>
+
+<script>
+  function fitNewsList(visibleCount = 6) {
+    const list = document.querySelector('#news .news-list');
+    if (!list) return;
+    const items = list.children;
+    if (items.length <= visibleCount) {
+      list.style.maxHeight = 'none';
+      return;
+    }
+    // 第 9 条的顶部与第 1 条的顶部之差，正好是前 8 条（含间距）的高度
+    const h = items[visibleCount].offsetTop - items[0].offsetTop;
+    list.style.maxHeight = h + 'px';
+  }
+  window.addEventListener('load', () => fitNewsList(8));
+  window.addEventListener('resize', () => fitNewsList(8));
+</script>
 
 <body>
 
