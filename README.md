@@ -23,10 +23,10 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 
 > **🔥 Opening for Students**
 >
-> We are looking for self-motivated students to work with me on **Trustworthy MLLMs and Agents**, under the supervision of Prof. [Wei Yang Bryan Lim](https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan). Topics include, but are not limited to: **LLM & Agent Security**; **Distributed AI Security**; **Privacy-Preserving Computation**; 
+> We are looking for self-motivated students to work with me on **Trustworthy MLLMs and Agents**, under the supervision of Prof. [Wei Yang Bryan Lim](https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan). Topics include, but are not limited to: **LLM & Agent Security**; **Distributed AI Security**; **Privacy-Preserving Computation**.
 >
 > Positions are open for visiting students (CSC-funded applicants are welcome) and Ph.D. students. If you are interested, feel free to [email me](mailto:Yurong.hao@ntu.edu.sg) or contact Prof. Lim directly.
 >
 
-💬 Not looking for a position but into similar stuff? Come say hi anyway! A rebellious agent, a suspicious federated client, a model too big for your GPU, or just a wild research idea: my inbox is always open. All replies are guaranteed poison-free, privacy-preserving, and (usually) low-latency ☕
+💬 *Not looking for a position but into similar stuff? Come say hi anyway! A rebellious agent, a suspicious federated client, a model too big for your GPU, or just a wild research idea: my inbox is always open. All replies are guaranteed poison-free, privacy-preserving, and (usually) low-latency* ☕
 
