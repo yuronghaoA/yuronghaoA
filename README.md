@@ -5,8 +5,6 @@
 Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 
 [![Homepage](https://img.shields.io/badge/Homepage-yuronghaoa.github.io-0055A4?style=flat-square&logo=githubpages&logoColor=white)](https://yuronghaoa.github.io/yuronghaoA/)
-[![Google Scholar](https://img.shields.io/badge/Google%20Scholar-Profile-4285F4?style=flat-square&logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?hl=zh-CN&user=t6Q_2wcAAAAJ&view_op=list_works&sortby=title)
-[![DBLP](https://img.shields.io/badge/DBLP-Profile-004F9F?style=flat-square&logo=dblp&logoColor=white)](https://dblp.org/pid/260/9439.html)
 [![Email](https://img.shields.io/badge/Email-Yurong.hao%40ntu.edu.sg-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:Yurong.hao@ntu.edu.sg)
 
 </div>
