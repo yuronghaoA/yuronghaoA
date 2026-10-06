@@ -11,17 +11,18 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 
 </div>
 
-- 🔭 I work on **Trustworthy AI**. I spend my days thinking like an attacker, poisoning distributed and federated learning systems to find where they break, and then building defences to make sure they don't.
-- 🤖 These days, my favourite targets are **Multimodal LLMs and Agents**. As they get smarter and more autonomous, I am digging into how they can be fooled, and how to keep them trustworthy for the people who rely on them.
+- 🔭 I work on **Trustworthy AI**: I break AI systems for a living, then fix them so nobody else can.
+- 🤖 Lately, I've been poking at **Multimodal LLMs and Agents**. The smarter they get, the more creative the ways to fool them.
 
 > [!TIP]
 > **🔥 Opening for Students**
 >
 > We are looking for self-motivated students to work with me on **Trustworthy MLLMs and Agents**, under the supervision of Prof. [Wei Yang Bryan Lim](https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan). Topics include, but are not limited to:
 >
-> - 🕵️ **Agent security**: memory poisoning, risk monitoring of agent trajectories
-> - 🖼️ **Trustworthy MLLMs and personalised AI**: robustness, security and privacy of multimodal LLMs and the recommender systems built on them
-> - 🛡️ **Secure and private distributed learning**: attacks and defences in federated and other collaborative learning systems
+> - 🕵️ **LLM & Agent Security**
+> - 🌐 **Distributed AI Security**
+> - 🔒 **Privacy-Preserving Computation**
+> - ⚡ **Model Efficiency**
 >
 > Positions are open for visiting students (CSC-funded applicants are welcome) and Ph.D. students. If you are interested, feel free to [email me](mailto:Yurong.hao@ntu.edu.sg) or contact Prof. Lim directly.
 >
