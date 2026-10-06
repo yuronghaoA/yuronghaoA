@@ -13,7 +13,6 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 
 - 🔭 I work on **Trustworthy AI**, with a focus on poisoning attacks and defence mechanisms in distributed deep learning systems.
 - 🤖 Recently, I have been exploring vulnerabilities and robust defences for **Multimodal LLMs and Agents**.
-- 🎓 I received my Ph.D. from Beijing Jiaotong University in 2025.
 
 ### 📝 Selected Publications
 
