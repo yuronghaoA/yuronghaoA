@@ -14,19 +14,14 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 - 🔭 I work on **Trustworthy AI**: I break AI systems for a living, then fix them so nobody else can.
 - 🤖 Lately, I've been poking at **Multimodal LLMs and Agents**. The smarter they get, the more creative the ways to fool them.
 
-> [!TIP]
 > **🔥 Opening for Students**
 >
-> We are looking for self-motivated students to work with me on **Trustworthy MLLMs and Agents**, under the supervision of Prof. [Wei Yang Bryan Lim](https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan). Topics include, but are not limited to:
->
-> - 🕵️ **LLM & Agent Security**
-> - 🌐 **Distributed AI Security**
-> - 🔒 **Privacy-Preserving Computation**
-> - ⚡ **Model Efficiency**
+> We are looking for self-motivated students to work with me on **Trustworthy MLLMs and Agents**, under the supervision of Prof. [Wei Yang Bryan Lim](https://dr.ntu.edu.sg/entities/person/Lim-Wei-Yang-Bryan). Topics include, but are not limited to: 🕵️ **LLM & Agent Security**; 🌐 **Distributed AI Security**; 🔒 **Privacy-Preserving Computation**; ⚡ **Model Efficiency**
 >
 > Positions are open for visiting students (CSC-funded applicants are welcome) and Ph.D. students. If you are interested, feel free to [email me](mailto:Yurong.hao@ntu.edu.sg) or contact Prof. Lim directly.
 >
-> 💬 Not looking for a position but into similar stuff? Come say hi anyway! Whether it's a research idea, a collaboration, or just a bug in your threat model that won't go away, my inbox is always open. I promise my replies are poison-free ☕
+
+💬 Not looking for a position but into similar stuff? Come say hi anyway! Whether it's a research idea, a collaboration, or just a bug in your threat model that won't go away, my inbox is always open. I promise my replies are poison-free ☕
 
 ### 📝 Selected Publications
 
