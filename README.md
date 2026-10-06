@@ -20,7 +20,6 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 - **WURI**: Watching Unfolding Risk in Agent Interactions · *NeurIPS 2026* · [[Paper]](https://openreview.net/pdf?id=ehughQGWpW)
 - **Not One Less**: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation · *ACM CCS 2024 (Oral)* · [[Paper]](https://dl.acm.org/doi/10.1145/3658644.3670365) [[Code]](https://github.com/yuronghaoA/FRecAttack2)
 
-More publications can be found on my [homepage](https://yuronghaoa.github.io/yuronghaoA/research.html).
 
 > **🔥 Opening for Students**
 >
@@ -29,5 +28,5 @@ More publications can be found on my [homepage](https://yuronghaoa.github.io/yur
 > Positions are open for visiting students (CSC-funded applicants are welcome) and Ph.D. students. If you are interested, feel free to [email me](mailto:Yurong.hao@ntu.edu.sg) or contact Prof. Lim directly.
 >
 
-💬 Not looking for a position but into similar stuff? Come say hi anyway! Whether it's a research idea, a collaboration, or just a bug in your threat model that won't go away, my inbox is always open. I promise my replies are poison-free ☕
+💬 Not looking for a position but into similar stuff? Come say hi anyway! A rebellious agent, a suspicious federated client, a model too big for your GPU, or just a wild research idea: my inbox is always open. All replies are guaranteed poison-free, privacy-preserving, and (usually) low-latency ☕
 
