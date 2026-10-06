@@ -18,7 +18,7 @@ Research Fellow @ **MIDORI Lab, CCDS, Nanyang Technological University**
 - **VirusCascade**: Hijacking Collaborative Reflection in LLM-Powered Recommender Agents · *NDSS 2027 (Oral)* · [[Paper]](https://arxiv.org/abs/2609.38270) [[Code]](https://github.com/yuronghaoA/VirusCascade)
 - **C3H**: Compression-to-Consensus Criteria Hijacking in Multimodal LLM Recommender Systems · *NeurIPS 2026* · [[Paper]]([https://](https://neurips.cc/virtual/2026/loc/sydney/poster/152807))
 - **VenomRec**: Cross-Modal Interactive Poisoning for Targeted Promotion in Multimodal LLM Recommender Systems · *ICML 2026* · [[Paper]](https://icml.cc/virtual/2026/poster/61520)
-- **WURI**: Watching Unfolding Risk in Agent Interactions · *NeurIPS 2026* · [[Paper]]([https://](https://neurips.cc/virtual/2026/loc/sydney/poster/150879))
+- **WURI**: Watching Unfolding Risk in Agent Interactions · *NeurIPS 2026* · [[Paper]]([https://icml.cc/virtual/2026/poster/61520](https://neurips.cc/virtual/2026/loc/sydney/poster/150879))
 - **Not One Less**: Exploring Interplay between User Profiles and Items in Untargeted Attacks against Federated Recommendation · *ACM CCS 2024 (Oral)* · [[Paper]](https://dl.acm.org/doi/10.1145/3658644.3670365) [[Code]](https://github.com/yuronghaoA/FRecAttack2)
 
 
